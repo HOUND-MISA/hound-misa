@@ -139,3 +139,18 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 .content-box-show{
 	margin-top: 17px;
 }
+#index_jum{
+ background-color: #607d8b;
+ background-image: url(/assets/elem_splash-img.jpg);
+ background-attachment: fixed;
+ position:relative;
+ background-size: cover;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+ height: 100vh;
+}
+#landing{
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
