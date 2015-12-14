@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :pictures
+  resources :tags
+  resources :events
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'pages#index'
     devise_scope :user do
