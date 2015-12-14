@@ -93,10 +93,19 @@ z-index:20;
 font-family: 'Roboto' !important;
 margin:0px; position:relative; top:0px; left:0px; font-size:15px; text-align:left;
 }
-.sixtyBySixty{border: solid 1px; width: 60px; height:60px; margin: 0px 0px; position:relative; top:0px; left:0px; text-align:left;}
+.sixtyBySixty{
+	border: solid 1px; 
+	width: 60px; 
+	height:60px; 
+	margin: 0px 0px; 
+	position:relative; 
+	top:0px; 
+	left:0px; 
+	text-align:left;
+}
 .entry
 {
-width: 300px; height:60px; margin: 5px 40px;
+width: 350px; height:60px; margin: 5px 20px;
 }
 .details
 {
@@ -106,9 +115,9 @@ margin:0px; position:relative; top:0px; left:0px; font-size:15px;
 .smallFont{
 margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; color:#6e6e6e
 }
-.navbar-brand { 
-    max-width: 300px; 
-    overflow: visible;
-    padding-top: 0;
-    padding-bottom: 0; 
+.navbar-brand {
+	max-width:300px;
+	overflow: visible;
+	padding-top: 0;
+	padding-bottom:0;
 }
