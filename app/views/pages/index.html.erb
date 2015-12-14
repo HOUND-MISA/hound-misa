@@ -1,5 +1,26 @@
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="css/animate.css" rel="stylesheet">
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#1D1717; height:94px; padding:none;">
+<a class="navbar-brand" style=" margin:5px 0px 0px 40px;"><img src="images/logo.png"></a>
+<ul class="nav navbar-nav navbar-right" style=" padding:none;">
+<li style=" margin:20px 0px 0px 80px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
+<li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
+<li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> EVENTS </a>
+<li style=" margin:10px 55px 0px 40px;"><a style="font-size:19px; margin:none;"><input class="navSearch" placeholder="SEARCH"></a></li>
 <div class="container">
 
   <% if user_signed_in? %>
@@ -14,14 +35,18 @@
     <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
   <% end %>
 
+</div>
+</ul>
+</div>
+
   <div class="modal fade" id="login" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login</h4>
+          <h4 class="modal-title" style="">Login</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
           <%= render :template => 'devise/sessions/new' %>
         </div>
       </div>
@@ -41,5 +66,89 @@
       </div>
     </div>
   </div>
-
 </div>
+</div>
+<div class="banner">
+&nbsp;  
+</div>
+<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: absolute; width:100%;">
+&nbsp;  
+</div>
+<!--DP-->
+<div class="displayPicture" >
+</div>
+<h1 class="h1name" style="" ><bold>Mr Organizer</bold></h1>
+<p class="sub" ><bold>Organizing Master</bold></p>
+</div>
+<div style=" position:absolute; top:630px; min-height:802px; max-width:802px; margin-left:40px; border:solid 0px;">
+<div class="row" style="top:0px;left:0px; position:relative;">
+<div class="col-md-6 sampleBox" >
+<div class="glassbox">
+<h3 class="description">Singing</h3>
+</div>
+</div>
+<div class="col-md-6 sampleBox" style="background: url(images/sample2.jpg)" >
+<div class="glassbox">
+<h3 class="description">Dancing</h3>
+</div>
+</div>
+</div>
+<div class="row" style="top:0px;left:0px; position:relative;">
+<div class="col-md-6 sampleBox" style="background: url(images/sample3.jpeg) ;" >
+<div class="glassbox">
+<h3 class="description">Spoken Word Poetry</h3>
+</div>
+</div>
+<div class="col-md-6 sampleBox" style="background: url(images/portrait.jpg) ;" >
+<div class="glassbox">
+<h3 class="description">Painting</h3>
+</div>
+</div>
+</div>
+</div>
+<div style=" position:absolute; top:650px; height:340px; width:390px; background-color:#f7f7f7; left:850px; ">
+<h3 style="margin:40px 0px 5px 40px ;
+font-family: 'Roboto' !important;">EVENTS</h3>
+<button style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px;"><b>Organized</b></button> <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
+<!--First Entry for Events Box-->
+<div class="row entry" >
+<div class="col-md-3 sixtyBySixty" > </div>
+<div class="col-md-9">
+<h3 class="eventTitle"> Slamma Slick Saturdays </h3>
+<!--Details 1 -->
+<div class="row details" >
+<div class="col-md-6 smallFont" >
+October 31
+</div>
+<div class="col-md-6 smallFont" >
+40 Attendees
+</div>
+</div>
+</div>
+<!--End of Details-->
+</div>
+<!--End of First Entry Box-->
+<div class="row entry" style="margin-top:25px">
+<div class="col-md-3 sixtyBySixty" > </div>
+<div class="col-md-9">
+<h3 class="eventTitle">Coffee Workshop</h3>
+<!--Details-->
+<div class="row details" >
+<div class="col-md-6 smallFont">
+November 2
+</div>
+<!--Number of attendees for event 2-->
+<div class="col-md-6 smallFont" >
+19 Attendees
+</div>
+</div>
+</div>
+<!--End of Details-->
+</div>
+<!--End of Second Entry Box-->
+</div>
+<footer class="footer">
+<h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
+</footer>
+</body>
+</html>
