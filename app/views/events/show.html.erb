@@ -4,13 +4,80 @@
   <meta charset="UTF-8">
   <title></title>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/animate.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
 
 </head>
 <body>
-<div class="container-fluid content-box">
+
+<div class="container-fluid content-box-show">
+
+<div class="row" style="  min-height: 760px; max-width:1125px; border:solid 1px; margin:140px 0px 5px 75px; background-color:#191919; padding:60px;">
+
+  <div class="col-sm-6">
+
+    <div id="main-display" style="background-color:white; height:500px; width:500px; background:url(/assets/elem_event-img-13.jpg); background-size: cover;"></div>
+
+    <div class="row" style="background:transparent; position:relative; left: calc(50% - 177px); height:100px; width:355px; margin-top:25px; ">
+
+      <div class="col-sm-3" style="background:url(images/1.jpg); background-size: cover;  position:relative; left: calc(50% - 177px); height:100px; width:100px; margin-left:13px;" onclick="game(1)"></div>
+
+      <div class="col-sm-3" style="background:url(images/2.jpg); background-size: cover; position:relative; left: calc(50% - 177px); height:100px; width:100px; margin-left:13px;" onclick="game(2)"></div>
+
+      <div class="col-sm-3" style="background:url(images/3.jpg); background-size: cover; position:relative; left: calc(50% - 177px); height:100px; width:100px; margin-left:13px; margin-right:13px;" onclick="game(3)"></div>
+
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="show-event-content">
+      <h1 class="event-name"><b><%= @event.name %></b></h1>
+    </div>
+  </div>
+
+</div>
+<div class="row" style=" top:140px; height: 560px; width:1135px;  margin:10px 0px 5px 75px">
+
+<div class="col-md-8" style=" height: 560px; width:740px;  margin:10px 0px 0px 0px; background: url(images/map.png); 
+     background-size: cover;">
+</div>
+
+<div class="col-md-4" style="  left:10px; height: 560px; width:375px; margin:10px 0px 0px 0px ;
+    background-color: #A02A26;">
+</div>
+
+</div>
+
+
+
+</div>
+<footer class="footer" style="margin-top:120px">
+
+
+  <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
+</footer>
+
+  
+  
+<script>
+main=document.getElementById("main-display");
+game = function(i)
+{
+  console.log(main.style);
+main.style.background="url(images/"+i+".jpg)";
+main.style.backgroundSize="cover";
+
+}
+
+</script>
+</body>
+</html>
+
     <p id="notice"><%= notice %></p>
 
     <p>
@@ -52,17 +119,3 @@
       <%= link_to 'Edit', edit_event_path(@event) %> |
     <% end %>
     <%= link_to 'Back', events_path %>
-
-
-</div>
-<footer class="footer">
-
-
-  <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
-</footer>
-
-  
-  
-
-</body>
-</html>
