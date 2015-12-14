@@ -60,7 +60,7 @@ font-family: 'Roboto' !important;
 color:white; top:275px; position:relative; margin:0px 40px; font-size:32px;
 }
 .banner{
-background: url(../images/banner.jpg); height:340px; top:0px; position: absolute; width: 100%;
+background: url(/assets/elem_profile-header.jpg); height:340px; top:0px; position: absolute; width: 100%;
 background-size: cover;
 background-position: calc(10%) calc(40%)
 }
@@ -77,7 +77,7 @@ position:absolute; top:539px; text-align:center; font-size:14px; width:100%; mar
 }
 .displayPicture
 {
-background: url(../images/portrait.jpg);
+background: url(/assets/ed.jpg);
 background-size: cover;
 height: 225px;
 position: absolute;
@@ -105,4 +105,10 @@ margin:0px; position:relative; top:0px; left:0px; font-size:15px;
 }
 .smallFont{
 margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; color:#6e6e6e
+}
+.navbar-brand { 
+    max-width: 300px; 
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0; 
 }
