@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.text :address
+      t.integer :approved
       t.string :website
       t.float :lat
       t.float :lon
@@ -13,4 +14,3 @@ class CreateEvents < ActiveRecord::Migration
     end
   end
 end
-
