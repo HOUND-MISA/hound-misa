@@ -5,6 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#1D1717; height:94px; padding:none;">
+
+    <a class="navbar-brand" style=" margin:5px 0px 0px 40px;"><img src="images/logo.png"></a>
+            <ul class="nav navbar-nav navbar-right" style=" padding:none;">
+              <li style=" margin:20px 0px 0px 80px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
+              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
+              
+              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> EVENTS </a>
+              <li style=" margin:10px 55px 0px 40px;"><a style="font-size:19px; margin:none;"><input class="navSearch" placeholder="SEARCH"></a></li>
+            </ul>
+            <div class="container">
+            <% if user_signed_in? %>
+              <% if session[:fb_token].nil? %>
+                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
+              <% else %></p>
+                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
+              <% end %>
+              <p class="navbar-text pull-right" href="#login" data-toggle="modal">Hi <%= current_user.email %>!</p>
+            <% else %>
+              <a class="navbar-text pull-right" href="#signup" data-toggle="modal">Signup</a>
+              <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
+            <% end %>
+
+          </div>
+</div>
 </head>
 <body>
 <!--<p class="notice"><%=notice%></p>

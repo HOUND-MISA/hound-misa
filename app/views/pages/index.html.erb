@@ -11,31 +11,6 @@
 </head>
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#1D1717; height:94px; padding:none;">
-
-    <a class="navbar-brand" style=" margin:5px 0px 0px 40px;"><img src="images/logo.png"></a>
-            <ul class="nav navbar-nav navbar-right" style=" padding:none;">
-              <li style=" margin:20px 0px 0px 80px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
-              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
-              
-              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> EVENTS </a>
-              <li style=" margin:10px 55px 0px 40px;"><a style="font-size:19px; margin:none;"><input class="navSearch" placeholder="SEARCH"></a></li>
-            </ul>
-            <div class="container">
-            <% if user_signed_in? %>
-              <% if session[:fb_token].nil? %>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
-              <% else %></p>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
-              <% end %>
-              <p class="navbar-text pull-right" href="#login" data-toggle="modal">Hi <%= current_user.email %>!</p>
-            <% else %>
-              <a class="navbar-text pull-right" href="#signup" data-toggle="modal">Signup</a>
-              <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
-            <% end %>
-
-          </div>
-</div>
   <div class="modal fade" id="login" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -88,14 +63,14 @@
     <div class="row" style="top:0px;left:0px; position:relative;">
       
 
-        <div class="col-md-6 sampleBox" >
+        <div class="col-md-5 sampleBox" >
           <div class="glassbox">
             <h3 class="description">Singing</h3>
           </div>
          </div>
 
 
-        <div class="col-md-6 sampleBox" style="background: url(images/sample2.jpg)" >
+        <div class="col-md-5 sampleBox" style="background: url(images/sample2.jpg)" >
 
           <div class="glassbox">
             <h3 class="description">Dancing</h3>
@@ -108,7 +83,7 @@
     <div class="row" style="top:0px;left:0px; position:relative;">
       
 
-        <div class="col-md-6 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
+        <div class="col-md-5 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
 
           <div class="glassbox">
             <h3 class="description">Spoken Word Poetry</h3>
@@ -116,7 +91,7 @@
 
 
         </div>
-        <div class="col-md-6 sampleBox" style="background: url(images/portrait.jpg) ;" > 
+        <div class="col-md-5 sampleBox" style="background: url(images/portrait.jpg) ;" > 
 
           <div class="glassbox">
             <h3 class="description">Painting</h3>
