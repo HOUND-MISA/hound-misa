@@ -22,7 +22,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @event.event_tags.build
   end
 
   # GET /events/1/edit
@@ -77,7 +76,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      #params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id, event_tags_attributes[:id,:])
+      #params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id, event_tags_attributes[:id,:tag_id,event_id])
       params.require(:event).permit!
     end
 

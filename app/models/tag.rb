@@ -5,4 +5,6 @@ class Tag < ActiveRecord::Base
   def to_s
     self.name
   end
+
+  accepts_nested_attributes_for :event_tags
 end
