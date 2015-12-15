@@ -99,7 +99,13 @@
 
     <div class="bubble" style="padding-top:7px; margin:0px 0px 0px 25px;">
         <center >
-    <h5 style="margin:0px;">Attendees</h5>
+    <h5 style="margin:0px;">
+      <% if @attendee_count == 1 %>
+    <%= @attendee_count %> Attendee 
+  <% else %>
+    <%= @attendee_count %> Attendees
+  <% end %>
+    </h5>
     </center>
 
       </div>
