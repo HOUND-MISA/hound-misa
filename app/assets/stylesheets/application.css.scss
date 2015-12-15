@@ -13,6 +13,9 @@
  *= require_self
  *= require_tree .
  */
+ body{
+ 	overflow-x:hidden;
+ }
 .navSearch
 {
 border-radius:23px;
