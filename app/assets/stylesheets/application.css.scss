@@ -23,12 +23,29 @@ font-size: 10pt;
 width:220px;
 height:45px;
 }
+.landing-search{
+	margin-top: 38.5vh;
+}
+.lanSearch{
+	background-color: transparent;
+	font-size: 5vw;
+	color:white;
+	border:0;
+	border-bottom:solid 3px white;
+	margin-top: 2vh;
+}
+.lantitle{
+	font-size: 6vw;
+	color:white;
+	margin-top: 3px;
+}
 .footer
 {
 width: 100%;
 height: 60px;
 padding:15px 10px 0px 30px;
-bottom:0;
+margin-bottom:0 auto;
+position:relative;
 background-color: #A02A26;
 }
 button :focus
@@ -121,7 +138,48 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 	padding-top: 0;
 	padding-bottom:0;
 }
-.navbar-collapse { background:#1c1818; /*replace with desired color*/ } 
 @media(min-width: 768px){
     .navbar > .container { max-width: 100%; padding: 0; }
+}
+.content-box{
+	margin-top: 100px;
+}
+.event-name{
+	color:#ffffff;
+	font-size: 3.9em;
+}
+.show-event-content{
+	padding-left: 40px;
+}
+.content-box-show{
+	margin-top: 17px;
+}
+#index_jum{
+ background-image: url(/assets/elem_splash-img.jpg);
+ background-attachment: fixed;
+ position:relative;
+ background-size: cover;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+ height: 100vh;
+}
+#landing{
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+.modal.custom .modal-dialog {
+    width:24em;
+    margin-top: 100px;
+    /*add what you want here*/
+}
+#shown-img{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(/assets/elem_event-img-13.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
 }

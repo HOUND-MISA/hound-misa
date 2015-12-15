@@ -1,171 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
+  <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; height:94px; padding:none; border-color:transparent;">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
+    <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
+    <div class="collapse navbar-collapse" style="background:transparent;" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right" style=" padding:none;">
+              <% if user_signed_in? %>`
+              <li role="presentation" class="dropdown" style=" margin:20px 60px 0px 20px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:19px;margin:none; color:white;">
+                  <%= current_user.email %> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <% if session[:fb_token].nil? %>
+                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", destroy_user_session_path %>
+                    <% else %></p>
+                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", facebook_logout_path %></p>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+              <%else%>
+              <li style=" margin:20px 10px 0px 20px;"><a style="font-size:22px;margin:none; color:white;" href="#login" data-toggle="modal"><b>LOG IN</b></a></li>
+
+               <li style=" margin:20px 50px 0px 10px;"><a style="font-size:22px;margin:none; color:white;" href="#signup" data-toggle="modal"><button style="height: 40px; width:150px; border-radius: 20px; border: solid 1px; background-color: transparent; margin-top:-10px;"><b>SIGN UP</b></button></a></li>
+              <% end %>
+
+
+               <!--<div class="container">
+           <% if user_signed_in? %>`
+              <% if session[:fb_token].nil? %>
+                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
+              <% else %></p>
+                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
+              <% end %>
+              <p class="navbar-text pull-right" href="#login" data-toggle="modal">Hi <%= current_user.email %>!</p>
+            <% else %>
+              <a class="navbar-text pull-right" href="#signup" data-toggle="modal">Signup</a>
+              <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
+            <% end %>
+
+          </div>-->
+            </ul>
+    </div>
+            
+</div>
 </head>
-<body>
-
-  <div class="modal fade" id="login" role="dialog">
+<body id="landing">
+  <section id="index_jum" class="row" data-autoheight="true">
+  <div class="modal custom fade" id="login" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="">Login</h4>
+          <h4 class="modal-title" style=""><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center> Sign In</center></h4>
         </div>
         <div class="modal-body" >
-          <%= render :template => 'devise/sessions/new' %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+            <br>
+              <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
+            </div>
+
+            <div class="field">
+            <br>
+              <center><%= f.password_field :password, autocomplete: "off", :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
+            </div>
+
+          <!--   <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%> -->
+
+            <div class="actions">
+              <center><%= f.submit "Sign in", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color:#a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
+            </div>
+          <% end %>
+
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <center><%= link_to "Forgot password?", new_password_path(resource_name) %></center>
+          <% end -%>
+
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+             <center><%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #3b5998; margin-top: 5px; color:white; font-size:15px;" %></center>
+            <% end -%>
+          <% end -%>
+          <center>No account yet?</center>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <center><b><%= link_to "Sign up", new_registration_path(resource_name) %></b></center><br />
+          <% end -%>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="modal fade" id="signup" role="dialog">
+  <div class="modal custom fade" id="signup" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Signup</h4>
+          <h4 class="modal-title"><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center>Create a new account</center></h4>
         </div>
         <div class="modal-body">
-          <%= render :template => 'devise/registrations/new' %>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <br>
+                <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
+              </div>
+              
+              <div class="field">
+                <br>
+                <center><%= f.text_field :first_name, autofocus: true , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "First Name", :size=>"25"%></center>
+              </div>
+
+              <div class="field">
+                <br>
+                <center><%= f.text_field :last_name, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Last Name", :size=>"25" %></center>
+              </div>
+
+              <div class="field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br>
+                <center><%= f.password_field :password, autocomplete: "off" , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
+              </div>
+
+             <!--  <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div> -->
+
+              <div class="actions">
+                <center><%= f.submit "Sign up", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
+              </div>
+
+            <% end %>
+              <center>
+             Already have an account?<br />
+              <%- if controller_name != 'sessions' %>
+                <b><%= link_to "Log in here.", new_session_path(resource_name) %></b><br />
+              <% end -%>
+              </center>
+
         </div>
       </div>
     </div>
   </div>
-
-<div class="banner">
-&nbsp;  
+ <div class="landing-search">
+ <center>
+ <span class="lantitle"><b>What's the plan?</b></span><br>
+  <input class="lanSearch" placeholder="" size="14">
+  </center>
 </div>
-
-<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: absolute; width:100%;">
-&nbsp;  
-</div>
-
-
-<!--DP-->
-<div class="displayPicture" >
-</div>
-
-
-
-<h1 class="h1name" style="" ><bold>Mr Organizer</bold></h1>
-<p class="sub" ><bold>Organizing Master</bold></p>
-</div>
-
-  <div style=" position:absolute; top:630px;  min-height:802px; max-width:802px;  margin-left:40px; border:solid 0px;">
-
-    <div class="row" style="top:0px;left:0px; position:relative;">
-      
-
-        <div class="col-md-5 sampleBox" >
-          <div class="glassbox">
-            <h3 class="description">Singing</h3>
-          </div>
-         </div>
-
-
-        <div class="col-md-5 sampleBox" style="background: url(images/sample2.jpg)" >
-
-          <div class="glassbox">
-            <h3 class="description">Dancing</h3>
-          </div>
-
-         </div>
-    </div>
-
-    
-    <div class="row" style="top:0px;left:0px; position:relative;">
-      
-
-        <div class="col-md-5 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
-
-          <div class="glassbox">
-            <h3 class="description">Spoken Word Poetry</h3>
-          </div>
-
-
-        </div>
-        <div class="col-md-5 sampleBox" style="background: url(images/portrait.jpg) ;" > 
-
-          <div class="glassbox">
-            <h3 class="description">Painting</h3>
-          </div>
-
-        </div>
-    </div>
-
-  </div>
-
-<div style=" position:absolute; top:650px;  height:340px; width:450px; background-color:#f7f7f7; left:850px;   ">
-<h3 style="margin:40px 0px 5px 40px ;
-    font-family: 'Roboto' !important;">EVENTS</h3>
-<button style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px;"><b>Organized</b></button> <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
-
-
-<!--First Entry for Events Box-->
-<div class="row entry" >
-  <div class="col-md-2" > </div>
-  <div class="col-md-2 sixtyBySixty" > </div>
-  <div class="col-md-8">
-    <h3 class="eventTitle"> Slamma Slick Saturdays </h3>
-  <!--Details 1 -->
-  <div class="row details" >
-      <div class="col-md-6 smallFont" > 
-        October 31
-      </div>
-      <div class="col-md-6 smallFont" >
-        40 Attendees
-      </div>
-    </div>  
-  </div>
-  <!--End of Details-->
-</div>
-<!--End of First Entry Box-->
-
-<div class="row entry"  style="margin-top:25px">
-
-  <div class="col-md-2" > </div>
-  <div class="col-md-2 sixtyBySixty" > </div>
-  <div class="col-md-8">
-    <h3 class="eventTitle">Coffee Workshop</h3>
-  <!--Details-->
-    <div class="row details" >
-      <div class="col-md-6 smallFont"> 
-        November 2
-      </div>
-
-      <!--Number of attendees for event 2-->
-
-      <div class="col-md-6 smallFont" >
-        19 Attendees
-      </div>
-
-    </div>  
-
-  </div>
-  <!--End of Details-->
-
-</div>
-<!--End of Second Entry Box-->
-
-
-
-
-</div>
-<footer class="footer">
-
-
-  <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
-</footer>
-
-  
-  
-
+</section><!--end hero-->
 </body>
+
 </html>

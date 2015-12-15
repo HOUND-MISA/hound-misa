@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%if current_page?(root_url)==false%>
   <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#1D1717; height:94px; padding:none;">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -14,13 +15,14 @@
       </button>
 
     <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" style="background:#1c1818;" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right" style=" padding:none;">
               <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
               <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
-              
               <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> EVENTS </a></li>
               <% if user_signed_in? %>
+              <li style=""><%= link_to 'EVENTS', events_path, :style=>"font-size:19px; margin:20px 0px 0px 40px;" %></li>
+              <% if user_signed_in? %>`
               <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 20px;">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-eemxpanded="false" style="font-size:19px;margin:none;">
                   <%= current_user.first_name %> <span class="caret"></span>
@@ -59,6 +61,8 @@
     </div>
             
 </div>
+<%else%>
+<%end%>
 </head>
 <body>
 <!--<p class="notice"><%=notice%></p>
