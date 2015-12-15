@@ -22,12 +22,11 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @tags = Tag.all
+    @event.event_tags.build
   end
 
   # GET /events/1/edit
   def edit
-    @tags = Tag.all
   end
 
   # POST /events
