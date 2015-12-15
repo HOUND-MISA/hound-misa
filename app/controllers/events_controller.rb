@@ -11,6 +11,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
+    @attendee_count = EventAttendee.where(['event_id = ?',params[:id]]).count
   end
 
   # GET /events/new
@@ -73,4 +75,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id)
     end
+
 end

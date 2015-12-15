@@ -35,7 +35,25 @@
   <%= @event.user %>
 </p>
 
-<% if @event.user.id = current_user %>
-  <%= link_to 'Edit', edit_event_path(@event) %> |
+<% if @attendee_count == 1 %>
+  <%= @attendee_count %> Attendee 
+<% else %>
+  <%= @attendee_count %> Attendees
 <% end %>
+
+<% if user_signed_in? %>
+  <% if @event.user.id == current_user.id %>
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+  <% else %>
+    <% if @attended.empty? %>
+      <%= link_to 'Join', join_event_path(@event.id)%>
+    <% else %>
+      <%= link_to 'Leave', leave_event_path(@event.id)%>
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', events_path %>
+
+
+
