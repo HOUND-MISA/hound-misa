@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav navbar-right" style=" padding:none;">
               <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
               <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
-              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> EVENTS </a></li>
+              <li style=""><%= link_to "EVENTS", events_path, :style=>"font-size:19px;margin:20px 0px 0px 40px;" %></li>
               <% if user_signed_in? %>`
               <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 20px;">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-eemxpanded="false" style="font-size:19px;margin:none;">
