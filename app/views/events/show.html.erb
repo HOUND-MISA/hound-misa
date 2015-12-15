@@ -52,7 +52,7 @@
 
   <p>
     <strong>Description:</strong>
-    <%= @event.description %>
+    <%= @event.description %> <br>
   </p>
 
   <p>
@@ -91,7 +91,7 @@
       <%= link_to 'Edit', edit_event_path(@event) %> |
     <% else %>
       <% if @attended.empty? %>
-        <%= link_to 'Join', join_event_path(@event.id)%>
+        <%= link_to 'Join', join_event_path(@event.id), :style=>"color:black;"%>
       <% else %>
         <%= link_to 'Leave', leave_event_path(@event.id)%>
       <% end %>
