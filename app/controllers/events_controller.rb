@@ -22,10 +22,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @tags = Tag.all
   end
 
   # GET /events/1/edit
   def edit
+    @tags = Tag.all
   end
 
   # POST /events
@@ -75,9 +77,9 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id)
+      #params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id, event_tags_attributes[:id,:])
+      params.require(:event).permit!
     end
 
 end

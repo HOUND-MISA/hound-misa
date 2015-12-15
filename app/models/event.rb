@@ -7,4 +7,7 @@ class Event < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
+
+  accepts_nested_attributes_for :event_tags
+
 end
