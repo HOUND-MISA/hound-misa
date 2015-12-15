@@ -75,6 +75,7 @@ class EventsController < ApplicationController
 
   def search
     @search = params['search_query']
+    @events = Event.where(['name LIKE ? OR description LIKE ?',"%#{@search}%","%#{@search}%"])
     render :template => "events/search"
   end
 

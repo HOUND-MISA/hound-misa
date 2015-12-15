@@ -1,1 +1,24 @@
-<%= @search %>
+SEARCH RESULTS<br />
+
+<% if @events.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start date</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.name, event %></td>
+          <td><%= event.start_date %></td>
+          <td><%= event.address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  NO RESULTS FOUND
+<% end %>
