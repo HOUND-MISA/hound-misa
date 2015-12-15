@@ -185,7 +185,12 @@
     <%= @attendee_count %> Attendees
   <% end %>
 
-
+  <p>
+    <strong>Attendees:</strong><br />
+    <% @last_three_attendees.each do |u| %>
+      <strong><%= u.user %></strong>
+    <% end %>
+  </p>
 
 
   <% if user_signed_in? %>
