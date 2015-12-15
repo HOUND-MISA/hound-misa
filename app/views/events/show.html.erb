@@ -19,17 +19,51 @@
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
   <div class="row" style="  min-height: 760px; border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
 
-    <div class="col-sm-6">
+    <div class="col-md-6">
       <div class="row">
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;"></div>
       </div>
 
     </div>
-    <div class="col-sm-6">
-      <div class="show-event-content">
+    <div class="col-md-6">
+      <!--<div class="show-event-content">
         <h1 class="event-name"><b><%= @event.name %></b></h1>
         <p><%= @event.description %></p>
-      </div>
+      </div>-->
+        <h1 class="event-name"><b><%= @event.name %></b></h1>
+        <%if @event.website!="" %>
+        <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
+            <a href="http://<%= @event.website %>"><%= @event.website %></a>
+          </div>
+        <%end%>
+          <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
+            <%= @event.start_date %>
+          </div>
+        <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
+            <%= @event.address %>
+          </div>
+
+          <div class="rob" style="color:rgb(180,180,180); max-width:70%px; font-weight:100; font-size:20px; margin-top:16px;">
+             <span style="line-height:110%;"><%= @event.description %></span>
+
+          </div>
+
+               <% if user_signed_in? %>
+                  <% if @event.user.id == current_user.id %>
+                    <%= link_to 'Edit', edit_event_path(@event) %> |
+                <% else %>
+                    <% if @attended.empty? %>
+                      <%= button_to 'Join', join_event_path(@event.id), :class=>"jb", :method=>:get%>
+                    <% else %>
+                      <%= button_to 'Leave', leave_event_path(@event.id), :class=>"jb", :method=>:get%>
+                    <% end %>
+                <% end %>
+              <% end %>
+
+
+
+
+
     </div>
 
   </div>
@@ -38,6 +72,71 @@
     <div id="map" class="col-md-8" style=" height: 560px;">
     </div>
     <div class="col-md-4" style=" height: 560px; background-color: #A02A26;    background-clip: padding-box; border-left: 10px solid transparent;">
+      <div class="bubble" style="padding-top:7px; margin-left:25px;">
+    <center >
+    <h5 style="margin:0px;">Organizer</h5>
+    </center>
+
+      </div>
+
+
+      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
+        
+          <div class="col-sm-3" style="padding:0px;">
+              <div class="circle"></div>
+          </div>
+
+          <div class="col-sm-8" style="padding:0px"><h4 class="people"><%= @event.user %></h4></div>
+      
+
+      </div>
+
+      <div style="">
+        <hr>
+      </div>
+
+
+
+    <div class="bubble" style="padding-top:7px; margin:0px 0px 0px 25px;">
+        <center >
+    <h5 style="margin:0px;">Attendees</h5>
+    </center>
+
+      </div>
+
+      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
+        
+          <div class="col-sm-3" style="padding:0px;">
+              <div class="circle"></div>
+          </div>
+
+          <div class="col-sm-8" style="padding:0px"><h4 class="people">Wilbert Uy</h4></div>
+      </div>
+
+
+      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
+        
+          <div class="col-sm-3" style="padding:0px;">
+              <div class="circle"></div>
+          </div>
+
+          <div class="col-sm-8" style="padding:0px"><h4 class="people">Jiah Margallo</h4></div>
+      </div>
+
+
+      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
+        
+          <div class="col-sm-3" style="padding:0px;">
+              <div class="circle"></div>
+          </div>
+
+          <div class="col-sm-8" style="padding:0px"><h4 class="people">Erika Reyes</h4></div>
+      </div>
+
+
+  
+
+</div>
     </div>
 
   </div>
@@ -85,6 +184,9 @@
   <% else %>
     <%= @attendee_count %> Attendees
   <% end %>
+
+
+
 
   <% if user_signed_in? %>
     <% if @event.user.id == current_user.id %>
