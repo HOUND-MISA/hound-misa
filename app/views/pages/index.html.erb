@@ -97,7 +97,7 @@
           <% end -%>
           <center>No account yet?</center>
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            <center><%= link_to "Sign up", new_registration_path(resource_name) %></center><br />
+            <center><b><%= link_to "Sign up", new_registration_path(resource_name) %></b></center><br />
           <% end -%>
         </div>
       </div>
@@ -112,7 +112,48 @@
           <h4 class="modal-title"><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center>Create a new account</center></h4>
         </div>
         <div class="modal-body">
-          <%= render :template => 'devise/registrations/new' %>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <br>
+                <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
+              </div>
+              
+              <div class="field">
+                <br>
+                <center><%= f.text_field :first_name, autofocus: true , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "First Name", :size=>"25"%></center>
+              </div>
+
+              <div class="field">
+                <br>
+                <center><%= f.text_field :last_name, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Last Name", :size=>"25" %></center>
+              </div>
+
+              <div class="field">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br>
+                <center><%= f.password_field :password, autocomplete: "off" , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
+              </div>
+
+             <!--  <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div> -->
+
+              <div class="actions">
+                <center><%= f.submit "Sign up", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
+              </div>
+
+            <% end %>
+              <center>
+             Already have an account?<br />
+              <%- if controller_name != 'sessions' %>
+                <b><%= link_to "Log in here.", new_session_path(resource_name) %></b><br />
+              <% end -%>
+              </center>
+
         </div>
       </div>
     </div>
@@ -125,4 +166,5 @@
 </div>
 </section><!--end hero-->
 </body>
+
 </html>
