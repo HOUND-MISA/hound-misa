@@ -44,13 +44,13 @@
           </div>
 
                <% if user_signed_in? %>
-                <% if @event.user.id == current_user.id %>
+                  <% if @event.user.id == current_user.id %>
                     <%= link_to 'Edit', edit_event_path(@event) %> |
                 <% else %>
                     <% if @attended.empty? %>
-                      <%= button_to 'Join', join_event_path(@event.id), :class=>"jb"%>
+                      <%= button_to 'Join', join_event_path(@event.id), :class=>"jb", :method=>:get%>
                     <% else %>
-                      <%= button_to 'Leave', leave_event_path(@event.id), :class=>"jb"%>
+                      <%= button_to 'Leave', leave_event_path(@event.id), :class=>"jb", :method=>:get%>
                     <% end %>
                 <% end %>
               <% end %>
