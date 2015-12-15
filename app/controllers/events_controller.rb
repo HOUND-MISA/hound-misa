@@ -11,7 +11,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
+    if user_signed_in?
+      @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
+    end
     @attendees = EventAttendee.where(['event_id = ?',params[:id]])
     @attendee_count = @attendees.count
     @last_three_attendees = @attendees.last(3)
