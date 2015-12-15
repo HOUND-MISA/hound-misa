@@ -48,5 +48,7 @@ group :development do
   gem 'omniauth-digitalocean'
   gem 'omniauth-facebook'
   gem 'twitter-bootstrap-rails'
+  gem 'gmaps4rails'
+  gem 'geocoder'
 end
 
