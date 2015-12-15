@@ -156,13 +156,10 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 }
 #index_jum{
  background-image: url(/assets/elem_splash-img.jpg);
- background-attachment: fixed;
- position:relative;
  background-size: cover;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
- height: 100vh;
 }
 #landing{
 	overflow-x:hidden;
@@ -182,4 +179,12 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     background-image: url(/assets/elem_event-img-13.jpg);
     background-repeat: no-repeat;
     background-size: contain;
+}
+.mouse-bg {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: fixed;
+	z-index: -1;
 }

@@ -19,6 +19,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Description</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Address</th>
@@ -34,6 +35,7 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
+        <td><%= event.description %></td>
         <td><%= event.start_date %></td>
         <td><%= event.end_date %></td>
         <td><%= event.address %></td>
