@@ -54,7 +54,8 @@
 </div>
 </head>
 <body id="landing">
-  <section id="index_jum" class="row" data-autoheight="true">
+  <section id="index_jum" class="mouse-bg row" data-autoheight="true">
+</section><!--end hero-->
   <div class="modal custom fade" id="login" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -161,10 +162,17 @@
  <div class="landing-search">
  <center>
  <span class="lantitle"><b>What's the plan?</b></span><br>
-  <input class="lanSearch" placeholder="" size="14">
+  <input class="lanSearch" placeholder="" size="14" autofocus="autofocus">
   </center>
 </div>
-</section><!--end hero-->
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="assets/mouse.parallax.js"></script>
 
+<script>
+$(document).ready(function() {
+$('#index_jum').mouseParallax({ moveFactor: 1 });
+$('body').height(1000);
+});
+</script>
 </html>
