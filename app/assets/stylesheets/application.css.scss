@@ -215,3 +215,39 @@ color:white;
 cursor: pointer;
 background-color:#B02B26;
 }
+.bubble
+{
+position: relative;
+width: 115px;
+height: 30px;
+padding-top: 7px;
+margin-top: 50px;
+background: #FFFFFF;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px 0px;
+border-radius: 15px 15px 15px 0px;
+}
+.circle{
+background: url(/assets/elem_event-img-13.jpg);
+background-size: cover;
+height:60px; width:60px; border-radius:30px; margin:0px;
+}
+.people
+{
+color:white;
+position:inherit; margin: 20px 0px 0px 0px;
+}
+.bubble:after
+{
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 12px 7px 0 0;
+border-color: #ffffff transparent transparent transparent;
+content: '';
+position: absolute;
+border-style: solid;
+z-index: 1;
+bottom: -10px;
+left: 0px;
+}
