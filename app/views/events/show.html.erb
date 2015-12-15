@@ -49,7 +49,7 @@
           </div>
 
                <% if user_signed_in? %>
-                  <% if @event.user.id == current_user.id %>
+                  <% if @event.user_id == current_user.id %>
                     <%= link_to 'Edit', edit_event_path(@event) %> |
                 <% else %>
                     <% if @attended.empty? %>
@@ -151,16 +151,6 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Name:</strong>
-    <%= @event.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @event.description %> <br>
-  </p>
-
-  <p>
     <strong>Start date:</strong>
     <%= @event.start_date %>
   </p>
@@ -171,25 +161,9 @@
   </p>
 
   <p>
-    <strong>Address:</strong>
-    <%= @event.address %>
-  </p>
-
-  <p>
     <strong>Website:</strong>
     <%= @event.website %>
   </p>
-
-  <p>
-    <strong>Organizer:</strong>
-    <%= @event.user %>
-  </p>
-
-  <% if @attendee_count == 1 %>
-    <%= @attendee_count %> Attendee 
-  <% else %>
-    <%= @attendee_count %> Attendees
-  <% end %>
 
   <p>
     <strong>Attendees:</strong><br />
@@ -198,18 +172,6 @@
     <% end %>
   </p>
 
-
-  <% if user_signed_in? %>
-    <% if @event.user.id == current_user.id %>
-      <%= link_to 'Edit', edit_event_path(@event) %> |
-    <% else %>
-      <% if @attended.empty? %>
-        <%= link_to 'Join', join_event_path(@event.id), :style=>"color:black;"%>
-      <% else %>
-        <%= link_to 'Leave', leave_event_path(@event.id)%>
-      <% end %>
-    <% end %>
-  <% end %>
 
   <%= link_to 'Back', events_path %>
   <input type="button" value="Show Location"
