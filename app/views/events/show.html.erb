@@ -212,6 +212,12 @@
   <% end %>
 
   <%= link_to 'Back', events_path %>
+  <input type="button" value="Show Location"
+    onclick="javascript:calcRoute()" />   <br/>
+ 
+Latitude: <span id="latitude"></span>       <br/>
+ 
+Longitude: <span id="longitude"></span>
 <footer class="footer" style="margin-top:120px">
 
 
@@ -230,6 +236,39 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
   handler.getMap().setZoom(17);
 });
+function showlocation() {
+   // One-shot position request.
+   navigator.geolocation.getCurrentPosition(callback);
+}
+ 
+function callback(position) {
+   document.getElementById('latitude').innerHTML = position.coords.latitude;
+   document.getElementById('longitude').innerHTML = position.coords.longitude;
+}
+
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
+
+function calcRoute() {
+  var origin      = new google.maps.LatLng(14.6207466, 121.1317681);
+  var destination = new google.maps.LatLng(<%=@event.latitude%>, <%=@event.longitude%>);
+  var request = {
+      origin:      origin,
+      destination: destination,
+      travelMode:  google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+  var handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'map'}}, function(){
+  directionsDisplay.setMap(handler.getMap());
+});
+
+}
+
 </script>
 </body>
 </html>
