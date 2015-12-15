@@ -109,37 +109,18 @@
     </center>
 
       </div>
-
+    <% @last_three_attendees.each do |u| %>
       <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
         
           <div class="col-sm-3" style="padding:0px;">
               <div class="circle"></div>
           </div>
 
-          <div class="col-sm-8" style="padding:0px"><h4 class="people">Wilbert Uy</h4></div>
+          <div class="col-sm-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
       </div>
 
 
-      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
-        
-          <div class="col-sm-3" style="padding:0px;">
-              <div class="circle"></div>
-          </div>
-
-          <div class="col-sm-8" style="padding:0px"><h4 class="people">Jiah Margallo</h4></div>
-      </div>
-
-
-      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
-        
-          <div class="col-sm-3" style="padding:0px;">
-              <div class="circle"></div>
-          </div>
-
-          <div class="col-sm-8" style="padding:0px"><h4 class="people">Erika Reyes</h4></div>
-      </div>
-
-
+    <% end %>
   
 
 </div>
