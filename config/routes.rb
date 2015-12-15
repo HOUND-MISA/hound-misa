@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   get '/join/:id', to: "event_attendees#join", as: :join_event
   get '/leave/:id', to: "event_attendees#leave", as: :leave_event
+  get '/search', to:"events#search", as: :search
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
