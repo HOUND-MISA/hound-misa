@@ -181,15 +181,12 @@ function showlocation() {
    // One-shot position request.
    navigator.geolocation.getCurrentPosition(callback);
 }
- 
 function callback(position) {
    document.getElementById('latitude').innerHTML = position.coords.latitude;
    document.getElementById('longitude').innerHTML = position.coords.longitude;
 }
-
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
-
 function calcRoute() {
 if (navigator.geolocation) { //Checks if browser supports geolocation
    navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
@@ -226,7 +223,6 @@ if (navigator.geolocation) { //Checks if browser supports geolocation
    });
  }
 }
-
 </script>
 </body>
 </html>
