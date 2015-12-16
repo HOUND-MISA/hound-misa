@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show, :search]
+  before_filter :authenticate_owner, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -82,6 +83,13 @@ class EventsController < ApplicationController
     @search = params['search_query']
     @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"])
     render :template => "events/search"
+  end
+
+  def authenticate_owner
+    @event = Event.find(params[:id])
+    if current_user.id != @event.user_id
+      redirect_to event_path(@event)
+    end
   end
 
   private
