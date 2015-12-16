@@ -58,7 +58,7 @@
 </div>
 </head>
 <body id="landing">
-  <section id="index_jum" class="mouse-bg row" data-autoheight="true">
+<section id="index_jum" class="mouse-bg row" data-autoheight="true">
 </section><!--end hero-->
   <div class="modal custom fade" id="login" role="dialog">
     <div class="modal-dialog">
@@ -167,7 +167,7 @@
  <center>
  <span class="lantitle"><b>What's the plan?</b></span><br>
   <form action="/search">
-   <input name="search_query" class="lanSearch" placeholder="" size="14" autofocus="autofocus"><br>
+   <input id="sb-1" name="search_query" class="lanSearch" placeholder="" size="14" autofocus="autofocus"><br>
     <input type="submit" value="Submit" class="hide"/>
   </form>
   </center>
@@ -181,5 +181,46 @@ $(document).ready(function() {
 $('#index_jum').mouseParallax({ moveFactor: 1 });
 $('body').height(1000);
 });
+$( document ).keypress(function() {
+  $("#sb-1").focus();
+});
+</script>
+
+<script type="text/javascript">
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+  var images = ["elem_splash-img.jpg", "download1.jpeg"];
+  shuffle(images);
+  console.log(images);
+  $(function () {
+      var i = 0;
+      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
+      setInterval(function () {
+          i++;
+          if (i == images.length) {
+              i = 0;
+          }
+          $("#index_jum").fadeOut(500, function () {
+              $(this).css("background-image", "url(/assets/" + images[i] + ")");
+              $(this).fadeIn(500);
+          });
+      }, 25000);
+  });
 </script>
 </html>
