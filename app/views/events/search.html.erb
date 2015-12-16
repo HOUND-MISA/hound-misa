@@ -1,5 +1,15 @@
 <br><br><br><br><br><br><br><br><br>
 
+<div>
+  FILTERS:
+  <form action="/search">
+    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()") %>
+    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()") %>
+    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()") %>
+  </form>
+</div>
+
+
 SEARCH RESULTS<br />
 
 <% if @events.any? %>
@@ -8,15 +18,15 @@ SEARCH RESULTS<br />
       <tr>
         <th>Name</th>
         <th>Start date</th>
-        <th>Address</th>
+        <th>City</th>
       </tr>
     </thead>
     <tbody>
       <% @events.each do |event| %>
         <tr>
           <td><%= link_to event.name, event, 'data-no-turbolink' => true %></td>
-          <td><%= event.start_date %></td>
-          <td><%= event.address %></td>
+          <td><%= event.start_date.strftime('%B %d, %Y') %></td>
+          <td><%= event.city %> City</td>
         </tr>
       <% end %>
     </tbody>

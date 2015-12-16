@@ -150,7 +150,7 @@
 <footer class="footer">
 
 
-  <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
 </footer>
 
   
@@ -179,7 +179,7 @@ Name: <%= @user %>
   <% @user.events.each do |event| %>
     <div>
       <%= event.name %><br />
-      <%= event.start_date %><br />
+      <%= event.start_date.strftime('%B %d') %><br />
       <% if event.attendee_count == 1 %>
         <%= event.attendee_count %> Attendee 
       <% else %>
@@ -194,7 +194,7 @@ Name: <%= @user %>
   <% @attended_events.each do |attended_event| %>
     <div>
       <%= attended_event.name %><br />
-      <%= attended_event.start_date %><br />
+      <%= attended_event.start_date.strftime('%B %d') %><br />
       <% if attended_event.attendee_count == 1 %>
         <%= attended_event.attendee_count %> Attendee 
       <% else %>
@@ -208,7 +208,7 @@ Name: <%= @user %>
   Favorites/Hobbies
   <% @user.user_tags.each do |user_tag| %>
     <div>
-      <%= user_tag.tag.name %>
+      <%= link_to user_tag.tag.name, {:controller => "events", :action => "search", :category => user_tag.tag.name} %>
     </div>
   <% end %>
 </div>

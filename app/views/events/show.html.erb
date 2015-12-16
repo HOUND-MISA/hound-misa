@@ -37,7 +37,7 @@
           </div>
         <%end%>
           <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-            <%= @event.start_date %>
+            <%= @event.start_date.strftime('%B %d, %Y %l:%M %p') %>
           </div>
         <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
             <%= @event.address %>
@@ -51,6 +51,7 @@
                <% if user_signed_in? %>
                   <% if @event.user_id == current_user.id %>
                     <%= link_to 'Edit', edit_event_path(@event) %> |
+                    <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 <% else %>
                     <% if @attended.empty? %>
                       <%= button_to 'Join', join_event_path(@event.id), :class=>"jb", :method=>:get%>
@@ -150,9 +151,9 @@
     <p>
       <strong>Tags:</strong><br />
       <% @event_tags.reverse.drop(1).reverse.each do |event_tag| %>
-        <%= event_tag.tag.name %>, 
+        <%= link_to event_tag.tag.name, {:controller => "events", :action => "search", :category => event_tag.tag.name} %>,
       <% end %>
-      <%= @event_tags.last.tag.name %>
+      <%= link_to @event_tags.last.tag.name, {:controller => "events", :action => "search", :category => @event_tags.last.tag.name} %>
     </p>
   <% end %>
  

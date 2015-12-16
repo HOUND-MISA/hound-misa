@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order('start_date ASC')
   end
 
   # GET /events/1
@@ -77,9 +77,18 @@ class EventsController < ApplicationController
     end
   end
 
+
   def search
     @search = params['search_query']
-    @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"])
+    @tag = params['category']
+    @city = params['city']
+    @date = params['date']
+
+    if @search != nil
+      @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"]).order('start_date ASC')
+    else
+      @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime('%m-%d-%Y',start_date) = ?","#{@tag}","#{@city}","#{@date}"]).order('start_date ASC')
+    end
     render :template => "events/search"
   end
 
