@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215075528) do
+ActiveRecord::Schema.define(version: 20151216120912) do
 
   create_table "event_attendees", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20151215075528) do
     t.string   "website"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "user_id"
     t.text     "description"
+    t.integer  "attendee_count"
   end
 
   create_table "pictures", force: :cascade do |t|
