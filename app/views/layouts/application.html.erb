@@ -27,7 +27,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
                   </li>
                   <li><hr></li>
                   <li>

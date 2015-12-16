@@ -19,7 +19,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
                   </li>
                   <li><hr></li>
                   <li>
@@ -216,11 +216,11 @@ function shuffle(array) {
           if (i == images.length) {
               i = 0;
           }
-          $("#index_jum").fadeOut(2000, function () {
+          $("#index_jum").fadeOut(500, function () {
               $(this).css("background-image", "url(/assets/" + images[i] + ")");
-              $(this).fadeIn(2000);
+              $(this).fadeIn(500);
           });
-      }, 20000);
+      }, 25000);
   });
 </script>
 </html>
