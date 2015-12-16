@@ -82,7 +82,7 @@ color:white; top:275px; position:relative; margin:0px 40px; font-size:32px;
 .banner{
 background: url(/assets/elem_profile-header.jpg); height:340px; top:0px; position: absolute; width: 100%;
 background-size: cover;
-background-position: calc(10%) calc(40%)
+background-position: calc(10%) calc(40%);
 }
 .h1name{
 font-family: 'Roboto' !important;
@@ -94,6 +94,11 @@ position:absolute; top:489px; text-align:center; font-size:30px; width:100%; mar
 font-family: 'Roboto' !important;
 font-style: normal;
 position:absolute; top:539px; text-align:center; font-size:14px; width:100%; margin:0px; color:#7d7d7d;
+}
+.sub1{
+font-family: 'Roboto' !important;
+font-style: normal;
+font-size:14px;
 }
 .displayPicture
 {
