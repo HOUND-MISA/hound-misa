@@ -145,7 +145,7 @@
     <% end %>
   </p>
 
-
+  
   <% if @event_tags.any? %>
     <p>
       <strong>Tags:</strong><br />
@@ -155,6 +155,7 @@
       <%= @event_tags.last.tag.name %>
     </p>
   <% end %>
+ 
 
 
   <%= link_to 'Back', events_path %>
