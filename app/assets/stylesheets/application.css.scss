@@ -224,7 +224,7 @@ position: relative;
 width: 115px;
 height: 30px;
 padding-top: 7px;
-margin-top: 50px;
+margin-top: 30px;
 background: #FFFFFF;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px 0px;
@@ -238,7 +238,8 @@ height:60px; width:60px; border-radius:30px; margin:0px;
 .people
 {
 color:white;
-position:inherit; margin: 20px 0px 0px 0px;
+position:inherit; 
+margin: 20px 0px 0px 0px;
 }
 .bubble:after
 {
@@ -253,4 +254,26 @@ border-style: solid;
 z-index: 1;
 bottom: -10px;
 left: 0px;
+}
+#wrapper { position: relative; }
+#over_map { position: absolute; top: 8px; left: 100px; z-index: 99; }
+.direct
+{
+padding:5px;
+background-color:#A02A26; 
+height:30px; 
+width:170px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:15px; 
+font-family:'Roboto' !important;
+}
+.direct:hover
+{
+color:white;
+cursor: pointer;
+background-color:#B02B26;
 }

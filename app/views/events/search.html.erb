@@ -14,7 +14,7 @@ SEARCH RESULTS<br />
     <tbody>
       <% @events.each do |event| %>
         <tr>
-          <td><%= link_to event.name, event %></td>
+          <td><%= link_to event.name, event, 'data-no-turbolink' => true %></td>
           <td><%= event.start_date %></td>
           <td><%= event.address %></td>
         </tr>
