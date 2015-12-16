@@ -19,10 +19,14 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                  </li>
+                  <li><hr></li>
+                  <li>
                     <% if session[:fb_token].nil? %>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", destroy_user_session_path %>
-                    <% else %></p>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", facebook_logout_path %></p>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                    <% else %>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
                     <% end %>
                   </li>
                 </ul>
