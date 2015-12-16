@@ -15,14 +15,18 @@
               <% if user_signed_in? %>`
               <li role="presentation" class="dropdown" style=" margin:20px 60px 0px 20px;">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:19px;margin:none; color:white;">
-                  <%= current_user.email %> <span class="caret"></span>
+                  <%= current_user %> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                  </li>
+                  <li><hr></li>
+                  <li>
                     <% if session[:fb_token].nil? %>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", destroy_user_session_path %>
-                    <% else %></p>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "SIGN OUT", facebook_logout_path %></p>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                    <% else %>
+                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
                     <% end %>
                   </li>
                 </ul>
