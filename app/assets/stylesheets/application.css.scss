@@ -23,7 +23,7 @@ border:solid 1px white;
 background-color: #101010;
 padding:1px 1px 1px 20px;
 font-size: 10pt;
-width:220px;
+width:200px;
 height:45px;
 }
 .landing-search{
@@ -158,11 +158,14 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 	margin-top: 17px;
 }
 #index_jum{
- background-image: url(/assets/elem_splash-img.jpg);
  background-size: cover;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
+         transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear; /* Firefox 4 */
+    -webkit-transition: background 0.5s linear; /* Safari and Chrome */
+    -o-transition: background 0.5s linear; /* Opera */
 }
 #landing{
 	overflow-x:hidden;
