@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+  validates :description, :length => {:maximum => 40}
 
 
   def self.from_omniauth(auth)
