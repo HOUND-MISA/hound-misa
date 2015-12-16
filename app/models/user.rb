@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true
   validates :description, :length => {:maximum => 40}
 
+  accepts_nested_attributes_for :user_tags, allow_destroy: :true, reject_if: :all_blank
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

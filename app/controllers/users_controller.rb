@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    #render :template => 'users/edit'
     render :template => 'devise/registrations/edit'
   end
 
