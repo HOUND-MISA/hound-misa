@@ -196,11 +196,11 @@ $( document ).keypress(function() {
           if (i == images.length) {
               i = 0;
           }
-          $("#index_jum").fadeOut(2500, function () {
+          $("#index_jum").fadeOut(2000, function () {
               $(this).css("background-image", "url(/assets/" + images[i] + ")");
-              $(this).fadeIn(2500);
+              $(this).fadeIn(2000);
           });
-      }, 9000);
+      }, 20000);
   });
 </script>
 </html>

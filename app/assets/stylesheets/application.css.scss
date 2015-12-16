@@ -162,10 +162,6 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
-         transition: background 0.5s linear;
-    -moz-transition: background 0.5s linear; /* Firefox 4 */
-    -webkit-transition: background 0.5s linear; /* Safari and Chrome */
-    -o-transition: background 0.5s linear; /* Opera */
 }
 #landing{
 	overflow-x:hidden;
