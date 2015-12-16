@@ -182,25 +182,25 @@ $('#index_jum').mouseParallax({ moveFactor: 1 });
 $('body').height(1000);
 });
 $( document ).keypress(function() {
-  $("#sb-1").focus();
+  $("#search-field").focus();
 });
 </script>
 
 <script type="text/javascript">
-  var b_imgs = ["elem_splash-img.jpg", "download.jpeg"];
+  var images = ["elem_splash-img.jpg", "download.jpeg"];
   $(function () {
       var i = 0;
-      $("#index_jum").css("background-image", "url(/assets/" + b_imgs[i] + ")");
+      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
       setInterval(function () {
           i++;
-          if (i == b_imgs.length) {
+          if (i == images.length) {
               i = 0;
           }
           $("#index_jum").fadeOut(2500, function () {
-              $(this).css("background-image", "url(/assets/" + b_imgs[i] + ")");
+              $(this).css("background-image", "url(/assets/" + images[i] + ")");
               $(this).fadeIn(2500);
           });
-      }, 3000);
+      }, 9000);
   });
 </script>
 </html>
