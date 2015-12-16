@@ -27,7 +27,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @tags = Tag.all
     #@event.event_tags.build
   end
 
