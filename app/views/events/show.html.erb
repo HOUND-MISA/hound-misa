@@ -67,10 +67,12 @@
     </div>
 
   </div>
-  <div class="row" style="min-height: 760px; border:solid 0px; margin-top:10px; background-color:transparent;">
-
+  <div id="wrapper"class="row" style="min-height: 760px; border:solid 0px; margin-top:10px; background-color:transparent;">
     <div id="map" class="col-md-8" style=" height: 560px;">
     </div>
+    <div id="over_map">
+             <input type="button" value="Get Directions" onclick="javascript:calcRoute()" />
+   </div>
     <div class="col-md-4" style=" height: 560px; background-color: #A02A26;    background-clip: padding-box; border-left: 10px solid transparent;">
       <div class="bubble" style="padding-top:7px; margin-left:25px;">
     <center >
@@ -155,9 +157,11 @@
 
 
   <%= link_to 'Back', events_path %>
-  <input type="button" value="Show Location"
-    onclick="javascript:calcRoute()" />   <br/>
- 
+   <br/>
+     <input type="button" value="Show Location"
+    onclick="javascript:calcRoute()" />
+
+
 Latitude: <span id="latitude"></span>       <br/>
  
 Longitude: <span id="longitude"></span>
@@ -193,23 +197,40 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
 
 function calcRoute() {
-  var origin      = new google.maps.LatLng(14.6207466, 121.1317681);
-  var destination = new google.maps.LatLng(<%=@event.latitude%>, <%=@event.longitude%>);
-  var request = {
-      origin:      origin,
-      destination: destination,
-      travelMode:  google.maps.TravelMode.DRIVING
-  };
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
-  var handler = Gmaps.build('Google');
-handler.buildMap({ internal: {id: 'map'}}, function(){
-  directionsDisplay.setMap(handler.getMap());
-});
+if (navigator.geolocation) { //Checks if browser supports geolocation
+   navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+     var latitude = position.coords.latitude;                    //users current
+     var longitude = position.coords.longitude;                 //location
+     var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+     var directionsService = new google.maps.DirectionsService();
+     var directionsDisplay = new google.maps.DirectionsRenderer();
+     var mapOptions = //Sets map options
+     {
+       zoom: 15,  //Sets zoom level (0-21)
+       center: coords, //zoom in on users location
+       mapTypeControl: true, //allows you to select map type eg. map or satellite
+       navigationControlOptions:
+       {
+         style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+       },
+       mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+     };
+     map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+     directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById('panel'));
+     var request = {
+       origin: coords,
+       destination: new google.maps.LatLng(<%=@event.latitude%>, <%=@event.longitude%>),
+       travelMode: google.maps.DirectionsTravelMode.DRIVING
+     };
 
+     directionsService.route(request, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+         directionsDisplay.setDirections(response);
+       }
+     });
+   });
+ }
 }
 
 </script>

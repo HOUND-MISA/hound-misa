@@ -254,3 +254,5 @@ z-index: 1;
 bottom: -10px;
 left: 0px;
 }
+#wrapper { position: relative; }
+#over_map { position: absolute; top: 8px; left: 100px; z-index: 99; }
