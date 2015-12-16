@@ -20,16 +20,20 @@ class EventsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
+    @event_tags = EventTag.where(['event_id = ?',params[:id]])
     end
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    #@event.event_tags.build
   end
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    #@event.event_tags.build
   end
 
   # POST /events
@@ -75,7 +79,7 @@ class EventsController < ApplicationController
 
   def search
     @search = params['search_query']
-    @events = Event.where(['name LIKE ? OR description LIKE ?',"%#{@search}%","%#{@search}%"])
+    @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"])
     render :template => "events/search"
   end
 
@@ -86,8 +90,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      #params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id, event_tags_attributes[:id,:tag_id,event_id])
+      #params.require(:event).permit(:name, :start_date, :end_date, :address, :website, :lat, :lon, :user_id, :tag_id)
       params.require(:event).permit!
     end
-
 end

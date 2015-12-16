@@ -1,10 +1,11 @@
 class Tag < ActiveRecord::Base
-  has_many :event_tags
-  has_many :user_tags
+  has_many :event_tags, dependent: :destroy
+  has_many :user_tags, dependent: :destroy
+  validates :name, :presence => true
+
+  accepts_nested_attributes_for :event_tags, allow_destroy: :true
 
   def to_s
     self.name
   end
-
-  accepts_nested_attributes_for :event_tags
 end

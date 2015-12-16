@@ -36,6 +36,15 @@
     <%= f.text_field :website %>
   </div>
 
+  <!-- AAYUSIN KO PA TO!! -->
+  <%= f.fields_for :event_tags do |ff| %>
+    <div class="field"> 
+      <%= ff.association :tag %>
+      <%= ff.link_to_remove "Remove this tag" %> 
+    </div>
+  <% end %>
+  <%= f.link_to_add "Add tag", :event_tags %> 
+
   <div class="actions">
     <%= f.submit %>
   </div>

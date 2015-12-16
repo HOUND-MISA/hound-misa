@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :events
-  has_many :event_attendees
-  has_many :user_tags
+  has_many :event_attendees, dependent: :destroy
+  has_many :user_tags, dependent: :destroy
   belongs_to :event
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
