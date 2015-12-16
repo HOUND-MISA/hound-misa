@@ -16,7 +16,6 @@ class EventsController < ApplicationController
       @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
     end
     @attendees = EventAttendee.where(['event_id = ?',params[:id]])
-    @attendee_count = @attendees.count
     @last_three_attendees = @attendees.last(3)
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
