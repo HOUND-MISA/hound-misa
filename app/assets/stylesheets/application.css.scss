@@ -319,7 +319,23 @@ color:white;
 cursor: pointer;
 background-color:#B02B26;
 }
-
+.jbtn1
+{
+padding:10px;
+background-color:transparent; 
+height:40px; 
+width:110px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:1.1em; 
+font-family:'Roboto' !important;
+margin-right: 2.7vw;
+margin-bottom:10px;
+cursor: default;
+}
 .pg {
   text-align: center;
   padding: 0.3em;

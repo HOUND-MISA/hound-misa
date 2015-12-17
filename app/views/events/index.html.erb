@@ -44,6 +44,8 @@
 </center>
 <% if user_signed_in? %>
   <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
+<%else%>
+  <button class="jbtn1"></button>
 <% end %>
 <%= will_paginate @posts,:class=>"pg" %>
 
