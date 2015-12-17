@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string    :description
       t.string    :first_name
       t.string    :last_name
+      t.string    :website
       t.boolean   :admin, default: false
 
 

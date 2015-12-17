@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user, except: [:index, :show]
   before_filter :authenticate_owner, except: [:index, :show]
 
   def index
@@ -8,6 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @attended_events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]])
+    @pending_events = @user.events.where(status: "Pending")
+    @organized_events = @user.events.where(status: "Approved")
     render :template => 'users/show'
   end
 
@@ -21,17 +22,21 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @attended_events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]])
-    @attended_events.each do |attended_event|
-      attended_event.update(attendee_count: attended_event.attendee_count - 1)
+    if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id)
+      @attended_events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]])
+      @attended_events.each do |attended_event|
+        attended_event.update(attendee_count: attended_event.attendee_count - 1)
+      end
+      @user.destroy!
+      redirect_to root_path
+    else
+      redirect_to root_path
     end
-    @user.destroy!
-    redirect_to root_path
   end
 
   def authenticate_owner
     @user = User.find(params[:id])
-    if current_user.id != @user.id
+    if current_user.try(:id) != @user.id
       redirect_to root_path
     end
   end

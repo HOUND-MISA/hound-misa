@@ -15,12 +15,12 @@
 </div>
 
 <div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 2.5em;">
-<span class="sub1" style="color:white; margin-left:4.5vw;"><%= @user.events.count %> <span style="color:#616161;">Events </span></span> 
+<span class="sub1" style="color:white; margin-left:4.5vw;"><%= @organized_events.count %> <span style="color:#616161;">Events </span></span> 
 <span class="sub1" style="color:white; margin-left:1.5vw;"><%= @attended_events.count %> <span style="color:#616161;">Attended events </span></span> 
 <br>
-<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;">[Address]</span></div> 
+<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;"><%= @user.email %></span></div> 
 <div style="margin-top:10px;">
-<span class="sub1" style="color:#616161; margin-left:4.5vw;">[Website]</span> </div>
+<span class="sub1" style="color:#616161; margin-left:4.5vw;"><%= @user.website %></span> </div>
 </div>
 
 <!--DP-->
@@ -167,16 +167,17 @@
 
 Name: <%= @user %>
 
+
 <div>
   Organized:
-  <% @user.events.each do |event| %>
+  <% @organized_events.each do |organized_event| %>
     <div>
-      <%= event.name %><br />
-      <%= event.start_date.strftime('%B %d') %><br />
-      <% if event.attendee_count == 1 %>
-        <%= event.attendee_count %> Attendee 
+      <%= organized_event.name %><br />
+      <%= organized_event.start_date.strftime('%B %d') %><br />
+      <% if organized_event.attendee_count == 1 %>
+        <%= organized_event.attendee_count %> Attendee 
       <% else %>
-        <%= event.attendee_count %> Attendees
+        <%= organized_event.attendee_count %> Attendees
       <% end %>
     </div>
   <% end %>
@@ -197,6 +198,18 @@ Name: <%= @user %>
   <% end %>
 </div>
 
+<% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
+  <div>
+    Pending:
+    <% @pending_events.each do |pending_event| %>
+      <div>
+        <%= pending_event.name %><br />
+        <%= pending_event.start_date.strftime('%B %d') %><br />
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <div>
   Favorites/Hobbies
   <% @user.user_tags.each do |user_tag| %>
@@ -206,7 +219,9 @@ Name: <%= @user %>
   <% end %>
 </div>
 
+<% if current_user.try(:id) == @user.id %>
 <%= link_to "Edit profile", edit_hound_user_path(@user) %>
+<% end %>/
 
 <footer class="footer">
 

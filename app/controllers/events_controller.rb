@@ -82,7 +82,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    if (current_user.try(:admin?)) || (current_user.try(:id) != @event.user_id)
+    if (current_user.try(:admin?)) || (current_user.try(:id) == @event.user_id)
       @event.destroy
       respond_to do |format|
         format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

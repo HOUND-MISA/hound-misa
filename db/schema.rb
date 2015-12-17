@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20151217134518) do
     t.string   "description"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "website"
     t.boolean  "admin",                  default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
