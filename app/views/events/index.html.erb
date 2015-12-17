@@ -24,9 +24,18 @@
 <div style="margin-top:17px; margin-bottom:30px; height:0px; border: 3px solid #A02A26;margin-left:2.7vw; margin-right:2.7vw; "></div>
 <center>
 <div class="row" style="padding-left:2.7vw; padding-right:2.7vw;">
+<% @events.each do |event| %>
         <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+          <div style="height:42vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" >
+          <div style="height:28vh;"></div>
+          <div style="height:14vh; background-color:#1c1818; padding-top:0.95em; padding-left:1.75em; padding-right:1.75em;"><%= link_to event.name, event, 'data-no-turbolink' => true, :style=>"float:left; font-family: 'Roboto' !important; font-size:1.5em; color:white;" %> <br>
+            <div style="float:left; font-family: 'Roboto' !important; font-size:1em; color:white; margin-top:0.15em;"><%= event.start_date.strftime('%B %d, %Y')%><br>
+            <span style="float:left;"><%= event.city%> City</span></div>
+          </div>
+
+          </div>
         </div>
+<% end %>
         <div class="col-md-4">
           <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
