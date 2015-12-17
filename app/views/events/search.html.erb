@@ -41,7 +41,7 @@
           </div>
   <% end %>
 <% else %>
-NO RESULTS FOUND
+<h2>NO RESULTS FOUND</h2>
 <%end%>
 
         
@@ -52,7 +52,7 @@ NO RESULTS FOUND
 <%else%>
   <button class="jbtn1"></button>
 <% end %>
-<%= will_paginate @events.any,:class=>"pg" %>
+<%= will_paginate @events,:class=>"pg" %>
 
 
   
