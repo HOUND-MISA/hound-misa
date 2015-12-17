@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151214070352) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "address"
-    t.boolean  "approved",       default: false
+    t.string   "status"
     t.string   "website"
     t.float    "latitude"
     t.float    "longitude"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20151214070352) do
     t.string   "city"
     t.string   "province"
     t.integer  "attendee_count"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "user_id"
   end
 

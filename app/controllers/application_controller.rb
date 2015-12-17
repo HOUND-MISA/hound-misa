@@ -18,4 +18,16 @@ class ApplicationController < ActionController::Base
       render template: 'pages/open_modal'
     end
   end
+
+  def restrict_admin
+    if current_user.try(:admin?)
+      redirect_to events_path
+    end
+  end
+
+  def authenticate_admin
+    if !current_user.try(:admin?)
+      redirect_to root_path
+    end
+  end
 end

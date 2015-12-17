@@ -47,7 +47,7 @@
         
 </div>
 </center>
-<% if user_signed_in? %>
+<% if user_signed_in? && !current_user.try(:admin?) %>
   <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
 <%else%>
   <button class="jbtn1"></button>

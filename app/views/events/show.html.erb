@@ -18,12 +18,10 @@
 
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
   <div class="row" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
-
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;"></div>
       </div>
-
     </div>
     <div class="col-md-6">
       <!--<div class="show-event-content">
@@ -31,36 +29,49 @@
         <p><%= @event.description %></p>
       </div>-->
 
-        <h1 class="event-name"><b><%= @event.name %></b></h1>
-        <%if @event.website!="" %>
-        <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-            <a href="http://<%= @event.website %>"><%= @event.website %></a>
-          </div>
-        <%end%>
-          <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-            <%= @event.start_date.strftime('%B %d, %Y %l:%M %p') %>
-          </div>
-        <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
-            <%= @event.address %>
-          </div>
+    <h1 class="event-name"><b><%= @event.name %></b></h1>
+    <%if @event.website!="" %>
+      <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
+        <a href="http://<%= @event.website %>"><%= @event.website %></a>
+      </div>
+    <%end%>
+    <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
+      <%= @event.start_date.strftime('%B %d, %Y %l:%M %p') %>
+    </div>
+    <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
+      <%= @event.address %>
+    </div>
+    <div class="rob" style="color:rgb(180,180,180); max-width:70%px; font-weight:100; font-size:20px; margin-top:16px;">
+      <span style="line-height:120%;"><%= @event.description %></span>
+    </div>
 
-          <div class="rob" style="color:rgb(180,180,180); max-width:70%px; font-weight:100; font-size:20px; margin-top:16px;">
-             <span style="line-height:120%;"><%= @event.description %></span>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <td>Status: <%= @event.status %></td>
+        <% if @event.status == "Pending" %>
+          <%= button_to 'Reject', reject_event_path(@event), :class=>"jb", :method=>:get%>
+          <%= button_to 'Approve', approve_event_path(@event), :class=>"jb", :method=>:get%>
+        <% elsif @event.status == "Rejected" %>
+          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      <% else %>
+        <% if @event.user_id == current_user.id %>
+          <%= link_to 'Edit', edit_event_path(@event) %> |
+          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>Status: <%= @event.status %></td>
+          <% if @event.status == "Rejected" %>
+            <strong>Note: This event will be deleted after 10 days.</strong>
+          <% end %>
+        <% else %>
+          <% if @attended.empty? %>
+            <%= button_to 'Join', join_event_path(@event.id), :class=>"jb", :method=>:get%>
+          <% else %>
+            <%= button_to 'Leave', leave_event_path(@event.id), :class=>"jb", :method=>:get%>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
 
-          </div>
-
-               <% if user_signed_in? %>
-                  <% if @event.user_id == current_user.id %>
-                    <%= link_to 'Edit', edit_event_path(@event) %> |
-                    <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% else %>
-                    <% if @attended.empty? %>
-                      <%= button_to 'Join', join_event_path(@event.id), :class=>"jb", :method=>:get%>
-                    <% else %>
-                      <%= button_to 'Leave', leave_event_path(@event.id), :class=>"jb", :method=>:get%>
-                    <% end %>
-                <% end %>
-              <% end %>
     </div>
   </div>
   <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent;">
