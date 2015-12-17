@@ -52,5 +52,8 @@ group :development do
   gem 'twitter-bootstrap-rails'
   gem 'gmaps4rails'
   gem 'geocoder'
+  gem 'nested_form'
+  gem 'simple_form'
+  gem 'will_paginate', '~> 3.0.6'
 end
 

@@ -13,14 +13,18 @@
  *= require_self
  *= require_tree .
  */
+ body{
+ 	overflow-x:hidden;
+ }
 .navSearch
 {
 border-radius:23px;
 border:solid 1px white;
-background-color: #101010;
+background-color: #1c1818;
 padding:1px 1px 1px 20px;
-font-size: 10pt;
-width:220px;
+font-size: 18px;
+font-family: 'Roboto' !important;
+width:200px;
 height:45px;
 }
 .landing-search{
@@ -54,19 +58,19 @@ border:solid 1px;
 }
 .glassbox:focus
 {
-background-color: rgba(90,10,10,0.7); height:360px; width:360px;
+background-color: rgba(90,10,10,0.7); height:360px;
 }
 .glassbox:hover
 {
-background-color: rgba(10,10,10,0.7); height:360px; width:360px;
+background-color: rgba(10,10,10,0.7); height:360px;
 }
 .glassbox
 {
-background-color: rgba(20,20,20,0.5); height:360px; width:360px;
+background-color: rgba(20,20,20,0.5); height:360px;
 }
 .sampleBox
 {
-background:url(../images/sample1.png); height:360px; width:360px; margin:20px 20px 20px 20px;
+background:url(../images/sample1.png); height:360px; margin-top: 20px;
 background-size: cover;
 padding:0px;
 background-size: cover;
@@ -79,7 +83,7 @@ color:white; top:275px; position:relative; margin:0px 40px; font-size:32px;
 .banner{
 background: url(/assets/elem_profile-header.jpg); height:340px; top:0px; position: absolute; width: 100%;
 background-size: cover;
-background-position: calc(10%) calc(40%)
+background-position: calc(10%) calc(40%);
 }
 .h1name{
 font-family: 'Roboto' !important;
@@ -91,6 +95,11 @@ position:absolute; top:489px; text-align:center; font-size:30px; width:100%; mar
 font-family: 'Roboto' !important;
 font-style: normal;
 position:absolute; top:539px; text-align:center; font-size:14px; width:100%; margin:0px; color:#7d7d7d;
+}
+.sub1{
+font-family: 'Roboto' !important;
+font-style: normal;
+font-size:14px;
 }
 .displayPicture
 {
@@ -142,7 +151,8 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     .navbar > .container { max-width: 100%; padding: 0; }
 }
 .content-box{
-	margin-top: 100px;
+	margin-top: 110px;
+	min-height: 75vh;
 }
 .event-name{
 	color:#ffffff;
@@ -155,14 +165,10 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 	margin-top: 17px;
 }
 #index_jum{
- background-image: url(/assets/elem_splash-img.jpg);
- background-attachment: fixed;
- position:relative;
  background-size: cover;
-     -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -o-background-size: cover;
- height: 100vh;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
 }
 #landing{
 	overflow-x:hidden;
@@ -183,3 +189,186 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     background-repeat: no-repeat;
     background-size: contain;
 }
+#imgdiv{
+	background-image: url(http://lorempixel.com/500/226/fashion);
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position:center;
+}
+.mouse-bg {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: fixed;
+	z-index: -1;
+}
+.rob
+{
+font-family: 'Roboto' !important;
+font-style: normal;
+text-align: justify;
+text-justify:interword;
+}
+.jb
+{
+padding:15px;
+background-color:#A02A26; 
+height:50px; 
+width:170px; 
+float:right; 
+margin-top:40px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:20px; 
+font-family:'Roboto' !important;
+}
+.jb:hover
+{
+color:white;
+cursor: pointer;
+background-color:#B02B26;
+}
+.bubble
+{
+position: relative;
+width: 115px;
+height: 30px;
+padding-top: 7px;
+margin-top: 30px;
+background: #FFFFFF;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px 0px;
+border-radius: 15px 15px 15px 0px;
+}
+.circle{
+background: url(/assets/elem_event-img-13.jpg);
+background-size: cover;
+height:60px; width:60px; border-radius:30px; margin:0px;
+}
+.people
+{
+color:white;
+position:inherit; 
+margin: 20px 0px 0px 0px;
+}
+.bubble:after
+{
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 12px 7px 0 0;
+border-color: #ffffff transparent transparent transparent;
+content: '';
+position: absolute;
+border-style: solid;
+z-index: 1;
+bottom: -10px;
+left: 0px;
+}
+#wrapper { position: relative; }
+#over_map { position: absolute; top: 8px; left: 100px; z-index: 99; }
+.direct
+{
+padding:5px;
+background-color:#A02A26; 
+height:30px; 
+width:170px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:15px; 
+font-family:'Roboto' !important;
+}
+.direct:hover
+{
+color:white;
+cursor: pointer;
+background-color:#B02B26;
+}
+.select-t{
+	background-color: transparent;
+	font-family: 'Roboto' !important;
+	font-size: 1.2em;
+	border: 2px solid #1c1818;
+	color: #1c1818;
+	width: 15vw;
+	padding:1px;
+}
+.jbtn
+{
+padding:10px;
+background-color:#A02A26; 
+height:40px; 
+width:110px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:1.1em; 
+font-family:'Roboto' !important;
+margin-right: 2.7vw;
+margin-bottom:10px;
+}
+.jbtn:hover
+{
+color:white;
+cursor: pointer;
+background-color:#B02B26;
+}
+#link:hover
+{
+color:black;
+}
+.jbtn1
+{
+padding:10px;
+background-color:transparent; 
+height:40px; 
+width:110px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:1.1em; 
+font-family:'Roboto' !important;
+margin-right: 2.7vw;
+margin-bottom:10px;
+cursor: default;
+}
+.pg {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+  font-family: 'Roboto' !important;
+  font-size: 15px; }
+  .pg a, .pg span, .pg em {
+    padding: 0.2em 0.5em; }
+  .pg .disabled {
+    color: #aaaaaa; }
+  .pg .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #A02A26; }
+  .pg a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none; }
+    .pg a:hover, .pg a:focus {
+      border-color: #f2f2f2;
+      background: #616161;
+      color: white; }
+  .pg .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .pg .previous_page, .pg .next_page {
+    border-width: 2px; }
+  .pg .previous_page {
+    margin-right: 1em; }
+  .pg .next_page {
+    margin-left: 1em; }

@@ -10,59 +10,53 @@
 
 </head>
 <body>
-<div class="container-fluid content-box">
+<div class="container-fluid content-box" style="">
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Address</th>
-      <th>Website</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Owner</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_date %></td>
-        <td><%= event.end_date %></td>
-        <td><%= event.address %></td>
-        <td><%= event.website %></td>
-        <td><%= event.latitude %></td>
-        <td><%= event.longitude %></td>
-        <td><%= event.user_id %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div style="margin-bottom:0px; padding-left:2.7vw; padding-right:2.7vw;">
 <br>
-
-<%= link_to 'New Event', new_event_path %>
+  <span style="font-family: 'Roboto' !important; font-size:1.7em;"><b>All Events:</b></span>
+  <form action="/search" style="float:right">
+    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()",:class=>"select-t") %>
+  </form>
 </div>
-<footer class="footer">
+<div style="margin-top:17px; margin-bottom:30px; height:0px; border: 3px solid #A02A26;margin-left:2.7vw; margin-right:2.7vw; "></div>
+<center>
+<div class="row" style="padding-left:2.7vw; padding-right:2.7vw;">
+<% @events.each do |event| %>
+        <div class="col-md-4">
+          <div style="height:42vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" >
+          <!--IMAGE DIV-->
+          <div id="imgdiv" style="height:28vh;" class="">
+          </div>
 
+          <div style="height:14vh; background-color:#1c1818; padding-top:0.95em; padding-left:1.75em; padding-right:1.75em;"><%= link_to event.name, event, 'data-no-turbolink' => true, :style=>"float:left; font-family: 'Roboto' !important; font-size:1.5em; color:white;" %> <br>
+            <div style="float:left; font-family: 'Roboto' !important; font-size:1em; color:white; margin-top:0.15em;"><%= event.start_date.strftime('%B %d, %Y')%><br>
+            <span style="float:left;"><%= event.city%> City</span></div>
+          </div>
 
-  <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
-</footer>
+          </div>
+        </div>
+<% end %>
+        
+</div>
+</center>
+<% if user_signed_in? %>
+  <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
+<%else%>
+  <button class="jbtn1"></button>
+<% end %>
+<%= will_paginate @events,:class=>"pg" %>
+
 
   
-  
+</div>
 
 </body>
+<footer class="footer">
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
+</footer>
+
 </html>
+

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+
+</head>
+<body>
+
+<div class="banner"> 
+</div>
+
+<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 4em;">
+<span class="sub1" style="color:white; margin-left:4.5em;"><%= @user.events.count %> Events </span> 
+<span class="sub1" style="color:white; margin-left:2.5em;"><%= @attended_events.count %> Attended events </span> 
+<br>
+<span class="sub1" style="color:white; margin-left:4.5em;"><%= @user.events.count %> Events </span> 
+</div>
+
+<!--DP-->
+<div class="displayPicture" >
+</div>
+
+
+<h1 class="h1name" style="" ><bold><%= @user %></bold></h1>
+<p class="sub" ><bold><%= @user.description %></bold></p>
+</div>
+
+  <div class="container-fluid" style="min-height:802px; margin-top:240px;">
+    <div class="row">
+      <div class="col-md-8">
+          <div class="row" style="">
+            
+
+              <div class="col-md-6 sampleBox" >
+                <div class="glassbox">
+                  <h3 class="description">Singing</h3>
+                </div>
+               </div>
+
+
+              <div class="col-md-6 sampleBox" style="background: url(images/sample2.jpg)" >
+
+                <div class="glassbox">
+                  <h3 class="description">Dancing</h3>
+                </div>
+
+               </div>
+          </div>
+
+          <div class="row" style="">
+            
+
+              <div class="col-md-6 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
+
+                <div class="glassbox">
+                  <h3 class="description">Spoken Word Poetry</h3>
+                </div>
+
+
+              </div>
+              <div class="col-md-6 sampleBox" style="background: url(images/portrait.jpg) ;" > 
+
+                <div class="glassbox">
+                  <h3 class="description">Painting</h3>
+                </div>
+
+              </div>
+          </div>
+          </div>
+      <!-- END-->
+          <div class="col-md-4" style=" background-color:#f7f7f7; margin-top: 20px;">
+            <h3 style="margin:40px 0px 5px 40px ;
+                font-family: 'Roboto' !important;">EVENTS</h3>
+            <button style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px;"><b>Organized</b></button> <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
+
+
+            <!--First Entry for Events Box-->
+            <div class="row entry" >
+              <div class="col-md-2" > </div>
+              <div class="col-md-2 sixtyBySixty" > </div>
+              <div class="col-md-8">
+                <h3 class="eventTitle"> Slamma Slick Saturdays </h3>
+              <!--Details 1 -->
+              <div class="row details" >
+                  <div class="col-md-6 smallFont" > 
+                    October 31
+                  </div>
+                  <div class="col-md-6 smallFont" >
+                    40 Attendees
+                  </div>
+                </div>  
+              </div>
+              <!--End of Details-->
+            </div>
+            <!--End of First Entry Box-->
+
+            <div class="row entry"  style="margin-top:25px">
+
+              <div class="col-md-2" > </div>
+              <div class="col-md-2 sixtyBySixty" > </div>
+              <div class="col-md-8">
+                <h3 class="eventTitle">Coffee Workshop</h3>
+              <!--Details-->
+                <div class="row details" >
+                  <div class="col-md-6 smallFont"> 
+                    November 2
+                  </div>
+
+                  <!--Number of attendees for event 2-->
+
+                  <div class="col-md-6 smallFont" >
+                    19 Attendees
+                  </div>
+
+                </div>  
+
+              </div>
+              <!--End of Details-->
+
+            </div>
+            <!--End of Second Entry Box-->
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+<footer class="footer">
+
+
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
+</footer>
+
+  
+  
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<%= @user.events.count %> Events | <%= @attended_events.count %> Attended events
+
+Name: <%= @user %>
+
+<div>
+  Organized:
+  <% @user.events.each do |event| %>
+    <div>
+      <%= event.name %><br />
+      <%= event.start_date.strftime('%B %d') %><br />
+      <% if event.attendee_count == 1 %>
+        <%= event.attendee_count %> Attendee 
+      <% else %>
+        <%= event.attendee_count %> Attendees
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  Attended
+  <% @attended_events.each do |attended_event| %>
+    <div>
+      <%= attended_event.name %><br />
+      <%= attended_event.start_date.strftime('%B %d') %><br />
+      <% if attended_event.attendee_count == 1 %>
+        <%= attended_event.attendee_count %> Attendee 
+      <% else %>
+        <%= attended_event.attendee_count %> Attendees
+      <% end %>
+  </div>
+  <% end %>
+</div>
+
+<div>
+  Favorites/Hobbies
+  <% @user.user_tags.each do |user_tag| %>
+    <div>
+      <%= link_to user_tag.tag.name, {:controller => "events", :action => "search", :category => user_tag.tag.name} %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Edit profile", edit_hound_user_path(@user) %>

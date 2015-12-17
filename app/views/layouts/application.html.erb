@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>Hound PH</title>
+  <link rel="shortcut icon" href="/assets/h-logo2.ico" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%if current_page?(root_url)==false%>
+<%if current_page?(root_url)==false%>
   <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#1D1717; height:94px; padding:none;">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -16,52 +17,82 @@
 
     <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
     <div class="collapse navbar-collapse" style="background:#1c1818;" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right" style=" padding:none;">
-              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px; margin:none;"> HOME </a></li>
-              <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
-              <li style=""><%= link_to "EVENTS", events_path, :style=>"font-size:19px;margin:20px 0px 0px 40px;" %></li>
-              <% if user_signed_in? %>`
-              <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 20px;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-eemxpanded="false" style="font-size:19px;margin:none;">
-                  <%= current_user.first_name %> <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <% if session[:fb_token].nil? %>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
-                    <% else %></p>
-                      <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
-                    <% end %>
-                  </li>
-                  <li>wrwer</li>
-                </ul>
-              </li>
-              <%else%>
-              <li style=" margin:20px 0px 0px 20px;"><a style="font-size:19px;margin:none;" href="#login" data-toggle="modal">SIGN IN</a></li>
-              <% end %>
-              <li style=" margin:10px 55px 0px 40px;"><a style="font-size:19px; margin:none;"><input class="navSearch" placeholder="SEARCH"></a></li>
-
-               <!--<div class="container">
-           <% if user_signed_in? %>`
+      <ul class="nav navbar-nav navbar-right" style=" padding:none;">
+        <li style=""><%= link_to "HOME", root_path, :style=>"font-size:19px;margin:20px 0px 0px 40px;" %></li>
+        <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none;"> ABOUT </a></li>
+        <li style=""><%= link_to "EVENTS", events_path, :style=>"font-size:19px;margin:20px 0px 0px 40px;" %></li>
+        <% if user_signed_in? %>`
+        <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 20px;">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-eemxpanded="false" style="font-size:19px;margin:none;">
+            <%= current_user %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
+            </li>
+            <li><hr></li>
+            <li>
               <% if session[:fb_token].nil? %>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
-              <% else %></p>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+              <% else %>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
               <% end %>
-              <p class="navbar-text pull-right" href="#login" data-toggle="modal">Hi <%= current_user.email %>!</p>
-            <% else %>
-              <a class="navbar-text pull-right" href="#signup" data-toggle="modal">Signup</a>
-              <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
-            <% end %>
-
-          </div>-->
-            </ul>
+            </li>
+          </ul>
+        </li>
+        <%else%>
+        <li style=" margin:20px 0px 0px 20px;"><a style="font-size:19px;margin:none;" href="#login" data-toggle="modal">SIGN IN</a></li>
+        <% end %>
+        <li style=" margin:10px 55px 0px 40px;"><a style="font-size:19px; margin:none;"><form action="/search"><input class="navSearch" placeholder="SEARCH" name="search_query"><input type="submit" value="Submit" class="hide"/></form></a></li>
+        
+      </ul>
     </div>
+
+
             
 </div>
 <%else%>
 <%end%>
 </head>
+
+<div class="modal custom fade" id="login" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style=""><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center> Sign In</center></h4>
+      </div>
+      <div class="modal-body" >
+        <%= render 'devise/sessions/new' %>
+        <center>No account yet?</center>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <a id="link" href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal custom fade" id="signup" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center>Create a new account</center></h4>
+      </div>
+      <div class="modal-body">
+        <%= render "devise/registrations/new" %>
+        <center>
+          Already have an account?<br />
+          <%- if controller_name != 'sessions' %>
+            <a id="link" href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
+          <% end -%>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+
 <body>
 <!--<p class="notice"><%=notice%></p>
 <p class="alert"><%=alert%></p>-->

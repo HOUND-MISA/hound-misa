@@ -268,5 +268,5 @@ Devise.setup do |config|
 
   #Add your ID and secret here
   #ID first, secret second
-  config.omniauth :facebook, "1745441455690015", "6ac444751f375a5659f921ae169fec81"#, strategy_class => OmniAuth::Strategies::Facebook
+  config.omniauth :facebook, "1745441455690015", "6ac444751f375a5659f921ae169fec81", info_fields: 'email, first_name, last_name'#, strategy_class => OmniAuth::Strategies::Facebook
 end

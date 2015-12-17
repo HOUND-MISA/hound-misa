@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215075528) do
+ActiveRecord::Schema.define(version: 20151214070352) do
 
   create_table "event_attendees", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,17 +29,21 @@ ActiveRecord::Schema.define(version: 20151215075528) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
+    t.text     "description"
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "address"
-    t.boolean  "approved"
+    t.boolean  "approved",       default: false
     t.string   "website"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "address_one"
+    t.string   "city"
+    t.string   "province"
+    t.integer  "attendee_count"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
-    t.text     "description"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -63,22 +67,24 @@ ActiveRecord::Schema.define(version: 20151215075528) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "description"
     t.string   "first_name"
     t.string   "last_name"
+    t.boolean  "admin",                  default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

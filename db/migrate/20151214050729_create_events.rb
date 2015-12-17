@@ -2,13 +2,18 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.string :name
-      t.date :start_date
-      t.date :end_date
+      t.text :description
+      t.datetime :start_date
+      t.datetime :end_date
       t.text :address
-      t.integer :approved
+      t.boolean :approved, default: false
       t.string :website
-      t.float :lat
-      t.float :lon
+      t.float :latitude
+      t.float :longitude
+      t.text :address_one
+      t.string :city
+      t.string :province
+      t.integer :attendee_count
 
       t.timestamps null: false
     end

@@ -27,5 +27,4 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-DEVISE + OMNIAUTH FACEBOOK
-https://www.digitalocean.com/community/tutorials/how-to-configure-devise-and-omniauth-for-your-rails-application
+admin email = "admin@hound.ph". go to registrations_controller.rb to change admin email/add more admin emails
