@@ -20,6 +20,7 @@ class Event < ActiveRecord::Base
       self.attendee_count = 0
     end
   end
+  
 
   def set_address
     if self.address_one == ""
