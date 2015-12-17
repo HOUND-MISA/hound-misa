@@ -12,8 +12,42 @@
 <body>
 <div class="container-fluid content-box">
 <p id="notice"><%= notice %></p>
+<center>
+<div class="row" style="">
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+        <div class="col-md-3">
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+        </div>
+</div>
+</center>
 
-<br /><br /><br /><br />
+  
+  
+
+</body>
+<footer class="footer" style="margin-left:-20px; width:103vw;">
+
+
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
+</footer>
+</html>
+
+
+
 
 <div>
   FILTERS:
@@ -30,7 +64,9 @@
       <th>Name</th>
       <th>Start date</th>
       <th>City</th>
-      <th colspan="3"></th>
+      <th>Latitude</th>
+      <th>Address</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -40,12 +76,16 @@
         <td><%= link_to event.name, event, 'data-no-turbolink' => true %></td>
         <td><%= event.start_date.strftime('%B %d, %Y') %></td>
         <td><%= event.city %> City</td>
+        <td><%=event.latitude%></td>
+        <td><%= event.address %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
 <% if user_signed_in? %>
   <%= link_to 'New Event', new_event_path %>
 <% end %>
@@ -61,3 +101,4 @@
 
 </body>
 </html>
+
