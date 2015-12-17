@@ -12,25 +12,35 @@
 <body>
 <div class="container-fluid content-box">
 <p id="notice"><%= notice %></p>
+<div>
+<br>
+  All Events:
+  <form action="/search" style="float:right">
+    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()") %>
+    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()") %>
+    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()") %>
+  </form>
+</div>
+<hr>
 <center>
 <div class="row" style="">
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
         <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:30px" ></div>
+          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
 </div>
 </center>
@@ -39,24 +49,8 @@
   
 
 </body>
-<footer class="footer" style="margin-left:-20px; width:103vw;">
 
-
-  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
-</footer>
 </html>
-
-
-
-
-<div>
-  FILTERS:
-  <form action="/search">
-    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()") %>
-    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()") %>
-    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()") %>
-  </form>
-</div>
 
 <table>
   <thead>
