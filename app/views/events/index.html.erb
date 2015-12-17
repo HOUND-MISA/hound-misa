@@ -16,9 +16,9 @@
 <br>
   <span style="font-family: 'Roboto' !important; font-size:1.7em;"><b>All Events:</b></span>
   <form action="/search" style="float:right">
-    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()") %>
-    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()") %>
-    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()") %>
+    <%= select_tag("date", options_for_select(start_dates), :prompt => "Date", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()",:class=>"select-t") %>
   </form>
 </div>
 <div style="margin-top:17px; margin-bottom:30px; height:0px; border: 3px solid #A02A26;margin-left:2.7vw; margin-right:2.7vw; "></div>
@@ -39,72 +39,20 @@
           </div>
         </div>
 <% end %>
-        <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
-        </div>
-        <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
-        </div>
-        <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
-        </div>
-        <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
-        </div>
-        <div class="col-md-4">
-          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
-        </div>
+        
 </div>
 </center>
+<% if user_signed_in? %>
+  <%= button_to 'New Event', new_event_path, :method => "get", :class=>"jbtn" %>
+<% end %>
 
   
-  
+</div>
 
 </body>
-
-</html>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>City</th>
-      <th>Latitude</th>
-      <th>Address</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.name, event, 'data-no-turbolink' => true %></td>
-        <td><%= event.start_date.strftime('%B %d, %Y') %></td>
-        <td><%= event.city %> City</td>
-        <td><%=event.latitude%></td>
-        <td><%= event.address %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if user_signed_in? %>
-  <%= link_to 'New Event', new_event_path %>
-<% end %>
-</div>
 <footer class="footer">
-
-
   <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
 </footer>
 
-  
-  
-
-</body>
 </html>
 

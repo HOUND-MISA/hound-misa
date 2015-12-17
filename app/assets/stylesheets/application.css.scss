@@ -151,6 +151,7 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 }
 .content-box{
 	margin-top: 110px;
+	min-height: 75vh;
 }
 .event-name{
 	color:#ffffff;
@@ -190,7 +191,7 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
 #imgdiv{
 	background-image: url(http://lorempixel.com/500/226/fashion);
     background-repeat: no-repeat;
-background-size: cover;
+    background-size: cover;
 	background-position:center;
 }
 .mouse-bg {
@@ -282,6 +283,35 @@ font-size:15px;
 font-family:'Roboto' !important;
 }
 .direct:hover
+{
+color:white;
+cursor: pointer;
+background-color:#B02B26;
+}
+.select-t{
+	background-color: transparent;
+	font-family: 'Roboto' !important;
+	font-size: 1.2em;
+	border: 2px solid #1c1818;
+	color: #1c1818;
+}
+.jbtn
+{
+padding:10px;
+background-color:#A02A26; 
+height:40px; 
+width:110px; 
+float:right; 
+margin-top:10px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:1.1em; 
+font-family:'Roboto' !important;
+margin-right: 2.7vw;
+margin-bottom:10px;
+}
+.jbtn:hover
 {
 color:white;
 cursor: pointer;
