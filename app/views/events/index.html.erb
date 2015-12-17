@@ -42,8 +42,8 @@
         <td><%= link_to event.name, event, 'data-no-turbolink' => true %></td>
         <td><%= event.start_date.strftime('%B %d, %Y') %></td>
         <td><%= event.city %> City</td>
-        <td><%= event.address %> City</td>
         <td><%=event.latitude%></td>
+        <td><%= event.address %></td>
 
       </tr>
     <% end %>
