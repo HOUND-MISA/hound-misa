@@ -11,18 +11,20 @@
 </head>
 <body>
 
-<div class="banner"> 
+<div class="banner ncard"> 
 </div>
 
-<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 4em;">
-<span class="sub1" style="color:white; margin-left:4.5em;"><%= @user.events.count %> Events </span> 
-<span class="sub1" style="color:white; margin-left:2.5em;"><%= @attended_events.count %> Attended events </span> 
+<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 2.5em;">
+<span class="sub1" style="color:white; margin-left:4.5vw;"><%= @user.events.count %> <span style="color:#616161;">Events </span></span> 
+<span class="sub1" style="color:white; margin-left:1.5vw;"><%= @attended_events.count %> <span style="color:#616161;">Attended events </span></span> 
 <br>
-<span class="sub1" style="color:white; margin-left:4.5em;"><%= @user.events.count %> Events </span> 
+<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;">[Address]</span></div> 
+<div style="margin-top:10px;">
+<span class="sub1" style="color:#616161; margin-left:4.5vw;">[Website]</span> </div>
 </div>
 
 <!--DP-->
-<div class="displayPicture" >
+<div class="displayPicture card3" >
 </div>
 
 
@@ -37,7 +39,7 @@
             
 
               <div class="col-md-6 sampleBox" >
-                <div class="glassbox">
+                <div class="glassbox card3">
                   <h3 class="description">Singing</h3>
                 </div>
                </div>
@@ -45,7 +47,7 @@
 
               <div class="col-md-6 sampleBox" style="background: url(images/sample2.jpg)" >
 
-                <div class="glassbox">
+                <div class="glassbox card3">
                   <h3 class="description">Dancing</h3>
                 </div>
 
@@ -57,7 +59,7 @@
 
               <div class="col-md-6 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
 
-                <div class="glassbox">
+                <div class="glassbox card3">
                   <h3 class="description">Spoken Word Poetry</h3>
                 </div>
 
@@ -65,7 +67,7 @@
               </div>
               <div class="col-md-6 sampleBox" style="background: url(images/portrait.jpg) ;" > 
 
-                <div class="glassbox">
+                <div class="glassbox card3">
                   <h3 class="description">Painting</h3>
                 </div>
 
@@ -73,14 +75,14 @@
           </div>
           </div>
       <!-- END-->
-          <div class="col-md-4" style=" background-color:#f7f7f7; margin-top: 20px;">
-            <h3 style="margin:40px 0px 5px 40px ;
-                font-family: 'Roboto' !important;">EVENTS</h3>
+        <div class="col-md-4" style="">
+          <div class="card2" style="background-color:#f7f7f7; position:relative; margin-top: 20px; min-height: 430px; padding-bottom:30px;">
+          <div style="padding-top:5px;">
+            <h3 style=" margin-left:2vw;font-family: 'Roboto' !important;">EVENTS</h3>
             <button style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px;"><b>Organized</b></button> <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
-
-
+          </div>
             <!--First Entry for Events Box-->
-            <div class="row entry" >
+            <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px;" >
               <div class="col-md-2" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
               <div class="col-md-8">
@@ -99,7 +101,32 @@
             </div>
             <!--End of First Entry Box-->
 
-            <div class="row entry"  style="margin-top:25px">
+            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px;">
+
+              <div class="col-md-2" > </div>
+              <div class="col-md-2 sixtyBySixty" > </div>
+              <div class="col-md-8">
+                <h3 class="eventTitle">Coffee Workshop</h3>
+              <!--Details-->
+                <div class="row details" >
+                  <div class="col-md-6 smallFont"> 
+                    November 2
+                  </div>
+
+                  <!--Number of attendees for event 2-->
+
+                  <div class="col-md-6 smallFont" >
+                    19 Attendees
+                  </div>
+
+                </div>  
+
+              </div>
+              <!--End of Details-->
+
+            </div>
+            <!--End of Second Entry Box-->
+            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px;">
 
               <div class="col-md-2" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
@@ -125,47 +152,13 @@
             </div>
             <!--End of Second Entry Box-->
 
-
-
+      </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
 
   </div>
-
-
-<footer class="footer">
-
-
-  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
-</footer>
-
-  
-  
-
-</body>
-</html>
-
-
-
-
-
-
-
-
 
 
 
@@ -214,3 +207,24 @@ Name: <%= @user %>
 </div>
 
 <%= link_to "Edit profile", edit_hound_user_path(@user) %>
+
+<footer class="footer">
+
+
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
+</footer>
+
+  
+  
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
