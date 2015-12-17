@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if current_user.try(:admin?)
-      @events = Event.all.order('start_date ASC').paginate(:page => params[:page])
+      @pending = Event.send(:sanitize_sql_array,['case when status = ? then 0 else 1 end',"Pending"])
+      @events = Event.all.order(@pending).order('start_date ASC').paginate(:page => params[:page])
     else
       @events = Event.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
     end

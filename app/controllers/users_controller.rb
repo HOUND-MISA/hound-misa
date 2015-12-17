@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_owner, except: [:index, :show]
 
   def index
+    @users = User.all
   end
 
   def show

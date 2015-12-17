@@ -171,7 +171,7 @@ Name: <%= @user %>
   Organized:
   <% @organized_events.each do |organized_event| %>
     <div>
-      <%= organized_event.name %><br />
+      <%= link_to organized_event.name, event_path(organized_event) %><br />
       <%= organized_event.start_date.strftime('%B %d') %><br />
       <% if organized_event.attendee_count == 1 %>
         <%= organized_event.attendee_count %> Attendee 
@@ -186,7 +186,7 @@ Name: <%= @user %>
   Attended
   <% @attended_events.each do |attended_event| %>
     <div>
-      <%= attended_event.name %><br />
+      <%= link_to attended_event.name, event_path(attended_event) %><br />
       <%= attended_event.start_date.strftime('%B %d') %><br />
       <% if attended_event.attendee_count == 1 %>
         <%= attended_event.attendee_count %> Attendee 
@@ -202,7 +202,7 @@ Name: <%= @user %>
     Pending:
     <% @pending_events.each do |pending_event| %>
       <div>
-        <%= pending_event.name %><br />
+        <%= link_to pending_event.name, event_path(pending_event) %><br />
         <%= pending_event.start_date.strftime('%B %d') %><br />
       </div>
     <% end %>
@@ -218,9 +218,14 @@ Name: <%= @user %>
   <% end %>
 </div>
 
+
 <% if current_user.try(:id) == @user.id %>
-<%= link_to "Edit profile", edit_hound_user_path(@user) %>
-<% end %>/
+  <%= link_to "Edit profile", edit_hound_user_path(@user) %>
+<% end %>
+
+<% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
+<%= link_to 'Cancel my account', hound_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <footer class="footer">
 
