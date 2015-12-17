@@ -56,7 +56,7 @@
           <%= render 'devise/sessions/new' %>
           <center>No account yet?</center>
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            <a href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
+            <a id="link" href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
           <% end -%>
         </div>
       </div>
@@ -75,7 +75,7 @@
           <center>
             Already have an account?<br />
             <%- if controller_name != 'sessions' %>
-              <a href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
+              <a id="link" href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
             <% end -%>
           </center>
         </div>
