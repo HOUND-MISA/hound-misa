@@ -17,7 +17,7 @@
 <body>
 
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
-  <div class="row" style="  min-height: 760px; border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
+  <div class="row" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
 
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
@@ -63,7 +63,7 @@
               <% end %>
     </div>
   </div>
-  <div id="wrapper"class="row" style="min-height: 760px; border:solid 0px; margin-top:10px; background-color:transparent;">
+  <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent;">
     <div id="map" class="col-md-8" style=" height: 560px;">
     </div>
     <div id="over_map">
@@ -124,29 +124,6 @@
 
 </div>
   <p id="notice"><%= notice %></p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= @event.start_date %>
-  </p>
-
-  <p>
-    <strong>End date:</strong>
-    <%= @event.end_date %>
-  </p>
-
-  <p>
-    <strong>Website:</strong>
-    <%= @event.website %>
-  </p>
-
-  <p>
-    <strong>Attendees:</strong><br />
-    <% @last_three_attendees.each do |u| %>
-      <%= u.user %>
-    <% end %>
-  </p>
-
   
   <% if @event_tags.any? %>
     <p>
@@ -158,15 +135,8 @@
     </p>
   <% end %>
  
-
-
   <%= link_to 'Back', events_path %>
-   <br/>
-     <input type="button" value="Show Location"
-    onclick="javascript:calcRoute()" />
-Latitude: <span id="latitude"></span>       <br/>
-Longitude: <span id="longitude"></span>
-<footer class="footer" style="margin-top:120px">
+<footer class="footer" style="margin-top:20px">
   <h6 style="color:white;">About us | Terms and Condition | Copyright 2015</h6>
 </footer>
 
