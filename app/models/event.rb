@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   validates :city, :presence => true
   validates :start_date, :presence => true
 
-  self.per_page = 6
+  self.per_page = 9
 
   def load_defaults
     if self.new_record?
