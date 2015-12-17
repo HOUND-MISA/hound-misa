@@ -52,5 +52,6 @@ group :development do
   gem 'geocoder'
   gem 'nested_form'
   gem 'simple_form'
+  gem 'will_paginate', '~> 3.0.6'
 end
 
