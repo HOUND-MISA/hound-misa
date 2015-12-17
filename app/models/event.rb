@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
   before_validation :load_defaults
-  before_save :set_address
+  before_validation :set_address
 
   accepts_nested_attributes_for :event_tags, allow_destroy: :true, reject_if: :all_blank
   

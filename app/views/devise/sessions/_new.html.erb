@@ -1,0 +1,23 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+  <br>
+    <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
+  </div>
+
+  <div class="field">
+  <br>
+    <center><%= f.password_field :password, autocomplete: "off", :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
+  </div>
+  <div class="actions">
+    <center><%= f.submit "Sign in", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color:#a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
+  </div>
+<% end %>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <center><%= link_to "Forgot password?", new_password_path(resource_name) %></center>
+<% end -%>
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+   <center><%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #3b5998; margin-top: 5px; color:white; font-size:15px;" %></center>
+  <% end -%>
+<% end -%>

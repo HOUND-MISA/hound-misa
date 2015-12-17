@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :events
   resources :hound_users, :controller => 'users'
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}#, :registrations => "registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "registrations"}
     devise_scope :user do
       get 'users/sign_out' => "devise/sessions#destroy"
   end

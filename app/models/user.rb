@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :event_attendees, dependent: :destroy
   has_many :user_tags, dependent: :destroy
   belongs_to :event
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +14,8 @@ class User < ActiveRecord::Base
   validates :description, :length => {:maximum => 40}
 
   accepts_nested_attributes_for :user_tags, allow_destroy: :true, reject_if: :all_blank
+
+  #after_save :set_admin
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -27,6 +30,12 @@ class User < ActiveRecord::Base
 
   def to_s
     self.first_name + " " + self.last_name
+  end
+
+  def set_admin
+    if self.email == "admin@hound.ph"
+      self.update(admin: true)
+    end
   end
 
 end
