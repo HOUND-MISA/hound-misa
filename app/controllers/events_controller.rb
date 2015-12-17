@@ -91,6 +91,7 @@ class EventsController < ApplicationController
       @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime('%m-%d-%Y',start_date) = ?","#{@tag}","#{@city}","#{@date}"]).order('start_date ASC')
     end
     render :template => "events/search"
+    @events = Event.paginate(:page => params[:page])
   end
 
   def authenticate_owner
