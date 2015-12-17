@@ -304,7 +304,7 @@ background-color:#A02A26;
 height:40px; 
 width:110px; 
 float:right; 
-margin-top:10px; 
+margin-top:0px; 
 border-radius:40px; 
 border:none; 
 color:white; 
@@ -323,3 +323,51 @@ background-color:#B02B26;
 {
 color:black;
 }
+.jbtn1
+{
+padding:10px;
+background-color:transparent; 
+height:40px; 
+width:110px; 
+float:right; 
+margin-top:0px; 
+border-radius:40px; 
+border:none; 
+color:white; 
+font-size:1.1em; 
+font-family:'Roboto' !important;
+margin-right: 2.7vw;
+margin-bottom:10px;
+cursor: default;
+}
+.pg {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+  font-family: 'Roboto' !important;
+  font-size: 15px; }
+  .pg a, .pg span, .pg em {
+    padding: 0.2em 0.5em; }
+  .pg .disabled {
+    color: #aaaaaa; }
+  .pg .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #A02A26; }
+  .pg a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none; }
+    .pg a:hover, .pg a:focus {
+      border-color: #f2f2f2;
+      background: #616161;
+      color: white; }
+  .pg .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .pg .previous_page, .pg .next_page {
+    border-width: 2px; }
+  .pg .previous_page {
+    margin-right: 1em; }
+  .pg .next_page {
+    margin-left: 1em; }
