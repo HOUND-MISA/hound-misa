@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
   end
 
   def set_address
-    self.address = self.unit + " " + self.building + " " + self.street + " " + self.district + " " + self.city + " City " + self.province
+    if self.address_one == ""
+      self.address = self.city + " City " + self.province
+    else
+      self.address = self.address_one + " " + self.city + " City " + self.province
+    end
   end
 end
