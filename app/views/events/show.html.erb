@@ -76,19 +76,18 @@
     <h5 style="margin:0px;">Organizer</h5>
     </center>
       </div>
-           <div class="row" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
+        <div class="row pcard" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
               <div class="circle"></div>
           </div>
-
-          <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= @event.user %></h4></div>
-      
-
+          <%=link_to hound_user_path(@event.user.id) do%>
+          <div class="col-xs-8" style="padding:0px"><h4 class="people"><%=@event.user%></h4></div>
+          <%end%>
       </div>
 
-      <div style="min-height:40px;">
-        <hr>
+      <div style="height:0px; border:2px solid white; margin-bottom: 36px; margin-left: 17px;
+      margin-right: 17px;">
       </div>
 
 
@@ -106,7 +105,8 @@
 
       </div>
     <% @last_three_attendees.each do |u| %>
-      <div class="row" style="height:62px;  width:315px; position:inherit; margin:25px;">
+      <%=link_to hound_user_path(u.user.id) do%>
+      <div class="row pcard" style="height:62px;  width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
               <div class="circle"></div>
@@ -114,6 +114,7 @@
 
           <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
       </div>
+      <%end%>
     <% end %>
     </div>
 

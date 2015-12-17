@@ -99,7 +99,7 @@ position:absolute; top:539px; text-align:center; font-size:14px; width:100%; mar
 .sub1{
 font-family: 'Roboto' !important;
 font-style: normal;
-font-size:14px;
+font-size:19px;
 }
 .displayPicture
 {
@@ -309,7 +309,7 @@ background-color:#A02A26;
 height:40px; 
 width:110px; 
 float:right; 
-margin-top:0px; 
+margin-top:8px; 
 border-radius:40px; 
 border:none; 
 color:white; 
@@ -317,7 +317,7 @@ font-size:1.1em;
 font-family:'Roboto' !important;
 margin-right: 2.7vw;
 margin-bottom:10px;
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 transition: all 0.2s ease-in-out;
 }
 .jbtn:hover
@@ -338,7 +338,7 @@ background-color:transparent;
 height:40px; 
 width:110px; 
 float:right; 
-margin-top:0px; 
+margin-top:8px; 
 border-radius:40px; 
 border:none; 
 color:white; 
@@ -388,4 +388,13 @@ cursor: default;
 }
 .card3:hover {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.ncard{
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.pcard{
+	  transition: all 0.2s ease-in-out;
+}
+.pcard:hover{
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
