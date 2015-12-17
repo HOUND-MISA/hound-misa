@@ -17,7 +17,7 @@
 <body>
 
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
-  <div class="row" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
+  <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
 
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
@@ -64,21 +64,19 @@
     </div>
   </div>
   <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent;">
-    <div id="map" class="col-md-8" style=" height: 560px;">
+    <div id="map" class="col-md-8 card2" style=" height: 560px;">
     </div>
     <div id="over_map">
              <input type="button" value="Get Directions" onclick="javascript:calcRoute()" class="direct" />
    </div>
-    <div class="col-md-4" style=" height: 560px; background-color: #A02A26;    background-clip: padding-box; border-left: 10px solid transparent; padding-top:10px">
+    <div class="col-md-4" style="padding-left:0px; padding-right:0px;">
+      <div class="card2" style=" height: 560px; background-color: #A02A26;    background-clip: padding-box;margin-left:10px; padding-top:10px">
       <div class="bubble" style="padding-top:7px; margin-left:25px;">
     <center >
     <h5 style="margin:0px;">Organizer</h5>
     </center>
-
       </div>
-
-
-      <div class="row" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
+           <div class="row" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
               <div class="circle"></div>
@@ -117,6 +115,8 @@
           <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
       </div>
     <% end %>
+    </div>
+
 </div>
     </div>
 
