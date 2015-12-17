@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :event_attendees, dependent: :destroy
   has_many :user_tags, dependent: :destroy
+  has_attached_file :avatar, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100>"}
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   belongs_to :event
 
   # Include default devise modules. Others available are:
