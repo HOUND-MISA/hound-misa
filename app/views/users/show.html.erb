@@ -18,15 +18,14 @@
 <span class="sub1" style="color:white; margin-left:4.5vw;"><%= @user.events.count %> <span style="color:#616161;">Events </span></span> 
 <span class="sub1" style="color:white; margin-left:1.5vw;"><%= @attended_events.count %> <span style="color:#616161;">Attended events </span></span> 
 <br>
-<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;">[Address]</span></div> 
+<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;">[Email]</span></div> 
 <div style="margin-top:10px;">
 <span class="sub1" style="color:#616161; margin-left:4.5vw;">[Website]</span> </div>
 </div>
 
 <!--DP-->
-<div class="displayPicture card3" >
+<div class="displayPicture card3" style="background-image: url(<%=@user.avatar.url(:medium)%>);" >
 </div>
-
 
 <h1 class="h1name" style="" ><bold><%= @user %></bold></h1>
 <p class="sub" ><bold><%= @user.description %></bold></p>
