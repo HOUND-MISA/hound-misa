@@ -10,9 +10,9 @@
 
 </head>
 <body>
-<div class="container-fluid content-box">
+<div class="container-fluid content-box" style="">
 <p id="notice"><%= notice %></p>
-<div style="margin-bottom:0px;">
+<div style="margin-bottom:0px; padding-left:2.7vw; padding-right:2.7vw;">
 <br>
   <span style="font-family: 'Roboto' !important; font-size:1.7em;"><b>All Events:</b></span>
   <form action="/search" style="float:right">
@@ -21,26 +21,26 @@
     <%= select_tag("category", options_for_select(Tag.all), :prompt => "Category", :onchange => "this.form.submit()") %>
   </form>
 </div>
-<div style="margin-top:17px; margin-bottom:30px; height:opx; border: 3px solid #A02A26; "></div>
+<div style="margin-top:17px; margin-bottom:30px; height:0px; border: 3px solid #A02A26;margin-left:2.7vw; margin-right:2.7vw; "></div>
 <center>
-<div class="row" style="">
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+<div class="row" style="padding-left:2.7vw; padding-right:2.7vw;">
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
-        <div class="col-md-3">
-          <div style="min-height:200px; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
+        <div class="col-md-4">
+          <div style="height:40vh; background-color:#f2f2f2; margin-top:0px; margin-bottom:30px;" ></div>
         </div>
 </div>
 </center>
