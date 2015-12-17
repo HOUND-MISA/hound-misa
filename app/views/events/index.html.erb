@@ -42,10 +42,11 @@
         
 </div>
 </center>
-<%= will_paginate @posts %>
 <% if user_signed_in? %>
   <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
 <% end %>
+<%= will_paginate @posts,:class=>"flickr_pagination" %>
+
 
   
 </div>
