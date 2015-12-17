@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :start_date
       t.datetime :end_date
       t.text :address
-      t.boolean :approved
+      t.boolean :approved, default: false
       t.string :website
       t.float :latitude
       t.float :longitude

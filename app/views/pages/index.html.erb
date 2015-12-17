@@ -11,52 +11,37 @@
 
     <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
     <div class="collapse navbar-collapse" style="background:transparent;" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right" style=" padding:none;">
-              <% if user_signed_in? %>`
-              <li role="presentation" class="dropdown" style=" margin:20px 60px 0px 20px;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:19px;margin:none; color:white;">
-                  <%= current_user %> <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
-                  </li>
-                  <li><hr></li>
-                  <li>
-                    <% if session[:fb_token].nil? %>
-                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
-                    <% else %>
-                      <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <%else%>
-              <li style=" margin:20px 10px 0px 20px;"><a style="font-size:22px;margin:none; color:white;" href="#login" data-toggle="modal"><b>LOG IN</b></a></li>
-
-               <li style=" margin:20px 50px 0px 10px;"><a style="font-size:22px;margin:none; color:white;" href="#signup" data-toggle="modal"><button style="height: 40px; width:150px; border-radius: 20px; border: solid 1px; background-color: transparent; margin-top:-10px;"><b>SIGN UP</b></button></a></li>
-              <% end %>
-
-
-               <!--<div class="container">
-           <% if user_signed_in? %>`
+      <ul class="nav navbar-nav navbar-right" style=" padding:none;">
+        <% if user_signed_in? %>`
+        <li role="presentation" class="dropdown" style=" margin:20px 60px 0px 20px;">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:19px;margin:none; color:white;">
+            <%= current_user %> <span class="caret"></span>
+          </a>
+          
+          <ul class="dropdown-menu">
+            <li>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
+            </li>
+            <li><hr></li>
+            <li>
               <% if session[:fb_token].nil? %>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", destroy_user_session_path %>
-              <% else %></p>
-                <p class="navbar-text pull-right" href="#login" data-toggle="modal"><%= link_to "Sign out", facebook_logout_path %></p>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+              <% else %>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
               <% end %>
-              <p class="navbar-text pull-right" href="#login" data-toggle="modal">Hi <%= current_user.email %>!</p>
-            <% else %>
-              <a class="navbar-text pull-right" href="#signup" data-toggle="modal">Signup</a>
-              <a class="navbar-text pull-right" href="#login" data-toggle="modal">Login</a>
-            <% end %>
+            </li>
+          </ul>
+        </li>
+        <%else%>
+        <li style=" margin:20px 10px 0px 20px;"><a style="font-size:22px;margin:none; color:white;" href="#login" data-toggle="modal"><b>LOG IN</b></a></li>
 
-          </div>-->
-            </ul>
-    </div>
-            
-</div>
+         <li style=" margin:20px 50px 0px 10px;"><a style="font-size:22px;margin:none; color:white;" href="#signup" data-toggle="modal"><button style="height: 40px; width:150px; border-radius: 20px; border: solid 1px; background-color: transparent; margin-top:-10px;"><b>SIGN UP</b></button></a></li>
+        <% end %>
+      </ul>
+    </div>          
+  </div>
 </head>
+
 <body id="landing">
 <section id="index_jum" class="mouse-bg row" data-autoheight="true">
 </section><!--end hero-->
@@ -68,41 +53,10 @@
           <h4 class="modal-title" style=""><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center> Sign In</center></h4>
         </div>
         <div class="modal-body" >
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-            <br>
-              <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
-            </div>
-
-            <div class="field">
-            <br>
-              <center><%= f.password_field :password, autocomplete: "off", :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
-            </div>
-
-          <!--   <% if devise_mapping.rememberable? -%>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-            <% end -%> -->
-
-            <div class="actions">
-              <center><%= f.submit "Sign in", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color:#a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
-            </div>
-          <% end %>
-
-          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <center><%= link_to "Forgot password?", new_password_path(resource_name) %></center>
-          <% end -%>
-
-          <%- if devise_mapping.omniauthable? %>
-            <%- resource_class.omniauth_providers.each do |provider| %>
-             <center><%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #3b5998; margin-top: 5px; color:white; font-size:15px;" %></center>
-            <% end -%>
-          <% end -%>
+          <%= render 'devise/sessions/new' %>
           <center>No account yet?</center>
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            <center><b><%= link_to "Sign up", new_registration_path(resource_name) %></b></center><br />
+            <a href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
           <% end -%>
         </div>
       </div>
@@ -117,48 +71,13 @@
           <h4 class="modal-title"><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center>Create a new account</center></h4>
         </div>
         <div class="modal-body">
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
-
-              <div class="field">
-                <br>
-                <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
-              </div>
-              
-              <div class="field">
-                <br>
-                <center><%= f.text_field :first_name, autofocus: true , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "First Name", :size=>"25"%></center>
-              </div>
-
-              <div class="field">
-                <br>
-                <center><%= f.text_field :last_name, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Last Name", :size=>"25" %></center>
-              </div>
-
-              <div class="field">
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br>
-                <center><%= f.password_field :password, autocomplete: "off" , :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Password", :size=>"25" %></center>
-              </div>
-
-             <!--  <div class="field">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off" %>
-              </div> -->
-
-              <div class="actions">
-                <center><%= f.submit "Sign up", :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #a22922; margin-top: 5px; color:white; font-size:15px;" %></center>
-              </div>
-
-            <% end %>
-              <center>
-             Already have an account?<br />
-              <%- if controller_name != 'sessions' %>
-                <b><%= link_to "Log in here.", new_session_path(resource_name) %></b><br />
-              <% end -%>
-              </center>
-
+          <%= render "devise/registrations/new" %>
+          <center>
+            Already have an account?<br />
+            <%- if controller_name != 'sessions' %>
+              <a href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
+            <% end -%>
+          </center>
         </div>
       </div>
     </div>
@@ -173,6 +92,7 @@
   </center>
 </div>
 </body>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="assets/mouse.parallax.js"></script>
 
