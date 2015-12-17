@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
     #devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :description, :email, :password, :password_confirmation, :current_password, :user_tags => [:tag]) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit! }
   end
+
+  def authenticate_user
+    if !user_signed_in?
+      render template: 'pages/open_modal'
+    end
+  end
 end
