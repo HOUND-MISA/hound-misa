@@ -148,6 +148,7 @@
   <% end %>
  
   <%= link_to 'Back', events_path %>
+  <%= button_to 'Add Picture', new_picture_path(@event.id), :method => "get", :class=>"btn" %>
 
 <footer class="footer">
 
