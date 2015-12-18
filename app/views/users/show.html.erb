@@ -17,6 +17,14 @@
 <div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 2.5em;">
 <span class="sub1" style="color:white; margin-left:4.5vw;"><%= @organized_events.count %> <span style="color:#616161;">Events </span></span> 
 <span class="sub1" style="color:white; margin-left:1.5vw;"><%= @attended_events.count %> <span style="color:#616161;">Attended events </span></span> 
+<% if current_user.try(:id) == @user.id %>
+  <%= link_to edit_hound_user_path(@user) do%>
+
+<span class="sub1" style="float:right; margin-right:5vw; color:#f2f2f2;"><div class="pcard" style="padding:10px; cursor: pointer;">Edit profile <span class="glyphicon glyphicon-edit"></span></div></span>
+<% end %>
+<% end %>
+
+
 <br>
 <div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;"><%= @user.email %></span></div> 
 <div style="margin-top:10px;">
@@ -24,7 +32,15 @@
 </div>
 
 <!--DP-->
-<div class="displayPicture card3" style="background-image: url(<%=@user.avatar.url(:medium)%>);" >
+<div class="displayPicture card3" style="background-image: url(<%=@user.avatar.url(:medium)%>);cursor: pointer;" >
+<% if @user.avatar.exists?(:medium) %>
+<%else%>
+    <div style="margin-top:27%; margin-left:-12px;">
+    <center>
+    <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+    </center>
+    </div>
+<%end%>
 </div>
 
 <h1 class="h1name" style="" ><bold><%= @user %></bold></h1>
@@ -37,16 +53,16 @@
           <div class="row" style="">
             
 
-              <div class="col-md-6 sampleBox" >
-                <div class="glassbox card3">
+              <div class="col-md-6 sampleBox">
+                <div class="glassbox card3" style="cursor: pointer;">
                   <h3 class="description">Singing</h3>
                 </div>
                </div>
 
 
-              <div class="col-md-6 sampleBox" style="background: url(images/sample2.jpg)" >
+              <div class="col-md-6 sampleBox">
 
-                <div class="glassbox card3">
+                <div class="glassbox card3" style="cursor: pointer;">
                   <h3 class="description">Dancing</h3>
                 </div>
 
@@ -56,17 +72,17 @@
           <div class="row" style="">
             
 
-              <div class="col-md-6 sampleBox" style="background: url(images/sample3.jpeg) ;" > 
+              <div class="col-md-6 sampleBox" > 
 
-                <div class="glassbox card3">
+                <div class="glassbox card3" style="cursor: pointer;">
                   <h3 class="description">Spoken Word Poetry</h3>
                 </div>
 
 
               </div>
-              <div class="col-md-6 sampleBox" style="background: url(images/portrait.jpg) ;" > 
+              <div class="col-md-6 sampleBox"  > 
 
-                <div class="glassbox card3">
+                <div class="glassbox card3" style="cursor: pointer;">
                   <h3 class="description">Painting</h3>
                 </div>
 
@@ -75,13 +91,17 @@
           </div>
       <!-- END-->
         <div class="col-md-4" style="">
-          <div class="card2" style="background-color:#f7f7f7; position:relative; margin-top: 20px; min-height: 430px; padding-bottom:30px;">
+          <div class="card2" style="background-color:#f7f7f7; position:relative; margin-top: 20px; min-height: 740px; padding-bottom:30px;">
           <div style="padding-top:5px;">
-            <h3 style=" margin-left:2vw;font-family: 'Roboto' !important;">EVENTS</h3>
-            <button style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px;"><b>Organized</b></button> <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
+            
+            <h3 style=" margin-left:4vw;font-family: 'Roboto' !important;">EVENTS</h3>
+            
+            <button class="" style="height: 40px; width:100px; border-radius: 20px; border: solid 1px; background-color: transparent; margin:25px; margin-left:4.5vw;"><b>Organized</b></button> 
+
+            <button style="height: 40px; width:100px; border-radius: 20px; border: none; background-color: transparent; "><b>Attended</b></button>
           </div>
             <!--First Entry for Events Box-->
-            <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px;" >
+            <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
               <div class="col-md-2" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
               <div class="col-md-8">
@@ -100,7 +120,7 @@
             </div>
             <!--End of First Entry Box-->
 
-            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px;">
+            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
 
               <div class="col-md-2" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
@@ -125,7 +145,7 @@
 
             </div>
             <!--End of Second Entry Box-->
-            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px;">
+            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
 
               <div class="col-md-2" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
@@ -219,9 +239,6 @@ Name: <%= @user %>
 </div>
 
 
-<% if current_user.try(:id) == @user.id %>
-  <%= link_to "Edit profile", edit_hound_user_path(@user) %>
-<% end %>
 
 <% if current_user.try(:admin?)  %>
 <%= link_to 'Cancel account', hound_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -230,7 +247,17 @@ Name: <%= @user %>
 <footer class="footer">
 
 
-  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015</h6>
+  <h6 style="color:white;">About us | Terms and Conditions | Copyright 2015 <span style="float:right; margin-right:180px;">|</span> <span style="float:right; margin-right:110px;">Powered by</span></h6> 
+
+<%=image_tag "elem_icon-ig.png", :style => "width: 3%; float:right; margin-top:-37px; margin-right:20px;cursor: pointer;", :class=>"pcard cir"%>
+
+<%=image_tag "elem_icon-twit.png", :style => "width: 3%; float:right; margin-top:-37px; margin-right:10px;cursor: pointer;", :class=>"pcard cir"%>
+
+<%=image_tag "elem_icon-fb.png", :style => "width: 3%; float:right; margin-top:-37px; margin-right:10px;cursor: pointer;", :class=>"pcard cir"%>
+
+<%=image_tag "misalogo.png", :style => "width: 7%; float:right; margin-top:-30px; margin-right:35px;cursor: pointer;"%>
+
+
 </footer>
 
   
