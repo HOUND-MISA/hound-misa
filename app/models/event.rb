@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
   before_validation :set_address
 
   accepts_nested_attributes_for :event_tags, allow_destroy: :true, reject_if: :all_blank
+  accepts_nested_attributes_for :pictures, allow_destroy: :true, reject_if: :all_blank
   
   validates :name, :presence => true
   validates :city, :presence => true

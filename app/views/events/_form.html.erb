@@ -38,13 +38,26 @@
   </div>
 
   <!-- AAYUSIN KO PA TO!! -->
-  <%= f.fields_for :event_tags do |ff| %>
-    <div class="field"> 
-      <%= ff.association :tag %>
-      <%= ff.link_to_remove "Remove this tag" %> 
-    </div>
-  <% end %>
-  <%= f.link_to_add "Add tag", :event_tags %> 
+  <p><%= f.link_to_add "Add a tag", :event_tags, :data => {:target => "#event_tags"}, :class => "btn" %></p>
+  <table id="event_tags">
+    <%= f.fields_for :event_tags, :wrapper => false do |ff| %>
+    <tr class="fields">
+      <td><%= ff.association :tag %></td>
+      <td><%= ff.link_to_remove "Remove this tag" %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %></p>
+  <table id="pictures">
+    <%= f.fields_for :pictures, :wrapper => false do |ff| %>
+    <tr class="fields">
+      <td><%= ff.file_field :photo %></td>
+      <td><%= ff.text_field :description, :placeholder => "Description" %></td>
+      <td><%= ff.link_to_remove "Remove this tag" %></td>
+    </tr>
+    <% end %>
+  </table>
 
   <div class="actions">
     <%= f.submit %>
