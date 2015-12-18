@@ -102,10 +102,11 @@ class EventsController < ApplicationController
     @date = params['date']
 
     if current_user.try(:admin?)
+      @pending = Event.send(:sanitize_sql_array,['case when status = ? then 0 else 1 end',"Pending"])
       if @search != nil
-        @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"]).order('start_date ASC').paginate(:page => params[:page])
+        @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
       else
-        @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime('%m-%d-%Y',start_date) = ?","#{@tag}","#{@city}","#{@date}"]).order('start_date ASC').paginate(:page => params[:page])
+        @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime('%m-%d-%Y',start_date) = ?","#{@tag}","#{@city}","#{@date}"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
       end
     else
       if @search != nil
