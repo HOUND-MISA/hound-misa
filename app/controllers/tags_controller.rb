@@ -70,6 +70,6 @@ class TagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params.require(:tag).permit(:name, :tag_id)
+      params.require(:tag).permit(:name, :tag_id, :photo_file_name, :photo_content_type, :photo_file_size, :photo_updated_at)
     end
 end

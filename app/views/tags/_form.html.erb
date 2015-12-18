@@ -1,3 +1,5 @@
+<br /><br /><br /><br /><br />
+
 <%= form_for(@tag) do |f| %>
   <% if @tag.errors.any? %>
     <div id="error_explanation">
@@ -15,6 +17,12 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

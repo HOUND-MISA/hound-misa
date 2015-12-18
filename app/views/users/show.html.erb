@@ -230,6 +230,7 @@
   <% @user.user_tags.each do |user_tag| %>
     <div>
       <%= link_to user_tag.tag.name, {:controller => "events", :action => "search", :category => user_tag.tag.name} %>
+      SHOW PHOTO HERE<%= user_tag.tag.photo %>
     </div>
   <% end %>
 </div>
