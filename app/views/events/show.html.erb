@@ -20,7 +20,9 @@
   <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
-        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;"></div>
+        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%=@picture.photo.url(:medium)%>">
+
+        </div>
       </div>
     </div>
     <div class="col-md-6">
@@ -90,7 +92,8 @@
         <div class="row pcard" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
-              <div class="circle"></div>
+              <div class="circle" style="background-image:url( <%= @event.user.avatar.url(:thumb) %> )">
+              </div>
           </div>
           <%=link_to hound_user_path(@event.user.id) do%>
           <div class="col-xs-8" style="padding:0px"><h4 class="people"><%=@event.user%></h4></div>

@@ -10,6 +10,21 @@
 
 </head>
 <body>
+<div class="modal custom fade" id="pimg" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style=""><%=image_tag "elem_logo-black.png", :style => "width: 95%;"%><br><center> Sign In</center></h4>
+      </div>
+      <div class="modal-body" >
+        STUFF
+        <center>No account yet?</center>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="banner ncard"> 
 </div>
@@ -32,7 +47,7 @@
 </div>
 
 <!--DP-->
-<div class="displayPicture card3" style="background-image: url(<%=@user.avatar.url(:medium)%>);cursor: pointer;" >
+<div class="displayPicture card3" style="background-image: url(<%=@user.avatar.url(:medium)%>);cursor: pointer;" href="#pimg" datatoggle="modal" >
 <% if @user.avatar.exists?(:medium) %>
 <%else%>
     <div style="margin-top:27%; margin-left:-12px;">
@@ -42,20 +57,6 @@
     </div>
 <%end%>
 </div>
-
-<% if current_user.try(:id) == @user.id %>
-  <%= form_for(@user, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart:true }) do |f| %>
-
-    <div class="field">
-      <%= f.label :avatar %><br />
-      <%= f.file_field :avatar %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>        
-  <% end %>
-<% end %>
 
 <h1 class="h1name" style="" ><bold><%= @user %></bold></h1>
 <p class="sub" ><bold><%= @user.description %></bold></p>
