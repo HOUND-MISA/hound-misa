@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :events, dependent: :destroy
   has_many :event_attendees, dependent: :destroy
-  has_many :user_tags, dependent: :destroy
   has_attached_file :avatar, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100>"}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   belongs_to :event
@@ -14,10 +13,6 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :description, :length => {:maximum => 40}
-
-  accepts_nested_attributes_for :user_tags, allow_destroy: :true, reject_if: :all_blank
-
-  #after_save :set_admin
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -32,12 +27,6 @@ class User < ActiveRecord::Base
 
   def to_s
     self.first_name + " " + self.last_name
-  end
-
-  def set_admin
-    if self.email == "admin@hound.ph"
-      self.update(admin: true)
-    end
   end
 
 end

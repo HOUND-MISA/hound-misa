@@ -6,7 +6,5 @@ class AddReferentialIntegrity < ActiveRecord::Migration
     add_foreign_key :event_attendees, :events
     add_foreign_key :event_tags, :events
     add_foreign_key :event_tags, :tags
-    add_foreign_key :user_tags, :users
-    add_foreign_key :user_tags, :tags
   end
 end

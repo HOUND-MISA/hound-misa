@@ -6,7 +6,5 @@ class AddForeignKeys < ActiveRecord::Migration
     add_column :event_attendees, :event_id, :integer
     add_column :event_tags, :event_id, :integer
     add_column :event_tags, :tag_id, :integer
-    add_column :user_tags, :user_id, :integer
-    add_column :user_tags, :tag_id, :integer
   end
 end
