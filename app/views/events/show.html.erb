@@ -15,15 +15,28 @@
 
 </head>
 <body>
-
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
   <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
+<<<<<<< HEAD
+      <% if !@picture.nil? %>
+        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%=@picture.photo.url(:medium)%>">
+        </div>
+      <%else%>
+        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
+        <center>
+          <span class="glyphicon glyphicon-picture gp-2" aria-hidden="true"></span>
+          </center>
+        </div>
+      <%end%>
+        
+=======
         <% if !@picture.nil? %>
           <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%=@picture.photo.url(:medium)%>">
           </div>
         <% end %>
+>>>>>>> ea90d7b5529eb4462439836558169077e94b617f
       </div>
     </div>
     <div class="col-md-6">

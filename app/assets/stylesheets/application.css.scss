@@ -185,7 +185,6 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(/assets/elem_event-img-13.jpg);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -398,7 +397,8 @@ cursor: default;
 .pcard:hover{
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-.glyphicon-picture{ font-size: 100px; }
+.gp-1{ font-size: 100px; }
+.gp-2{ font-size: 40vw; }
 .bcard{
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
