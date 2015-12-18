@@ -147,6 +147,12 @@
     </p>
   <% end %>
  
+ <!--PICTURES-->
+ <% @event.pictures.each do |picture| %>
+    <%= picture.description %>
+    <!-- CODE TO SHOW PICTURE HERE, ATTRIBUTE NAME IS PHOTO. SO picture.photo SOMETHING SOMETHING -->
+<% end %>
+
   <%= link_to 'Back', events_path %>
 
 <footer class="footer">
