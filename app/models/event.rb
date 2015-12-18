@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
   has_many :event_tags, dependent: :destroy
   has_many :event_attendees, dependent: :destroy
   belongs_to :user
