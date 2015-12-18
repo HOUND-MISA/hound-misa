@@ -92,7 +92,8 @@
         <div class="row pcard" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
-              <div class="circle"></div>
+              <div class="circle" style="background-image:url( <%= @event.user.avatar.url(:thumb) %> )">
+              </div>
           </div>
           <%=link_to hound_user_path(@event.user.id) do%>
           <div class="col-xs-8" style="padding:0px"><h4 class="people"><%=@event.user%></h4></div>
