@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  resources :pictures
   resources :tags
   resources :events
   resources :hound_users, :controller => 'users'

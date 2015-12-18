@@ -47,10 +47,14 @@ ActiveRecord::Schema.define(version: 20151217134518) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "event_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "tags", force: :cascade do |t|
