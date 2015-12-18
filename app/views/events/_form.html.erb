@@ -20,12 +20,11 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
+    <%= f.label "Date" %><br>
+    <%= f.date_select :start_date %> - <%= f.time_select :start_time, {:ampm => true} %>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date %>
+
+
   <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address_one, :placeholder => "Unit, House/Building/Street Number, Street Name, Barangay/District Name", :size => 80 %><br />

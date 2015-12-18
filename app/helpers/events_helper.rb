@@ -11,11 +11,11 @@ module EventsHelper
     start_dates = []
     if current_user.try(:admin?)
       Event.uniq.pluck(:start_date).each do |start_date|
-        start_dates.push(start_date.strftime('%m-%d-%Y'))
+        start_dates.push(start_date.strftime('%Y-%m-%d'))
       end
     else
       Event.where(status: "Approved").uniq.pluck(:start_date).each do |start_date|
-        start_dates.push(start_date.strftime('%m-%d-%Y'))
+        start_dates.push(start_date.strftime('%Y-%m-%d'))
       end
     end
     return start_dates

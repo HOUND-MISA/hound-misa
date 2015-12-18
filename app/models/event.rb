@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   validates :name, :presence => true
   validates :city, :presence => true
   validates :start_date, :presence => true
+  validates :start_time, :presence => true
 
   self.per_page = 9
 

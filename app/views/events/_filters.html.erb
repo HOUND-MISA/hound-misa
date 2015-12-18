@@ -1,0 +1,6 @@
+<form action="/search" style="float:right">
+    <%= select_tag("date", options_for_select(start_dates.sort), :prompt => "Date", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("city", options_for_select(cities), :prompt => "City", :onchange => "this.form.submit()",:class=>"select-t") %>
+    <%= select_tag("category", options_for_select(Tag.where(['id IN (SELECT tag_id FROM event_tags WHERE event_id IN (SELECT id FROM events WHERE status = ?))',"Approved"]).order('name ASC')), :prompt => "Category", :onchange => "this.form.submit()",:class=>"select-t") %>
+</form>
+
