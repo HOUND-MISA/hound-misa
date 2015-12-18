@@ -24,11 +24,7 @@
             </li>
             <li><hr></li>
             <li>
-              <% if session[:fb_token].nil? %>
-                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
-              <% else %>
-                <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", facebook_logout_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
-              <% end %>
+              <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
             </li>
           </ul>
         </li>

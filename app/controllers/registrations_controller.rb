@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, params)
-    if !session[:fb_token].nil?
+    if current_user.try(:provider) == "facebook"
       resource.update_without_password(params)
     else
       resource.update_with_password(params)
