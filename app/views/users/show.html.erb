@@ -43,6 +43,20 @@
 <%end%>
 </div>
 
+<% if current_user == @user %>
+  <%= form_for current_user, :url => { :action => :update } do |f| %>
+
+    <div class="field">
+      <%= f.label :avatar %><br />
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>        
+  <% end %>
+<% end %>
+
 <h1 class="h1name" style="" ><bold><%= @user %></bold></h1>
 <p class="sub" ><bold><%= @user.description %></bold></p>
 </div>
