@@ -1,4 +1,5 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="container-fluid content-box">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
   <br>
     <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
@@ -21,3 +22,4 @@
    <center><%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color: #3b5998; margin-top: 5px; color:white; font-size:15px;" %></center>
   <% end -%>
 <% end -%>
+</div>
