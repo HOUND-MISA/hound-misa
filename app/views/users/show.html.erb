@@ -33,6 +33,7 @@
 <% end %>
 
 
+
 <br>
 <div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;"><%= @user.email %></span></div> 
 <div style="margin-top:10px;">
@@ -239,7 +240,9 @@
   <% @favorites.each do |tag| %>
     <div>
       <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
-      SHOW PHOTO HERE<%= tag.photo %>
+      <% if tag.photo.exists? %>
+        <%= image_tag tag.photo.url(:thumb) %>
+      <% end %>
     </div>
   <% end %>
 </div>

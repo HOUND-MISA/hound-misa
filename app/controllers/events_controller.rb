@@ -36,9 +36,7 @@ class EventsController < ApplicationController
       marker.lng event.longitude
     @event_tags = EventTag.where(['event_id = ?',params[:id]])
     end
-    if @event.pictures.count > 0
-      @picture = @event.pictures.find(1)
-    end
+    @picture = @event.pictures.first
   end
 
   # GET /events/new

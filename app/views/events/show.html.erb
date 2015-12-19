@@ -21,7 +21,7 @@
     <div class="col-md-6" style="min-height:550px;">
       <div class="row">
       <% if !@picture.nil? %>
-        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%=@picture.photo.url(:medium)%>">
+        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%= @picture.photo.url(:medium)%>">
         </div>
       <%else%>
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
@@ -29,8 +29,7 @@
           <span class="glyphicon glyphicon-picture gp-2" aria-hidden="true"></span>
           </center>
         </div>
-      <%end%>
-        
+      <%end%> 
       </div>
     </div>
     <div class="col-md-6">
@@ -66,7 +65,7 @@
         <% end %>
       <% else %>
         <% if @event.user_id == current_user.id %>
-          <%= link_to 'Edit', edit_event_path(@event) %> |
+          <%= link_to 'Edit', edit_event_path(@event) %> | 
           <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td>Status: <%= @event.status %></td>
           <% if @event.status == "Rejected" %>
@@ -81,7 +80,6 @@
         <% end %>
       <% end %>
     <% end %>
-
     </div>
   </div>
   <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent;">
@@ -159,10 +157,15 @@
   <% end %>
  
  <!--PICTURES-->
- <% @event.pictures.each do |picture| %>
-    <%= picture.description %>
-    SHOW PHOTO HERE <%= picture.photo %>
-<% end %>
+ <table>
+   <% @event.pictures.each do |picture| %>
+    <tr>
+      <td><%= image_tag picture.photo.url(:thumb) %></td>
+      <td><%= picture.description %></td>
+      <td><%= picture %></td>
+    </tr>
+  <% end %>
+</table>
 
   <%= link_to 'Back', events_path %>
 

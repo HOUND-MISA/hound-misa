@@ -47,10 +47,11 @@
     <% end %>
   </table>
 
-  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %></p>
+  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %><i>(The first photo will be set as the primary photo)</i></p>
   <table id="pictures">
     <%= f.fields_for :pictures, :wrapper => false do |ff| %>
     <tr class="fields">
+      <td><%= image_tag ff.object.photo.url(:thumb) %></td>
       <td><%= ff.file_field :photo %></td>
       <td><%= ff.text_field :description, :placeholder => "Description" %></td>
       <td><%= ff.link_to_remove "Remove this photo" %></td>

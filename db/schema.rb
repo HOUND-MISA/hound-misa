@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 20151217134518) do
 
   create_table "pictures", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.boolean  "primary_picture",    default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "event_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
