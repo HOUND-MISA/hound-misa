@@ -18,17 +18,31 @@
 
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
   <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
-    <div class="col-md-6" style="min-height:550px;">
+    <div class="col-md-6" style="min-height:540px;">
       <div class="row">
       <% if !@picture.nil? %>
-        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px;background-image: url(<%= @picture.photo.url(:medium)%>">
+      <div id="slider" class="flexslider">
+          <ul class="slides">
+            <li>
+              <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=@picture.photo.url(:medium)%>">
+               </div>
+            </li>
+            <li>
+              <img src="images/kitchen_adventurer_donut.jpg" />
+            </li>
+            <li>
+              <img src="images/kitchen_adventurer_donut.jpg" />
+            </li>
+          </ul>
         </div>
+
       <%else%>
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
         <center>
           <span class="glyphicon glyphicon-picture gp-2" aria-hidden="true"></span>
           </center>
         </div>
+
       <%end%> 
       </div>
     </div>
@@ -162,12 +176,16 @@
     <tr>
       <td><%= image_tag picture.photo.url(:thumb) %></td>
       <td><%= picture.description %></td>
-      <td><%= picture %></td>
     </tr>
   <% end %>
 </table>
 
   <%= link_to 'Back', events_path %>
+
+
+
+
+
 
 <footer class="footer">
 
@@ -241,5 +259,35 @@ if (navigator.geolocation) { //Checks if browser supports geolocation
  }
 }
 </script>
+
+ <script defer src="assets/jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
+
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
