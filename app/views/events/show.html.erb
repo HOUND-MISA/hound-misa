@@ -35,7 +35,20 @@
             </li>
           </ul>
         </div>
-
+        <div id="carousel" class="flexslider">
+          <ul class="slides">
+            <li>
+              <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=@picture.photo.url(:medium)%>">
+               </div>
+            </li>
+            <li>
+              <img src="images/kitchen_adventurer_donut.jpg" />
+            </li>
+            <li>
+              <img src="images/kitchen_adventurer_donut.jpg" />
+            </li>
+          </ul>
+        </div>
       <%else%>
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
         <center>
