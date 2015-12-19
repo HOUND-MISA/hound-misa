@@ -20,42 +20,30 @@
   <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
     <div class="col-md-6" style="min-height:540px;">
       <div class="row">
-        <% if !@picture.nil? %>
-          <div id="slider" class="flexslider">
-            <ul class="slides">
-              <li>
-                <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=@picture.photo.url(:medium)%>">
-                </div>
-              </li>
-              <li>
-                <img src="images/kitchen_adventurer_donut.jpg" />
-              </li>
-              <li>
-                <img src="images/kitchen_adventurer_donut.jpg" />
-              </li>
-            </ul>
-          </div>
-          <div id="carousel" class="flexslider">
-            <ul class="slides">
-              <li>
-                <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=@picture.photo.url(:medium)%>">
-                </div>
-              </li>
-              <li>
-                <img src="images/kitchen_adventurer_donut.jpg" />
-              </li>
-              <li>
-                <img src="images/kitchen_adventurer_donut.jpg" />
-              </li>
-            </ul>
-          </div>
-        <%else%>
-          <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
-            <center>
-              <span class="glyphicon glyphicon-picture gp-2" aria-hidden="true"></span>
-            </center>
-          </div>
-        <%end%>
+      <% if !@picture.nil? %>
+        <div id="slider" class="flexslider">
+          <ul class="slides">
+          <% @event.pictures.each do |picture| %>
+            <li>
+              <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=picture.photo.url(:medium)%>">
+               </div>
+            </li>
+            <%end%>
+            <li>
+              <img src="images/kitchen_adventurer_donut.jpg" />
+            </li>
+
+          </ul>
+        </div>
+
+      <%else%>
+        <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
+        <center>
+          <span class="glyphicon glyphicon-picture gp-2" aria-hidden="true"></span>
+          </center>
+        </div>
+
+      <%end%> 
       </div>
     </div>
     <div class="col-md-6">
