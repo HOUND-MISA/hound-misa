@@ -495,13 +495,7 @@ text-decoration:none;
 /* ====================================================================================================================
  * FONT-FACE
  * ====================================================================================================================*/
-@font-face {
-  font-family: 'flexslider-icon';
-  src: url(/assets/fonts/flexslider-icon.eot);
-  src: url(/assets/fonts/flexslider-icon.eot?#iefix) format('embedded-opentype'), url(/assets/fonts/flexslider-icon.woff) format('woff'), url(/assets/flexslider-icon.ttf) format('truetype'), url(/assets/flexslider-icon.svg#flexslider-icon) format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
@@ -615,15 +609,18 @@ html[xmlns] .flexslider .slides {
   transition: all 0.3s ease-in-out;
 }
 .flex-direction-nav a:before {
-  font-family: "flexslider-icon";
-  font-size: 40px;
+  font-family: "Roboto" !important;
+  font-size: 80px;
+  margin-top: 10px;
   display: inline-block;
-  content: '\f001';
-  color: rgba(0, 0, 0, 0.8);
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  content: '<';
+  color:white;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
 }
 .flex-direction-nav a.flex-next:before {
-  content: '\f002';
+  margin-top: 10px;
+  content: '>';
+
 }
 .flex-direction-nav .flex-prev {
   left: -50px;
