@@ -115,7 +115,7 @@
               <div class="tab-content">
                   <div id="tab1" class="tab active">
                       <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
-              <div class="col-md-2" > </div>
+              <div class="col-md-1" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
               <div class="col-md-8">
                 <h3 class="eventTitle"> Slamma Slick Saturdays </h3>
@@ -135,7 +135,7 @@
 
             <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
 
-              <div class="col-md-2" > </div>
+              <div class="col-md-1" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
               <div class="col-md-8">
                 <h3 class="eventTitle">Coffee Workshop</h3>
@@ -160,7 +160,7 @@
             <!--End of Second Entry Box-->
             <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
 
-              <div class="col-md-2" > </div>
+              <div class="col-md-1" > </div>
               <div class="col-md-2 sixtyBySixty" > </div>
               <div class="col-md-8">
                 <h3 class="eventTitle">Coffee Workshop</h3>
@@ -287,7 +287,7 @@
         var currentAttrValue = jQuery(this).attr('href');
  
         // Show/Hide Tabs
-        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+        jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
  
         // Change/remove current tab to active
         jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
