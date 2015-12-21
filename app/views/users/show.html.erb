@@ -143,8 +143,30 @@
                   </div>
            
                   <div id="tab2" class="tab">
-                      <p>Tab #2 content goes here!</p>
-                      <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+                    <% @attended_events.each do |attended_event| %>
+                    <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
+                      <div class="col-md-1" > </div>
+                      <div class="col-md-2 sixtyBySixty" > </div>
+                      <div class="col-md-8">
+                        <h3 class="eventTitle"> <%= link_to attended_event.name, event_path(attended_event) %><br />
+                          <%= attended_event.start_date.strftime('%B %d') %></h3>
+                                  <!--Details 1 -->
+                        <div class="row details" >
+                            <div class="col-md-6 smallFont" > 
+                              <%= attended_event.start_date.strftime('%B %d') %>
+                            </div>
+                            <div class="col-md-6 smallFont" >
+                            <% if attended_event.attendee_count == 1 %>
+                              <%= attended_event.attendee_count %> Attendee 
+                            <% else %>
+                              <%= attended_event.attendee_count %> Attendees
+                            <% end %>
+                            </div>
+                        </div>  
+                      </div>
+                                  <!--End of Details-->
+                    </div>
+                    <% end %>
                   </div>
                   <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
                   <div id="tab3" class="tab">
