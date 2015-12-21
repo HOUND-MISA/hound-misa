@@ -479,9 +479,9 @@ text-decoration:none;
     display:block;
 }
 
-.item img {
+#imgg {
   display: block;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+  height: 540px;
+  width:100%;
+  object-fit: cover !important;
 }

@@ -27,7 +27,7 @@
             <% @event.pictures.each do |picture| %>
               <%if counter==0%>
                 <div class="item active"><!-- class of active since it's the first item -->
-                  <img src="<%=picture.photo.url(:large)%>" alt="" />
+                  <img src="<%=picture.photo.url(:large)%>" alt="" id="imgg"/>
                   <div class="carousel-caption">
                     <p><%= picture.description %></p>
                   </div>
@@ -35,7 +35,7 @@
               </div>
               <%else%>
               <div class="item">
-                  <img src="<%=picture.photo.url(:large)%>" alt="" />
+                  <img src="<%=picture.photo.url(:large)%>" alt="" id="imgg"/>
                   <div class="carousel-caption">
                     <p><%= picture.description %></p>
                   </div>
@@ -45,8 +45,8 @@
             </div><!-- /.carousel-inner -->
           <!--  Next and Previous controls below
                 href values must reference the id for this carousel -->
-            <a class="carousel-control left" href="#this-carousel-id" data-slide="prev" style="padding-top:45%; font-size: 40px;">&lsaquo;</a>
-            <a class="carousel-control right" href="#this-carousel-id" data-slide="next" style="padding-top:45%; font-size: 40px;">&rsaquo;</a>
+            <a class="carousel-control left" href="#this-carousel-id" data-slide="prev" style="padding-top:45%; font-size: 70px;">&lsaquo;</a>
+            <a class="carousel-control right" href="#this-carousel-id" data-slide="next" style="padding-top:45%; font-size: 70px;">&rsaquo;</a>
         </div><!-- /.carousel -->
       <%else%>
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
@@ -178,14 +178,6 @@
   <% end %>
  
  <!--PICTURES-->
- <table>
-   <% @event.pictures.each do |picture| %>
-    <tr>
-      <td><%= image_tag picture.photo.url(:thumb) %></td>
-      <td><%= picture.description %></td>
-    </tr>
-  <% end %>
-</table>
 
   <%= link_to 'Back', events_path %>
 
