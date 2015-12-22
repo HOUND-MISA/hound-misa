@@ -10,6 +10,7 @@
 
 </head>
 <body>
+
 <div class="modal fade" id="pimg" role="dialog" style="margin-top: 10vh;">
   <div class="modal-dialog">
     <center>
@@ -146,7 +147,7 @@
                       </div>
                       <% end %>
                        <% end %>
-                       LINK TO VIEW ALL ORGANIZED
+                       <%= link_to "View all organized events", "", :onclick => "$('#organized').click()" %>
                   </div>
                  
            
@@ -180,7 +181,7 @@
                     </div>
                     <% end %>
                   <%end%>
-                  LINK TO VIEW ALL ATTENDED
+                  <%= link_to "View all attended events", "", :onclick => "$('#attended').click()" %>
                   </div>
                   <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
                   <div id="tab3" class="tab">
@@ -209,20 +210,11 @@
 
                   <%end%>
                   <%end%>
-                  LINK TO VIEW ALL PENDING
+                  <%= link_to "View all pending events", "", :onclick => "$('#pending').click()" %>
                   </div>
                   <%end%>
               </div>
           </div>
-
-
-
-
-
-
-
-
-
 
           </div>
         </div>
@@ -248,6 +240,11 @@
   <% end %>
 </div>
 
+<%= form_tag hound_user_events_path(@user), :class => 'hidden', :method => :get do %>
+  <%= submit_tag 'View all organized events', name: 'organized', id: 'organized' %>
+  <%= submit_tag 'View all pending events', name: 'pending', id: 'pending' %>
+  <%= submit_tag 'View all attended events', name: 'attended', id: 'attended' %>
+<% end %>
 
 
 <% if current_user.try(:admin?)  %>

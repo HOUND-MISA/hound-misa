@@ -1,0 +1,65 @@
+<div class="container-fluid content-box">
+<h1>Admin Dashboard</h1>
+<br>
+<h2>Tags</h2>
+<table class="table" >
+	<tr>
+		<th>Photo</th>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @tags.each do |tag| %>
+	<tr>
+		
+		<td> <%=  image_tag tag.photo.url(:thumb) %> </td>
+		<td> <%= tag.name %> </td>
+		<td> <%= link_to "Show", tag_path(tag)  %> </td>
+		<td> <%= link_to "Edit", edit_tag_path(tag) %> </td>
+		<td> <%= link_to "Delete", tag_path(tag), method: :delete %> </td>
+		
+	</tr>
+	<% end %>
+</table>
+<br>
+<h2>Users</h2>
+<table class="table">
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>E-mail</th>
+		<th></th>
+	</tr>
+	<% @users.each do |user| %>
+	<tr>
+		<td> <%= user.first_name %> </td>
+		<td> <%= user.last_name %> </td>
+		<td> <%= user.email %> </td>
+		<td> <%= link_to "Show", hound_user_path(user) %> </td>
+	</tr>
+	<% end %>
+</table>
+
+<h2>Pending Events</h2>
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>City</th>
+		<th>Start Date</th>
+		<th>Start Time</th>
+		<th></th>
+	</tr>
+	<% @pending_events.each do |event| %>
+	<tr>
+		<td> <%= event.name %> </td>
+		<td> <%= event.city %> </td>
+		<td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
+		<td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+		<td> <%= link_to "Show", event_path(event) %> </td>
+	</tr>
+	<% end %>
+
+</table>
+
+</div>

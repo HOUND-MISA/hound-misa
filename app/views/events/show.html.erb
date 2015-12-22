@@ -66,7 +66,7 @@
         </div>
       <%end%>
       <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-        <%= @event.start_date.strftime('%B %d, %Y %l:%M %p') %>
+        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %>
       </div>
       <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
         <%= @event.address %>
@@ -178,6 +178,19 @@
   <% end %>
  
  <!--PICTURES-->
+<<<<<<< HEAD
+ <table>
+   <% @event.pictures.each do |picture| %>
+    <tr>
+      <td><div id="meh" style="background-image: url('<%= picture.photo.url(:large) %>');">
+          </div></td>
+      <!-- <td><%= image_tag picture.photo.url(:thumb) %></td>
+      <td><%= picture.description %></td> -->
+    </tr>
+  <% end %>
+</table>
+=======
+>>>>>>> dc0ac90e5c4d2ddbf4a684077bf00356ae01c1dd
 
   <%= link_to 'Back', events_path %>
 
