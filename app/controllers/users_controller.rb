@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_owner, except: [:index, :show]
+  before_filter :authenticate_owner, only: [:edit]
 
   def index
     @users = User.where(['email != ?', "admin@hound.ph"])
@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @attended_events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]])
-    @pending_events = @user.events.where(status: "Pending")
-    @organized_events = @user.events.where(status: "Approved")
+    @attended_events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]]).order('start_date ASC').limit(7)
+    @pending_events = @user.events.where(status: "Pending").order('start_date ASC').limit(7)
+    @organized_events = @user.events.where(status: "Approved").order('start_date ASC').limit(7)
     @favorites = Tag.where(['id IN 
       (
         SELECT i.id FROM 
@@ -31,6 +31,26 @@ class UsersController < ApplicationController
         ) AS i
       )',@user.id, @user.id])
     render :template => 'users/show'
+  end
+
+  def events
+    @user = User.find(params[:id])
+    if params[:organized]
+      @events = @user.events.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
+      render template: "users/events"
+    elsif params[:attended]
+      @events = Event.where(['id IN (SELECT event_id FROM event_attendees WHERE user_id = ?)',params[:id]]).order('start_date ASC').paginate(:page => params[:page])
+      render template: "users/events"
+    elsif params[:pending]
+      if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id)
+         @events = @user.events.where(status: "Pending").order('start_date ASC').paginate(:page => params[:page])
+         render template: "users/events"
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def edit

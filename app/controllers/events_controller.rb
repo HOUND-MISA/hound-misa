@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user, except: [:index, :show, :search, :edit, :approve, :rejet]
+  before_filter :authenticate_user, except: [:index, :show, :search, :edit, :approve, :reject]
   before_filter :authenticate_owner, only: [:edit, :update]
   before_filter :restrict_admin, only: [:new, :edit, :create, :update]
   before_filter :authenticate_admin, only: [:approve, :reject]
