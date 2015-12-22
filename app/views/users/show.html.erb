@@ -228,6 +228,17 @@
 
 
 
+<div>
+  Favorites/Hobbies
+  <% @favorites.each do |tag| %>
+    <div>
+      <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
+      <% if tag.photo.exists? %>
+        <%= image_tag tag.photo.url(:thumb) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <%= form_tag hound_user_events_path(@user), :class => 'hidden', :method => :get do %>
   <%= submit_tag 'View all organized events', name: 'organized', id: 'organized' %>
