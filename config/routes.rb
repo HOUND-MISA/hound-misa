@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   get '/search', to:"events#search", as: :search
   get '/about', to: "pages#about", as: :about
   get '/enzoandjackie', to: "pages#pie", as: :pie
-  get '/hound_users/:id/organized', to: "users#organized", as: :organized
-  get '/hound_users/:id/pending', to: "users#pending", as: :pending
-  get '/hound_users/:id/attended', to: "users#attended", as: :attended
   get '/hound_users/:id/events', to: "users#events", as: :hound_user_events
 
   # The priority is based upon order of creation: first created -> highest priority.
