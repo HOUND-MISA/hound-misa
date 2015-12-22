@@ -18,7 +18,7 @@ class UsersController < ApplicationController
           INNER JOIN
           (
             SELECT h.id FROM events h
-            WHERE (h.user_id = ? AND status = "Approved")
+            WHERE (h.user_id = ? AND status = ?)
             UNION
             SELECT a.id FROM users c
             LEFT JOIN event_attendees b on b.user_id = c.id
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
           LEFT JOIN tags g ON g.id = f.tag_id
           GROUP BY g.id ORDER BY counter DESC LIMIT 4
         ) AS i
-      )',@user.id, @user.id])
+      )',@user.id, "Approved", @user.id])
     render :template => 'users/show'
   end
 
