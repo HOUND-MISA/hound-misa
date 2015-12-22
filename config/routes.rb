@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/search', to:"events#search", as: :search
   get '/about', to: "pages#about", as: :about
   get '/enzoandjackie', to: "pages#pie", as: :pie
-
+  get '/admin-dashboard', to: "pages#dashboard", as: :admin_dashboard
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
