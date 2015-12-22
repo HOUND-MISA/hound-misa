@@ -110,92 +110,108 @@
               <ul class="tab-links">
                   <li class="active"><a href="#tab1">Organized</a></li>
                   <li><a href="#tab2">Attended</a></li>
+                  <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
                   <li><a href="#tab3">Pending</a></li>
+                  <%end%>
               </ul>
            
               <div class="tab-content">
                   <div id="tab1" class="tab active">
+                      <% @organized_events.each do |organized_event| %>
+                      <%= link_to organized_event, {'data-no-turbolink' => true} do %>
                       <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
-              <div class="col-md-1" > </div>
-              <div class="col-md-2 sixtyBySixty" > </div>
-              <div class="col-md-8">
-                <h3 class="eventTitle"> Slamma Slick Saturdays </h3>
-              <!--Details 1 -->
-              <div class="row details" >
-                  <div class="col-md-6 smallFont" > 
-                    October 31
+                        <div class="col-md-1" > </div>
+                        <% if organized_event.pictures.any? %>
+                        <div class="col-md-2" style="background-image: url(<%=organized_event.pictures.first().photo.url(:thumb)%>);background:cover;cursor: pointer; min-height:60px;" > </div>
+                        <%else%>
+                        <div class="col-md-2" style="background-image: url(/assets/no-img.png);background:cover;cursor: pointer; min-height:60px;" > </div>
+                        <%end%>
+                        <div class="col-md-8">
+                          <h3 class="eventTitle"> <%=organized_event.name %> </h3>
+                                    <!--Details 1 -->
+                          <div class="row details" >
+                              <div class="col-md-6 smallFont" > 
+                                <%= organized_event.start_date.strftime('%B %d') %>
+                              </div>
+                              <div class="col-md-6 smallFont" >
+                                <% if organized_event.attendee_count == 1 %>
+                                  <%= organized_event.attendee_count %> Attendee 
+                                <% else %>
+                                  <%= organized_event.attendee_count %> Attendees
+                                <% end %>
+                              </div>
+                          </div>  
+                        </div>
+                                    <!--End of Details-->
+                      </div>
+                      <% end %>
+                       <% end %>
+                       LINK TO VIEW ALL ORGANIZED
                   </div>
-                  <div class="col-md-6 smallFont" >
-                    40 Attendees
-                  </div>
-                </div>  
-              </div>
-              <!--End of Details-->
-            </div>
-            <!--End of First Entry Box-->
-
-            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
-
-              <div class="col-md-1" > </div>
-              <div class="col-md-2 sixtyBySixty" > </div>
-              <div class="col-md-8">
-                <h3 class="eventTitle">Coffee Workshop</h3>
-              <!--Details-->
-                <div class="row details" >
-                  <div class="col-md-6 smallFont"> 
-                    November 2
-                  </div>
-
-                  <!--Number of attendees for event 2-->
-
-                  <div class="col-md-6 smallFont" >
-                    19 Attendees
-                  </div>
-
-                </div>  
-
-              </div>
-              <!--End of Details-->
-
-            </div>
-            <!--End of Second Entry Box-->
-            <div class="row entry pcard"  style="margin-top:25px; padding-top:10px; padding-bottom:10px; cursor: pointer;">
-
-              <div class="col-md-1" > </div>
-              <div class="col-md-2 sixtyBySixty" > </div>
-              <div class="col-md-8">
-                <h3 class="eventTitle">Coffee Workshop</h3>
-              <!--Details-->
-                <div class="row details" >
-                  <div class="col-md-6 smallFont"> 
-                    November 2
-                  </div>
-
-                  <!--Number of attendees for event 2-->
-
-                  <div class="col-md-6 smallFont" >
-                    19 Attendees
-                  </div>
-
-                </div>  
-
-              </div>
-              <!--End of Details-->
-
-            </div>
-            <!--End of Second Entry Box-->
-                  </div>
+                 
            
                   <div id="tab2" class="tab">
-                      <p>Tab #2 content goes here!</p>
-                      <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+                    <% @attended_events.each do |attended_event| %>
+                    <%= link_to attended_event, {'data-no-turbolink' => true} do %>
+                    <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
+                      <div class="col-md-1" > </div>
+                      <% if attended_event.pictures.any? %>
+                      <div class="col-md-2" style="background-image: url(<%=attended_event.pictures.first().photo.url(:thumb)%>);background:cover;cursor: pointer; min-height:60px;" > </div>
+                      <%else%>
+                      <div class="col-md-2" style="background-image: url(/assets/no-img.png);background:cover;cursor: pointer; min-height:60px;" > </div>
+                      <%end%>
+                      <div class="col-md-8">
+                        <h3 class="eventTitle"> <%=attended_event.name %></h3>
+                                  <!--Details 1 -->
+                        <div class="row details" >
+                            <div class="col-md-6 smallFont" > 
+                              <%= attended_event.start_date.strftime('%B %d') %>
+                            </div>
+                            <div class="col-md-6 smallFont" >
+                            <% if attended_event.attendee_count == 1 %>
+                              <%= attended_event.attendee_count %> Attendee 
+                            <% else %>
+                              <%= attended_event.attendee_count %> Attendees
+                            <% end %>
+                            </div>
+                        </div>  
+                      </div>
+                                  <!--End of Details-->
+                    </div>
+                    <% end %>
+                  <%end%>
+                  LINK TO VIEW ALL ATTENDED
                   </div>
-           
+                  <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
                   <div id="tab3" class="tab">
-                      <p>Tab #3 content goes here!</p>
-                      <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum ri.</p>
+                    <% @pending_events.each do |pending_event| %>
+                      <%= link_to pending_event, {'data-no-turbolink' => true} do %>
+                      <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
+                        <div class="col-md-1" > </div>
+                        <% if pending_event.pictures.any? %>
+                        <div class="col-md-2" style="background-image: url(<%=pending_event.pictures.first().photo.url(:thumb)%>);background:cover;cursor: pointer; min-height:60px;" > </div>
+                        <%else%>
+                        <div class="col-md-2" style="background-image: url(/assets/no-img.png);background:cover;cursor: pointer; min-height:60px;" > </div>
+                        <%end%>
+                        <div class="col-md-8">
+                          <h3 class="eventTitle" style="text-decoration: none;"> <%= pending_event.name%></h3>
+                                    <!--Details 1 -->
+                          <div class="row details" >
+                              <div class="col-md-6 smallFont" > 
+                                <%= pending_event.start_date.strftime('%B %d') %>
+                              </div>
+                              <div class="col-md-6 smallFont" >
+                              </div>
+                          </div>  
+                        </div>
+                                    <!--End of Details-->
+                      </div>
+
+                  <%end%>
+                  <%end%>
+                  LINK TO VIEW ALL PENDING
                   </div>
-           
+                  <%end%>
               </div>
           </div>
 
@@ -218,47 +234,7 @@
 
 
 
-<div>
-  Organized:
-  <% @organized_events.each do |organized_event| %>
-    <div>
-      <%= link_to organized_event.name, event_path(organized_event) %><br />
-      <%= organized_event.start_date.strftime('%B %d') %><br />
-      <% if organized_event.attendee_count == 1 %>
-        <%= organized_event.attendee_count %> Attendee 
-      <% else %>
-        <%= organized_event.attendee_count %> Attendees
-      <% end %>
-    </div>
-  <% end %>
-</div>
 
-<div>
-  Attended
-  <% @attended_events.each do |attended_event| %>
-    <div>
-      <%= link_to attended_event.name, event_path(attended_event) %><br />
-      <%= attended_event.start_date.strftime('%B %d') %><br />
-      <% if attended_event.attendee_count == 1 %>
-        <%= attended_event.attendee_count %> Attendee 
-      <% else %>
-        <%= attended_event.attendee_count %> Attendees
-      <% end %>
-  </div>
-  <% end %>
-</div>
-
-<% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
-  <div>
-    Pending:
-    <% @pending_events.each do |pending_event| %>
-      <div>
-        <%= link_to pending_event.name, event_path(pending_event) %><br />
-        <%= pending_event.start_date.strftime('%B %d') %><br />
-      </div>
-    <% end %>
-  </div>
-<% end %>
 
 <div>
   Favorites/Hobbies

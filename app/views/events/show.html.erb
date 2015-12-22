@@ -21,20 +21,33 @@
     <div class="col-md-6" style="min-height:540px;">
       <div class="row">
       <% if !@picture.nil? %>
-        <div id="slider" class="flexslider">
-          <ul class="slides">
-          <% @event.pictures.each do |picture| %>
-            <li>
-              <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=picture.photo.url(:medium)%>">
-            </li>
-            <%end%>
-            <li>
-              <img src="images/kitchen_adventurer_donut.jpg" />
-            </li>
-
-          </ul>
-        </div>
-
+        <div id="this-carousel-id" class="carousel slide" style="min-height:540px;"><!-- class of slide for animation -->
+          <div class="carousel-inner">
+            <%counter=0%>
+            <% @event.pictures.each do |picture| %>
+              <%if counter==0%>
+                <div class="item active"><!-- class of active since it's the first item -->
+                  <img src="<%=picture.photo.url(:large)%>" alt="" id="imgg"/>
+                  <div class="carousel-caption">
+                    <p><%= picture.description %></p>
+                  </div>
+                <%counter=counter+1%>
+              </div>
+              <%else%>
+              <div class="item">
+                  <img src="<%=picture.photo.url(:large)%>" alt="" id="imgg"/>
+                  <div class="carousel-caption">
+                    <p><%= picture.description %></p>
+                  </div>
+                </div>
+              <%end%>
+              <%end%>
+            </div><!-- /.carousel-inner -->
+          <!--  Next and Previous controls below
+                href values must reference the id for this carousel -->
+            <a class="carousel-control left" href="#this-carousel-id" data-slide="prev" style="padding-top:45%; font-size: 70px;">&lsaquo;</a>
+            <a class="carousel-control right" href="#this-carousel-id" data-slide="next" style="padding-top:45%; font-size: 70px;">&rsaquo;</a>
+        </div><!-- /.carousel -->
       <%else%>
         <div id="shown-img" class="img-responsive" style="background-color:white; height:550px; width:550px; padding-left:2px; padding-right:2px; padding-top:2vh;">
         <center>
@@ -165,6 +178,7 @@
   <% end %>
  
  <!--PICTURES-->
+<<<<<<< HEAD
  <table>
    <% @event.pictures.each do |picture| %>
     <tr>
@@ -175,6 +189,8 @@
     </tr>
   <% end %>
 </table>
+=======
+>>>>>>> dc0ac90e5c4d2ddbf4a684077bf00356ae01c1dd
 
   <%= link_to 'Back', events_path %>
 
@@ -238,32 +254,10 @@ if (navigator.geolocation) { //Checks if browser supports geolocation
 
  <script defer src="assets/jquery.flexslider.js"></script>
 
-  <script type="text/javascript">
-    $(function(){
-      SyntaxHighlighter.all();
-    });
-    $(window).load(function(){
-      $('#carousel').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 210,
-        itemMargin: 5,
-        asNavFor: '#slider'
-      });
-
-      $('#slider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        sync: "#carousel",
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-      });
-    });
-  </script>
+  <script>
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 </body>
 </html>
