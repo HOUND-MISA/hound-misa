@@ -48,13 +48,15 @@
 		<th>City</th>
 		<th>Start Date</th>
 		<th>Start Time</th>
+		<th></th>
 	</tr>
 	<% @pending_events.each do |event| %>
 	<tr>
 		<td> <%= event.name %> </td>
 		<td> <%= event.city %> </td>
-		<td> <%= event.start_date %> </td>
-		<td> <%= event.start_time %> </td>
+		<td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
+		<td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+		<td> <%= link_to "Show", event_path(event) %> </td>
 	</tr>
 	<% end %>
 
