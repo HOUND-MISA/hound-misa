@@ -47,7 +47,7 @@
     <% end %>
   </table>
 
-  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %><i>(The first photo will be set as the primary photo)</i></p>
+  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %><i>(The last photo will be set as the primary photo)</i></p>
   <table id="pictures">
     <%= f.fields_for :pictures, :wrapper => false do |ff| %>
     <tr class="fields">

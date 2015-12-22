@@ -26,7 +26,6 @@
           <% @event.pictures.each do |picture| %>
             <li>
               <div id="shown-img" class="img-responsive" style="background-color:white; height:100%; width:100%;background-image: url(<%=picture.photo.url(:medium)%>">
-               </div>
             </li>
             <%end%>
             <li>
@@ -169,8 +168,10 @@
  <table>
    <% @event.pictures.each do |picture| %>
     <tr>
-      <td><%= image_tag picture.photo.url(:thumb) %></td>
-      <td><%= picture.description %></td>
+      <td><div id="meh" style="background-image: url('<%= picture.photo.url(:large) %>');">
+          </div></td>
+      <!-- <td><%= image_tag picture.photo.url(:thumb) %></td>
+      <td><%= picture.description %></td> -->
     </tr>
   <% end %>
 </table>
