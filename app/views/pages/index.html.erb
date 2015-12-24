@@ -61,6 +61,19 @@ function shuffle(array) {
             <li>
                 <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
             </li>
+                        <% if user_signed_in? && current_user.try(:admin?) %>
+            <li><hr></li>
+            <li>
+              <p class="" href="#login" data-toggle="modal">
+              <center>
+              
+              <%= link_to "DASHBOARD",admin_dashboard_path, :style=>"font-size:14px; margin-left:12px;" %>
+
+              </center></p>
+            </li>
+            <%end%>
+
+
             <li><hr></li>
             <li>
               <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
@@ -87,7 +100,7 @@ function shuffle(array) {
  <center>
  <span class="lantitle"><b>What's the plan?</b></span><br>
   <form action="/search">
-   <input id="sb-1" name="search_query" class="lanSearch" placeholder="" size="14" autofocus="autofocus"><br>
+   <input id="sb-1" name="search_query" class="lanSearch" placeholder="" size="13" autofocus="autofocus"><br>
     <input type="submit" value="Submit" class="hide"/>
   </form>
   </center>
