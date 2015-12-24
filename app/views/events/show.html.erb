@@ -176,23 +176,6 @@
       <%= link_to @event_tags.last.tag.name, {:controller => "events", :action => "search", :category => @event_tags.last.tag.name} %>
     </p>
   <% end %>
- 
- <!--PICTURES-->
-<<<<<<< HEAD
- <table>
-   <% @event.pictures.each do |picture| %>
-    <tr>
-      <td><div id="meh" style="background-image: url('<%= picture.photo.url(:large) %>');">
-          </div></td>
-      <!-- <td><%= image_tag picture.photo.url(:thumb) %></td>
-      <td><%= picture.description %></td> -->
-    </tr>
-  <% end %>
-</table>
-=======
->>>>>>> dc0ac90e5c4d2ddbf4a684077bf00356ae01c1dd
-
-  <%= link_to 'Back', events_path %>
 
 <script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
