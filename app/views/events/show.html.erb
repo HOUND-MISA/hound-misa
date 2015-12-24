@@ -17,7 +17,7 @@
 <body>
 
 <div class="container-fluid content-box-show row" style="padding-left:5vw; padding-right:5vw;">
-  <div class="row card2" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
+  <div class="row card2 cf" style=" border:solid 1px; margin-top:107px; background-color:#191919; padding:60px;">
     <div class="col-md-6" style="min-height:540px;">
       <div class="row">
       <% if !@picture.nil? %>
@@ -86,9 +86,9 @@
         <% end %>
       <% else %>
         <% if @event.user_id == current_user.id %>
-          <%= link_to 'Edit', edit_event_path(@event) %> | 
-          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td>Status: <%= @event.status %></td>
+          <td><%= link_to 'Edit', edit_event_path(@event) %> |</td> 
+          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% if @event.status == "Rejected" %>
             <strong>Note: This event will be deleted after 10 days.</strong>
           <% end %>
