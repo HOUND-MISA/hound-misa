@@ -103,7 +103,7 @@
     <% end %>
     </div>
   </div>
-  <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent;">
+  <div id="wrapper"class="row" style="border:solid 0px; margin-top:10px; background-color:transparent; margin-bottom:20px;">
     <div id="map" class="col-md-8 card2" style=" height: 560px;">
     </div>
     <div id="over_map">
@@ -150,7 +150,11 @@
       <div class="row pcard" style="height:62px;  width:315px; position:inherit; margin:25px;">
         
           <div class="col-xs-3" style="padding:0px;">
-              <div class="circle"></div>
+          <% if u.user.avatar.exists? %>
+              <div class="circle" style="background-image:url( <%= u.user.avatar.url(:thumb) %> )"></div>
+          <%else%>
+              <div class="circle" style="background-image:url(/assets/no-img1.png)"></div>
+          <%end%>
           </div>
 
           <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
