@@ -135,7 +135,8 @@
                                     <!--Details 1 -->
                           <div class="row details" >
                               <div class="col-md-6 smallFont" > 
-                                <%= organized_event.start_date.strftime('%B %d') %>
+                                <%= to_char(organized_event.start_date, 'Month DD') %>
+                                <!-- for sqlite, use <%= organized_event.start_date.strftime('%B %d') %> -->
                               </div>
                               <div class="col-md-6 smallFont" >
                                 <% if organized_event.attendee_count == 1 %>
@@ -178,7 +179,8 @@
                                   <!--Details 1 -->
                         <div class="row details" >
                             <div class="col-md-6 smallFont" > 
-                              <%= attended_event.start_date.strftime('%B %d') %>
+                              <%= to_char(attended_event.start_date, 'Month DD') %>
+                              <!-- for sqlite, use <%= attended_event.start_date.strftime('%B %d') %>-->
                             </div>
                             <div class="col-md-6 smallFont" >
                             <% if attended_event.attendee_count == 1 %>
@@ -222,7 +224,8 @@
                                     <!--Details 1 -->
                           <div class="row details" >
                               <div class="col-md-6 smallFont" > 
-                                <%= pending_event.start_date.strftime('%B %d') %>
+                                <%= to_char(pending_event.start_date, 'Month DD') %> 
+                                <!-- for sqlite, use <%= pending_event.start_date.strftime('%B %d') %> -->
                               </div>
                               <div class="col-md-6 smallFont" >
                               </div>

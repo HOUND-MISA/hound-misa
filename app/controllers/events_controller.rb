@@ -106,13 +106,15 @@ def search
     if @search != nil
       @events = Event.where(['name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))',"%#{@search}%","%#{@search}%", "%#{@search}%"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
     else
-      @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime(?,start_date) = ?","#{@tag}","#{@city}",'%m-%d-%Y',"#{@date}"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
+      #@events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime(?,start_date) = ?","#{@tag}","#{@city}",'%Y-%m-%d',"#{@date}"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
+      @events = Event.where(["id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR to_char(start_date,?) = ?","#{@tag}","#{@city}",'YYYY-MM-DD',"#{@date}"]).order(@pending).order('start_date ASC').paginate(:page => params[:page])
     end
   else
     if @search != nil
       @events = Event.where(['(name LIKE ? OR description LIKE ? OR id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name LIKE ?))) AND (status = ?)',"%#{@search}%","%#{@search}%", "%#{@search}%","Approved"]).order('start_date ASC').paginate(:page => params[:page])
     else
-      @events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime(?,start_date) = ?) AND (status = ?)","#{@tag}","#{@city}",'%m-%d-%Y',"#{@date}","Approved"]).order('start_date ASC').paginate(:page => params[:page])
+      #@events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR strftime(?,start_date) = ?) AND (status = ?)","#{@tag}","#{@city}",'%Y-%m-%d',"#{@date}","Approved"]).order('start_date ASC').paginate(:page => params[:page])
+      @events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR to_char(start_date,?) = ?) AND (status = ?)","#{@tag}","#{@city}",'YYYY-MM-DD',"#{@date}","Approved"]).order('start_date ASC').paginate(:page => params[:page])
     end
   end
   render :template => "events/search"
