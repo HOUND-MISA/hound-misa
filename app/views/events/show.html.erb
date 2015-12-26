@@ -66,8 +66,10 @@
         </div>
       <%end%>
       <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-        <!-- for sqlite, use <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %>-->
         <%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-
+        <% if false %>
+          for sqlite, use <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;"><%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %>
+        <% end %>
       </div>
       <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
         <%= @event.address %>

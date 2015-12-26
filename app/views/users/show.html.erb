@@ -136,7 +136,9 @@
                           <div class="row details" >
                               <div class="col-md-6 smallFont" > 
                                 <%= to_char(organized_event.start_date, 'Month DD') %>
-                                <!-- for sqlite, use <%= organized_event.start_date.strftime('%B %d') %> -->
+                                <% if false %>
+                                  for sqlite, use <%= organized_event.start_date.strftime('%B %d') %>
+                                <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >
                                 <% if organized_event.attendee_count == 1 %>
@@ -180,7 +182,9 @@
                         <div class="row details" >
                             <div class="col-md-6 smallFont" > 
                               <%= to_char(attended_event.start_date, 'Month DD') %>
-                              <!-- for sqlite, use <%= attended_event.start_date.strftime('%B %d') %>-->
+                              <% if false %>
+                                for sqlite, use <%= attended_event.start_date.strftime('%B %d') %>
+                              <% end %>
                             </div>
                             <div class="col-md-6 smallFont" >
                             <% if attended_event.attendee_count == 1 %>
@@ -223,9 +227,11 @@
                           <h3 class="eventTitle" style="text-decoration: none;"> <%= pending_event.name%></h3>
                                     <!--Details 1 -->
                           <div class="row details" >
-                              <div class="col-md-6 smallFont" > 
+                              <div class="col-md-6 smallFont" >
                                 <%= to_char(pending_event.start_date, 'Month DD') %> 
-                                <!-- for sqlite, use <%= pending_event.start_date.strftime('%B %d') %> -->
+                                <% if false %>
+                                  for sqlite, use <%= pending_event.start_date.strftime('%B %d') %>
+                                <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >
                               </div>
