@@ -16,9 +16,9 @@
     <center>
         <%= image_tag @user.avatar.url(:large) %>
         </center>
-    </div>
   </div>
 </div>
+
 
 <div class="banner ncard"> 
 </div>
@@ -117,8 +117,11 @@
               </ul>
            
               <div class="tab-content">
+                  <%counter_o=0%>
                   <div id="tab1" class="tab active">
-                      <% @organized_events.each do |organized_event| %>
+                      
+                      <% @organized_events.take(7).each do |organized_event| %>
+                      <%counter_o=counter_o+1%>
                       <%= link_to organized_event, {'data-no-turbolink' => true} do %>
                       <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
                         <div class="col-md-1" > </div>
@@ -147,12 +150,21 @@
                       </div>
                       <% end %>
                        <% end %>
+                       <center>
+                       <%if counter_o==6%>
                        <%= link_to "View all organized events", "", :onclick => "$('#organized').click()" %>
+                       <%elsif counter_o==0%>
+                       No event organized
+                       <%elsif counter_o<6%>
+
+                       <%end%>
+                       </center>
                   </div>
                  
-           
+                  <%counter_a=0%>
                   <div id="tab2" class="tab">
-                    <% @attended_events.each do |attended_event| %>
+                    <% @attended_events.take(7).each do |attended_event| %>
+                    <%counter_a=counter_a+1%>
                     <%= link_to attended_event, {'data-no-turbolink' => true} do %>
                     <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
                       <div class="col-md-1" > </div>
@@ -181,11 +193,22 @@
                     </div>
                     <% end %>
                   <%end%>
-                  <%= link_to "View all attended events", "", :onclick => "$('#attended').click()" %>
+                  <center>
+                       <%if counter_a==6%>
+                       <%= link_to "View all organized events", "", :onclick => "$('#organized').click()" %>
+                       <%elsif counter_a==0%>
+                       No event attended
+                       <%elsif counter_a<6%>
+
+                       <%end%>
+                       </center>
                   </div>
                   <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
+
+                  <%counter_p=0%>
                   <div id="tab3" class="tab">
-                    <% @pending_events.each do |pending_event| %>
+                    <% @pending_events.take(7).each do |pending_event| %>
+                    <%counter_p=counter_p+1%>
                       <%= link_to pending_event, {'data-no-turbolink' => true} do %>
                       <div class="row entry pcard" style="padding-top:10px; padding-bottom:10px; cursor: pointer;" >
                         <div class="col-md-1" > </div>
@@ -210,7 +233,15 @@
 
                   <%end%>
                   <%end%>
-                  <%= link_to "View all pending events", "", :onclick => "$('#pending').click()" %>
+                      <center>
+                       <%if counter_p==6%>
+                       <%= link_to "View all organized events", "", :onclick => "$('#organized').click()" %>
+                       <%elsif counter_p==0%>
+                       No pending events
+                       <%elsif counter_p<6%>
+
+                       <%end%>
+                       </center>
                   </div>
                   <%end%>
               </div>
@@ -223,6 +254,17 @@
 
   </div>
 
+<div>
+  Favorites/Hobbies
+  <% @favorites.each do |tag| %>
+    <div>
+      <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
+      <% if tag.photo.exists? %>
+        <%= image_tag tag.photo.url(:thumb) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 
 

@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript">
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+  var images = ["elem_splash-img.jpg", "download1.jpeg","download3.jpeg"];
+  shuffle(images);
+  console.log(images);
+  var i = 0;
+      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
+  /* FOR FADE EFFECT
+  $(function () {
+      var i = 0;
+      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
+      setInterval(function () {
+          i++;
+          if (i == images.length) {
+              i = 0;
+          }
+          $("#index_jum").fadeOut(500, 'swing', function () {
+              $(this).css("background-image", "url(/assets/" + images[i] + ")");
+              $(this).fadeIn(500);
+          });
+      }, 25000);
+  });*/
+</script>
   <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; height:94px; padding:none; border-color:transparent;">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -22,6 +61,19 @@
             <li>
                 <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
             </li>
+                        <% if user_signed_in? && current_user.try(:admin?) %>
+            <li><hr></li>
+            <li>
+              <p class="" href="#login" data-toggle="modal">
+              <center>
+              
+              <%= link_to "DASHBOARD",admin_dashboard_path, :style=>"font-size:14px; margin-left:12px;" %>
+
+              </center></p>
+            </li>
+            <%end%>
+
+
             <li><hr></li>
             <li>
               <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
@@ -48,7 +100,7 @@
  <center>
  <span class="lantitle"><b>What's the plan?</b></span><br>
   <form action="/search">
-   <input id="sb-1" name="search_query" class="lanSearch" placeholder="" size="14" autofocus="autofocus"><br>
+   <input id="sb-1" name="search_query" class="lanSearch" placeholder="" size="13" autofocus="autofocus"><br>
     <input type="submit" value="Submit" class="hide"/>
   </form>
   </center>

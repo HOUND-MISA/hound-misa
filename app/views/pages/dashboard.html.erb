@@ -1,8 +1,12 @@
 <div class="container-fluid content-box">
-<h1>Admin Dashboard</h1>
+<center><h1>Admin Dashboard</h1></center>
 <br>
-<h2>Tags</h2>
-<table class="table" >
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">TAGS</div>
+
+  <!-- Table -->
+  <table class="table">
 	<tr>
 		<th>Photo</th>
 		<th>Name</th>
@@ -21,15 +25,20 @@
 		
 	</tr>
 	<% end %>
-</table>
-<br>
-<h2>Users</h2>
-<table class="table">
+  </table>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">USERS</div>
+
+  <!-- Table -->
+  <table class="table">
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
 		<th>E-mail</th>
-		<th></th>
+		<th>Actions</th>
 	</tr>
 	<% @users.each do |user| %>
 	<tr>
@@ -39,16 +48,21 @@
 		<td> <%= link_to "Show", hound_user_path(user) %> </td>
 	</tr>
 	<% end %>
-</table>
+  </table>
+</div>
 
-<h2>Pending Events</h2>
-<table class="table">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>PENDING EVENTS</b></div>
+
+  <!-- Table -->
+  <table class="table">
 	<tr>
 		<th>Name</th>
 		<th>City</th>
 		<th>Start Date</th>
 		<th>Start Time</th>
-		<th></th>
+		<th>Actions</th>
 	</tr>
 	<% @pending_events.each do |event| %>
 	<tr>
@@ -59,7 +73,7 @@
 		<td> <%= link_to "Show", event_path(event) %> </td>
 	</tr>
 	<% end %>
-
-</table>
+  </table>
+</div>
 
 </div>

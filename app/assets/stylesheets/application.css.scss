@@ -26,6 +26,7 @@ font-size: 18px;
 font-family: 'Roboto' !important;
 width:200px;
 height:45px;
+outline: 0;
 }
 .landing-search{
 	margin-top: 38.5vh;
@@ -37,11 +38,13 @@ height:45px;
 	border:0;
 	border-bottom:solid 3px white;
 	margin-top: 2vh;
+	outline: 0;
 }
 .lantitle{
 	font-size: 6vw;
 	color:white;
 	margin-top: 3px;
+	font-family: 'Roboto' !important;
 }
 .footer
 {
@@ -188,6 +191,7 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     bottom: 0;
     background-repeat: no-repeat;
     background-size: contain;
+    background: url(no-img-big.png);
 }
 #imgdiv{
 	
@@ -224,6 +228,7 @@ color:white;
 font-size:20px; 
 font-family:'Roboto' !important;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+outline:0;
 }
 .jb:hover
 {
@@ -245,7 +250,6 @@ background: #FFFFFF;
 border-radius: 15px 15px 15px 0px;
 }
 .circle{
-background: url(/assets/elem_event-img-13.jpg);
 background-size: cover;
 height:60px; width:60px; border-radius:30px; margin:0px;
 }
@@ -301,6 +305,20 @@ box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	color: #1c1818;
 	width: 15vw;
 	padding:1px;
+
+}
+.styled-select {
+   width: 240px;
+   height: 34px;
+   overflow: hidden;
+   background: url(new_arrow.png) no-repeat right #ddd;
+   border: 1px solid #ccc;
+   }
+.styled-t select
+{
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
 }
 .jbtn
 {
@@ -319,6 +337,7 @@ margin-right: 2.7vw;
 margin-bottom:10px;
 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 transition: all 0.2s ease-in-out;
+outline: 0;
 }
 .jbtn:hover
 {
@@ -485,4 +504,26 @@ text-decoration:none;
   height: 540px;
   width:100%;
   object-fit: cover !important;
+}
+footer a:hover {
+    background-color: transparent!important;
+} 
+.dropdown-menu a:hover {
+    background-color: transparent!important;
+    color:#333!important;
+
+} 
+
+table a:hover {
+    background-color: transparent!important;
+    color:#333!important;
+
+} 
+.tab-content a:hover{
+	background-color: transparent!important;
+    color:#333!important;
+}
+
+.cf a:hover{
+	background-color: transparent!important;
 }
