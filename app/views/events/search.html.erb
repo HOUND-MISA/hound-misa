@@ -59,11 +59,13 @@
         
 </div>
 </center>
+
+<%= render 'modal' %>
+
 <% if user_signed_in? && !current_user.try(:admin?) %>
-  <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
-<%else%>
-  <button class="jbtn1"></button>
+  <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
 <% end %>
+
 <div style="border-top:2px solid #f2f2f2;">
 <%= will_paginate @events,:class=>"pg",:style=>"margin-top:10px;margin-bottom:10px;" %>
 </div>
