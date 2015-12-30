@@ -16,7 +16,9 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      #respond_with resource
+      @reopen_signup = true
+      render :template => "pages/open_modal"
     end
     if resource.email == "admin@hound.ph"
       resource.update(admin: true)

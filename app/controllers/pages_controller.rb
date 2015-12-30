@@ -21,5 +21,9 @@ class PagesController < ApplicationController
   	render :template => "pages/dashboard"
   end
 
+  def fail
+    @message = "Invalid username or credentials do not match"
+    render :template => "pages/open_modal"
+  end
   
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   resources :tags
   resources :events, except: [:new, :edit]
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "registrations"}
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "registrations", :sessions => "sessions"}
     devise_scope :user do
       get 'users/sign_out' => "devise/sessions#destroy"
   end
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/about', to: "pages#about", as: :about
   get '/enzoandjackie', to: "pages#pie", as: :pie
   get '/admin-dashboard', to: "pages#dashboard", as: :admin_dashboard
+  get '/login_fail', to: "pages#fail", as: :login_fail
 
   #ads
   resources :ads, except: [:show, :index]

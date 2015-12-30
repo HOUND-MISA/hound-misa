@@ -1,5 +1,7 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= @message %>
+  
   <div class="field">
   <br>
     <center><%= f.email_field :email, autofocus: true, :style=>"border:0; border-bottom:solid 1.5px black; font-size:15px;",:placeholder => "Email", :size=>"25" %></center>
