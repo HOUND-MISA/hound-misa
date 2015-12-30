@@ -1,52 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript">
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-  var images = ["elem_splash-img.jpg", "download1.jpeg","download3.jpeg"];
-  shuffle(images);
-  console.log(images);
-  var i = 0;
-      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
-  /* FOR FADE EFFECT
-  $(function () {
-      var i = 0;
-      $("#index_jum").css("background-image", "url(/assets/" + images[i] + ")");
-      setInterval(function () {
-          i++;
-          if (i == images.length) {
-              i = 0;
-          }
-          $("#index_jum").fadeOut(500, 'swing', function () {
-              $(this).css("background-image", "url(/assets/" + images[i] + ")");
-              $(this).fadeIn(500);
-          });
-      }, 25000);
-  });*/
-</script>
   <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; height:94px; padding:none; border-color:transparent;">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
+    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
+      </button>-->
 
     <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
     <div class="collapse navbar-collapse" style="background:transparent;" id="bs-example-navbar-collapse-1">
