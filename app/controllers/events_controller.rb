@@ -90,6 +90,9 @@ class EventsController < ApplicationController
   end
 
 def search
+  @event = Event.new
+  @header = "New Event"
+  @submit = "Create Event"
   @search = params['search_query']
   @tag = params['category']
   @city = params['city']
