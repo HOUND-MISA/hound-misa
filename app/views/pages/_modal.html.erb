@@ -8,9 +8,10 @@
       <div class="modal-body" >
         <%= render 'devise/sessions/new' %>
         <center>No account yet?</center>
-        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <a id="link" href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
-        <% end -%>
+        <a id="link" href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br />
+
+    <!--     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+               <a id="link" href="#signup" data-toggle="modal" data-dismiss="modal"><center><b>Sign up</b></center></a><br /><% end -%> -->
       </div>
     </div>
   </div>
@@ -27,9 +28,10 @@
         <%= render "devise/registrations/new" %>
         <center>
           Already have an account?<br />
-          <%- if controller_name != 'sessions' %>
+          <a id="link" href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
+         <!--  <%- if controller_name != 'sessions' %>
             <a id="link" href="#login" data-toggle="modal" data-dismiss="modal"><center><b>Log in here</b></center></a><br />
-          <% end -%>
+   <% end -%> -->
         </center>
       </div>
     </div>

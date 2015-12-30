@@ -57,8 +57,9 @@
 
 <%= render 'modal' %>
 
+
 <% if user_signed_in? && !current_user.try(:admin?) %>
-  <button id="butt" class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
+  <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
 <% end %>
 
 

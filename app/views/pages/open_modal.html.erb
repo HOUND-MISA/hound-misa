@@ -7,3 +7,16 @@
     $('#login').modal("show");
   });
 </script>
+
+<% if @reopen_signup %>
+<script>
+  $(document).ready(function() {
+    $('#login').modal("hide");
+  });
+</script>
+  <script>
+    $(document).ready(function() {
+      $('#signup').modal("show");
+    });
+  </script>
+<% end %>
