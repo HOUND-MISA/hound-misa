@@ -30,6 +30,7 @@ class UsersController < ApplicationController
           GROUP BY g.id ORDER BY counter DESC LIMIT 4
         ) AS i
       )',@user.id, "Approved", @user.id])
+    
     render :template => 'users/show'
   end
 
