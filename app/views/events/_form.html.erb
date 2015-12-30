@@ -98,7 +98,7 @@
         <tr class="fields">
           <td><%= image_tag ff.object.photo.url(:thumb) %></td>
           <td><%= ff.file_field :photo %></td>
-          <td><%= ff.text_field :description, :placeholder => "Description" %></td>
+
           <td><%= ff.link_to_remove "X",:style=>"margin-left:10px;" %></td>
         </tr>
         <% end %>
