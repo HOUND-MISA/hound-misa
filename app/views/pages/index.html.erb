@@ -58,11 +58,8 @@ function shuffle(array) {
           </a>
           
           <ul class="dropdown-menu">
-            <li>
-                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
-            </li>
-                        <% if user_signed_in? && current_user.try(:admin?) %>
-            <li><hr></li>
+            
+            <% if current_user.try(:admin?) %>
             <li>
               <p class="" href="#login" data-toggle="modal">
               <center>
@@ -70,6 +67,10 @@ function shuffle(array) {
               <%= link_to "DASHBOARD",admin_dashboard_path, :style=>"font-size:14px; margin-left:12px;" %>
 
               </center></p>
+            </li>
+            <% else %>
+            <li>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
             </li>
             <%end%>
 
