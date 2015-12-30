@@ -1,66 +1,124 @@
+
 <%= simple_nested_form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 card2" style=" margin:auto; min-height:470px; border: solid 0px; margin-top:10px; padding-top:5px; padding-left:30px; padding-right:30px;">
+      <div class="form-group">
+        <label for="InputName">Event Name:</label>  
+        <div class="input-group">
+          <%= f.text_field :name, :class=>"form-control", :placeholder=>"Enter Name"%>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="InputMessage">Description: </label>
+          <%= f.text_area :description,:class=>"input-group form-control", :style=>"min-width:100%;",rows:"7" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="col-md-6">
+
+      <div class="form-group">
+        <label >Address</label>
+        <div class="input-group" style="min-width:100%">
+          <%= f.text_field :address_one, :placeholder => "Unit, House/Building/Street Number, Street Name, Barangay/District Name", :class=>"form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="sel1">Select City:</label><br>
+          <%= f.select :city, cities, :prompt => "Select City*",:class=>"form-control" %>
+              
+          </div>
+        </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="sel1">Select Province:</label>
+          <%= f.select :province, provinces, :prompt => "Select Province", :class=>"form-control" %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <div class="input-group" style="min-width:100%">
+          <%= f.text_field :website,:class=>"form-control", :placeholder=>"Website" %>
+      </div>        
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label "Date" %><br>
-    <%= f.date_select :start_date %> - <%= f.time_select :start_time, {:ampm => true} %>
-  </div>
 
+<!-- End of Description and Address-->
 
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address_one, :placeholder => "Unit, House/Building/Street Number, Street Name, Barangay/District Name", :size => 80 %><br /><br />
-    <%= f.select :city, cities, :prompt => "Select City" %>
-    <%= f.select :province, provinces, :prompt => "Select Province" %>
+  <div class="row ">
+    <div class="col-sm-6">
+    <label>Date:</label>
+      <%= f.date_select :start_date %>
+    </div>        
   </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
+  <div class="row ">
+    <div class="col-sm-6">
+    <label>Time:</label>
+      <%= f.time_select :start_time, {:ampm => true} %>    </div>        
   </div>
 
-  <!-- AAYUSIN KO PA TO!! -->
-  <p><%= f.link_to_add "Add a tag", :event_tags, :data => {:target => "#event_tags"}, :class => "btn" %></p>
-  <table id="event_tags">
-    <%= f.fields_for :event_tags, :wrapper => false do |ff| %>
-    <tr class="fields">
-      <td><%= ff.association :tag %></td>
-      <td><%= ff.link_to_remove "Remove this tag" %></td>
-    </tr>
-    <% end %>
-  </table>
+</div>
+<div class="row">
 
-  <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %><i>(The last photo will be set as the primary photo)</i></p>
-  <table id="pictures">
-    <%= f.fields_for :pictures, :wrapper => false do |ff| %>
-    <tr class="fields">
-      <td><%= image_tag ff.object.photo.url(:thumb) %></td>
-      <td><%= ff.file_field :photo %></td>
-      <td><%= ff.text_field :description, :placeholder => "Description" %></td>
-      <td><%= ff.link_to_remove "Remove this photo" %></td>
-    </tr>
-    <% end %>
-  </table>
+    <div class="col-md-6 coladd">
+        <p><%= f.link_to_add "Add a tag", :event_tags, :data => {:target => "#event_tags"}, :class => "btn" %></p>
+      <div style="width:100%;max-height:100px; overflow-y:auto; overflow-x:hidden;">
+    <table id="event_tags">
+      <%= f.fields_for :event_tags, :wrapper => false do |ff| %>
+      <tr class="fields">
+        <td><%= ff.association :tag,label: false %></td>
+        <td><%= ff.link_to_remove "X",:style=>"margin-left:10px;" %></td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
 
+    </div>
+    <div class="col-md-6 coladd">
+      <p><%= f.link_to_add "Add a photo", :pictures, :data => {:target => "#pictures"}, :class => "btn" %><i>(The last photo will be set as the primary photo)</i></p>
+      <div style="width:100%;max-height:100px; overflow-y:auto; overflow-x:hidden;">
+      <table id="pictures">
+        <%= f.fields_for :pictures, :wrapper => false do |ff| %>
+        <tr class="fields">
+          <td><%= image_tag ff.object.photo.url(:thumb) %></td>
+          <td><%= ff.file_field :photo %></td>
+          <td><%= ff.text_field :description, :placeholder => "Description" %></td>
+          <td><%= ff.link_to_remove "X",:style=>"margin-left:10px;" %></td>
+        </tr>
+        <% end %>
+      </table>
+      </div>
+
+    </div>
+
+
+ </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @submit,:class=>"jbtn" %>
   </div>
 
+</div>
+</div>
 <% end %>
+<%= link_to 'Back', events_path %>
+
+

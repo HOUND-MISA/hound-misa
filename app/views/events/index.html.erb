@@ -10,13 +10,7 @@
 
 </head>
 <body>
-<div class="modal fade" id="moD" role="dialog" style="margin-top: 10vh;">
-  <div class="modal-dialog">
-    <center>
-     <!--RENDER HERE-->
-    </center>
-  </div>
-</div>
+
 <div class="container-fluid content-box" style="">
 <p id="notice"><%= notice %></p>
 <div style="margin-bottom:0px; padding-left:2.7vw; padding-right:2.7vw;">
@@ -60,10 +54,14 @@
         
 </div>
 </center>
+
+<%= render 'modal' %>
+
 <% if user_signed_in? && !current_user.try(:admin?) %>
-  <%= button_to 'Add Event', new_event_path, :method => "get", :class=>"jbtn" %>
-  <button class="jbtn" href="#moD">Add EVENT</button>
+  <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
 <% end %>
+
+
 <div style="border-top:2px solid #f2f2f2;">
 <%= will_paginate @events,:class=>"pg",:style=>"margin-top:10px; margin-bottom:10px;" %>
 </div>

@@ -13,6 +13,9 @@ class EventsController < ApplicationController
       @events = Event.all.order(@pending).order('start_date ASC').paginate(:page => params[:page])
     else
       @events = Event.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
+      @event = Event.new
+      @header = "New Event"
+      @submit = "Create Event"
     end
   end
 
@@ -37,17 +40,8 @@ class EventsController < ApplicationController
     @event_tags = EventTag.where(['event_id = ?',params[:id]])
     end
     @picture = @event.pictures.first
-  end
-
-  # GET /events/new
-  def new
-    @event = Event.new
-    #@event.event_tags.build
-  end
-
-  # GET /events/1/edit
-  def edit
-    #@event.event_tags.build
+    @header = "Edit Event"
+    @submit = "Update Event"
   end
 
   # POST /events
