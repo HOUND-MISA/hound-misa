@@ -183,6 +183,7 @@ margin:0px; position:relative; top:0px; left:0px; font-size:12px; padding:0px; c
     margin-top: 100px;
     /*add what you want here*/
 }
+
 #shown-img{
 	position: absolute;
     top: 0;
@@ -534,14 +535,18 @@ table a:hover {
 	background-color: transparent !important;
 }
 
+.editevent a:hover{
+	background-color: transparent!important;
+    color:#333!important;
 
+}
 
 .about{
 	height:100vh;
 	background:#a22922;	
 }
 .abtext h1{
-	margin-top: 120px;
+	margin-top: 22vh;
 	text-align:center;
 	padding-top:100px;
 	font-weight:bolder;
@@ -561,7 +566,7 @@ table a:hover {
 
 }
 .vision h1{
-	margin-top: 50px;
+	margin-top: 80px;
 	text-align:center;
 }
 .vision p{
@@ -579,7 +584,7 @@ text-align:center;
 }
 
 .mission h1{
-	margin-top: 50px;
+	margin-top: 80px;
 	text-align:center;
 }
 .mission p{
@@ -592,7 +597,7 @@ text-align:center;
 
 .founders{
 	padding-top:90px;
-	margin-top:20px;
+	margin-top:90px;
 	border-bottom:solid;
 	border-bottom-width:7px;
 	border-bottom-color:#a22922;
@@ -604,6 +609,9 @@ text-align:center;
 	border-radius:100%;
 	height:200px;
 	width:200px;
+	background-image:url(/assets/ed.jpg);
+	background-size: cover;
+	border:0!important;
 }
 .right{
 
@@ -611,6 +619,9 @@ text-align:center;
 	border-radius:100%;
 	height:200px;
 	width:200px;
+	background-image:url(/assets/pie.jpg);
+	background-size: cover;
+	border:0!important;
 }
 
 .leftbot{
@@ -618,6 +629,9 @@ text-align:center;
 	border-radius:100%;
 	height:200px;
 	width:200px;
+	background-image:url(/assets/elem_interest4.jpg);
+	background-size: cover;
+	border:0!important;
 }
 
 .rightbot{
@@ -627,6 +641,9 @@ text-align:center;
 	margin-bottom:50px;
 	height:200px;
 	width:200px;
+	background-image:url(/assets/pancake.jpg);
+	background-size: cover;
+	border:0!important;
 }
 
 .mid{
@@ -634,6 +651,9 @@ text-align:center;
 	height:200px;
 	width:200px;
 	margin-bottom:50px;
+	background-image:url(/assets/enchilada.jpg);
+	background-size: cover;
+	border:0!important;
 
 }
 
@@ -659,4 +679,15 @@ text-align:center;
 .about_hr{
 border-color:#a22922;
  border-width: 7px;
+}
+.close {
+    color: white !important; 
+    opacity: .8!important;
+    font-size: 35px!important; 
+     transition:all linear 0.15s;
+}
+.close:hover {
+    color: white !important; 
+    opacity: 1!important;
+    font-size: 35px!important; 
 }
