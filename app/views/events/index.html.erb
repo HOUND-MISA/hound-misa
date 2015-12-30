@@ -43,7 +43,10 @@
             <div style="height:14vh; background-color:#1c1818; padding-top:0.95em; padding-left:1.75em; padding-right:1.75em;"><span style="float:left; font-family: 'Roboto' !important; font-size:1.5em; color:white; "><%=event.name%></span> <%if event.status=="Pending"%>
               <span style="float:right; color:#CDDC39;">PENDING</span>
               <%end%><br>
-              <div style="float:left; font-family: 'Roboto' !important; font-size:1em; color:white; margin-top:0.15em;"><%= event.start_date.strftime('%B %d, %Y')%><br>
+              <div style="float:left; font-family: 'Roboto' !important; font-size:1em; color:white; margin-top:0.15em;"><%= to_char(event.start_date, 'Month DD, YYYY')%><br>
+                <% if false %>
+                  for sqlite, use <div style="float:left; font-family: 'Roboto' !important; font-size:1em; color:white; margin-top:0.15em;"><%= event.start_date.strftime('%B %d, %Y')%><br>
+                <% end %>
               <span style="float:left;"><%= event.city%> City</span>
 
               </div>

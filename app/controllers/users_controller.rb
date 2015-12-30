@@ -58,9 +58,6 @@ class UsersController < ApplicationController
     render :template => 'devise/registrations/edit'
   end
 
-  def update
-  end
-
   def destroy
     @user = User.find(params[:id])
     if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id)

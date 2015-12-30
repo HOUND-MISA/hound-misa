@@ -15,7 +15,8 @@ class PagesController < ApplicationController
 
   def dashboard
   	@tags = Tag.all.order('name')
-  	@users = User.all.order('first_name')
+  	@users = User.where(['email != ?', "admin@hound.ph"]).order('first_name')
+    @ad = Ad.first
   	@pending_events = Event.where(status: "Pending").order('start_date ASC')
   	render :template => "pages/dashboard"
   end

@@ -135,7 +135,10 @@
                                     <!--Details 1 -->
                           <div class="row details" >
                               <div class="col-md-6 smallFont" > 
-                                <%= organized_event.start_date.strftime('%B %d') %>
+                                <%= to_char(organized_event.start_date, 'Month DD') %>
+                                <% if false %>
+                                  for sqlite, use <%= organized_event.start_date.strftime('%B %d') %>
+                                <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >
                                 <% if organized_event.attendee_count == 1 %>
@@ -178,7 +181,10 @@
                                   <!--Details 1 -->
                         <div class="row details" >
                             <div class="col-md-6 smallFont" > 
-                              <%= attended_event.start_date.strftime('%B %d') %>
+                              <%= to_char(attended_event.start_date, 'Month DD') %>
+                              <% if false %>
+                                for sqlite, use <%= attended_event.start_date.strftime('%B %d') %>
+                              <% end %>
                             </div>
                             <div class="col-md-6 smallFont" >
                             <% if attended_event.attendee_count == 1 %>
@@ -221,8 +227,11 @@
                           <h3 class="eventTitle" style="text-decoration: none;"> <%= pending_event.name%></h3>
                                     <!--Details 1 -->
                           <div class="row details" >
-                              <div class="col-md-6 smallFont" > 
-                                <%= pending_event.start_date.strftime('%B %d') %>
+                              <div class="col-md-6 smallFont" >
+                                <%= to_char(pending_event.start_date, 'Month DD') %> 
+                                <% if false %>
+                                  for sqlite, use <%= pending_event.start_date.strftime('%B %d') %>
+                                <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >
                               </div>
@@ -270,6 +279,17 @@
 
 
 
+<div>
+  Favorites/Hobbies
+  <% @favorites.each do |tag| %>
+    <div>
+      <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
+      <% if tag.photo.exists? %>
+        <%= image_tag tag.photo.url(:thumb) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <%= form_tag hound_user_events_path(@user), :class => 'hidden', :method => :get do %>
   <%= submit_tag 'View all organized events', name: 'organized', id: 'organized' %>

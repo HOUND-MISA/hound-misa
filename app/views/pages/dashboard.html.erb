@@ -68,12 +68,28 @@
 	<tr>
 		<td> <%= event.name %> </td>
 		<td> <%= event.city %> </td>
-		<td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
-		<td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+    <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
+    <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
+    <% if false %>
+      for sqlite, use
+      <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
+      <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+    <% end %>
 		<td> <%= link_to "Show", event_path(event) %> </td>
 	</tr>
 	<% end %>
   </table>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Ad Frequency</div>
+
+  <% if @ad.nil? %>
+    <%= link_to "Set Ad Frequency", new_ad_path %>
+  <% else %>
+    <%= @ad.frequency %> percent | <%= link_to "Edit", edit_ad_path(@ad) %> | <%= link_to 'Delete', delete_ad_path(@ad), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </div>
 
 </div>

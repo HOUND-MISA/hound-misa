@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'pages#index'
   resources :tags
   resources :events
-  resources :hound_users, :controller => 'users'
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "registrations"}
     devise_scope :user do
       get 'users/sign_out' => "devise/sessions#destroy"
@@ -14,8 +13,23 @@ Rails.application.routes.draw do
   get '/search', to:"events#search", as: :search
   get '/about', to: "pages#about", as: :about
   get '/enzoandjackie', to: "pages#pie", as: :pie
-  get '/hound_users/:id/events', to: "users#events", as: :hound_user_events
   get '/admin-dashboard', to: "pages#dashboard", as: :admin_dashboard
+
+  #ads
+  get '/ads/new', to: "ads#new", as: :new_ad
+  post '/ads', to: "ads#create"
+  get 'ads/:id/edit', to: "ads#edit", as: :edit_ad
+  patch '/ads/:id', to: "ads#update"
+  put '/ads/:id', to: "ads#update"
+  delete '/ads/:id', to: "ads#destroy", as: :delete_ad
+
+  #users
+  get '/hound_users', to: "users#index", as: :hound_users
+  get '/hound_users/:id/edit', to: "users#edit", as: :edit_hound_user
+  get '/hound_users/:id/events', to: "users#events", as: :hound_user_events
+  get '/hound_users/:id', to: "users#show", as: :hound_user
+  delete '/hound_users/:id', to: "users#destroy"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
