@@ -4,44 +4,20 @@ class EventsController < ApplicationController
   before_filter :authenticate_owner, only: [:edit, :update]
   before_filter :restrict_admin, only: [:new, :edit, :create, :update]
   before_filter :authenticate_admin, only: [:approve, :reject]
+  before_action :for_index, only: [:index, :create]
+  before_action :for_show, only: [:show, :update]
 
   # GET /events
   # GET /events.json
   def index
-    if current_user.try(:admin?)
-      @pending = Event.send(:sanitize_sql_array,['case when status = ? then 0 else 1 end',"Pending"])
-      @events = Event.all.order(@pending).order('start_date ASC').paginate(:page => params[:page])
-    else
-      @events = Event.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
+    if !current_user.try(:admin?)
       @event = Event.new
-      @header = "New Event"
-      @submit = "Create Event"
     end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    if !current_user.try(:admin?)
-      if current_user.try(:id) != @event.user_id
-        if @event.status != "Approved"
-          redirect_to events_path
-        end
-      end
-    end
-    if user_signed_in?
-      @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
-    end
-    @attendees = EventAttendee.where(['event_id = ?',params[:id]])
-    @last_three_attendees = @attendees.last(3)
-    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-      marker.lat event.latitude
-      marker.lng event.longitude
-    @event_tags = EventTag.where(['event_id = ?',params[:id]])
-    end
-    @picture = @event.pictures.first
-    @header = "Edit Event"
-    @submit = "Update Event"
   end
 
   # POST /events
@@ -55,8 +31,9 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
+        @reopen = true
         format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.html { render :index }
       end
     end
   end
@@ -69,8 +46,9 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
-        format.html { render :edit }
+        @reopen = true
         format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.html { render :show }
       end
     end
   end
@@ -139,6 +117,40 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def for_index
+      if current_user.try(:admin?)
+        @pending = Event.send(:sanitize_sql_array,['case when status = ? then 0 else 1 end',"Pending"])
+        @events = Event.all.order(@pending).order('start_date ASC').paginate(:page => params[:page])
+      else
+        @events = Event.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
+        @header = "New Event"
+        @submit = "Create Event"
+      end
+    end
+
+    def for_show
+      if !current_user.try(:admin?)
+        if current_user.try(:id) != @event.user_id
+          if @event.status != "Approved"
+            redirect_to events_path
+          end
+        end
+      end
+      if user_signed_in?
+        @attended = EventAttendee.where(['event_id = ? and user_id = ?',params[:id],current_user.id])
+      end
+      @attendees = EventAttendee.where(['event_id = ?',params[:id]])
+      @last_three_attendees = @attendees.last(3)
+      @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+        marker.lat event.latitude
+        marker.lng event.longitude
+      @event_tags = EventTag.where(['event_id = ?',params[:id]])
+      end
+      @picture = @event.pictures.first
+      @header = "Edit Event"
+      @submit = "Update Event"
     end
 
     def event_params

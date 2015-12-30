@@ -15,7 +15,7 @@
 <p id="notice"><%= notice %></p>
 <div style="margin-bottom:0px; padding-left:2.7vw; padding-right:2.7vw;">
 <br>
-  <span style="font-family: 'Roboto' !important; font-size:1.7em;"><b>All Events:</b></span>
+  <span style="font-family: 'Roboto' !important; font-size:1.7em;"><b>All Events: <%= @error %></b></span>
   <%= render 'filters' %>
 </div>
 <div style="margin-top:17px; margin-bottom:30px; height:0px; border: 3px solid #A02A26;margin-left:2.7vw; margin-right:2.7vw; "></div>
@@ -58,7 +58,16 @@
 <%= render 'modal' %>
 
 <% if user_signed_in? && !current_user.try(:admin?) %>
-  <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
+  <button id="butt" class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
+<% end %>
+
+
+<% if @reopen %>
+  <script>
+    $(document).ready(function() {
+      $('#modal').modal("show");
+    });
+  </script>
 <% end %>
 
 

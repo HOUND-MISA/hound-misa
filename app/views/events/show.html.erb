@@ -251,5 +251,14 @@ if (navigator.geolocation) { //Checks if browser supports geolocation
     $('.carousel').carousel();
   });
 </script>
+
+<% if @reopen %>
+  <script>
+    $(document).ready(function() {
+      $('#modal').modal("show");
+    });
+  </script>
+<% end %>
+
 </body>
 </html>
