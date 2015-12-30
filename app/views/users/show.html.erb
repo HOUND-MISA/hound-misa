@@ -135,9 +135,9 @@
                                     <!--Details 1 -->
                           <div class="row details" >
                               <div class="col-md-6 smallFont" > 
-                                <%= to_char(organized_event.start_date, 'Month DD') %>
+                                <%= organized_event.start_date.strftime('%B %d') %>
                                 <% if false %>
-                                  for sqlite, use <%= organized_event.start_date.strftime('%B %d') %>
+                                  <%= to_char(organized_event.start_date, 'Month DD') %>
                                 <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >
@@ -181,9 +181,9 @@
                                   <!--Details 1 -->
                         <div class="row details" >
                             <div class="col-md-6 smallFont" > 
-                              <%= to_char(attended_event.start_date, 'Month DD') %>
+                              <%= attended_event.start_date.strftime('%B %d') %>
                               <% if false %>
-                                for sqlite, use <%= attended_event.start_date.strftime('%B %d') %>
+                                <%= to_char(attended_event.start_date, 'Month DD') %>
                               <% end %>
                             </div>
                             <div class="col-md-6 smallFont" >
@@ -228,9 +228,9 @@
                                     <!--Details 1 -->
                           <div class="row details" >
                               <div class="col-md-6 smallFont" >
-                                <%= to_char(pending_event.start_date, 'Month DD') %> 
+                                <%= pending_event.start_date.strftime('%B %d') %>
                                 <% if false %>
-                                  for sqlite, use <%= pending_event.start_date.strftime('%B %d') %>
+                                  <%= to_char(pending_event.start_date, 'Month DD') %> 
                                 <% end %>
                               </div>
                               <div class="col-md-6 smallFont" >

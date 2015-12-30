@@ -11,13 +11,13 @@ module EventsHelper
     start_dates = []
     if current_user.try(:admin?)
       Event.uniq.pluck(:start_date).each do |start_date|
-        #for sqlite, start_dates.push(start_date.strftime('%Y-%m-%d'))
-        start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+        #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+        start_dates.push(start_date.strftime('%Y-%m-%d'))
       end
     else
       Event.where(status: "Approved").uniq.pluck(:start_date).each do |start_date|
-        #for sqlite, start_dates.push(start_date.strftime('%Y-%m-%d'))
-        start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+        #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+        start_dates.push(start_date.strftime('%Y-%m-%d'))
       end
     end
     return start_dates

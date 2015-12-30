@@ -68,12 +68,11 @@
 	<tr>
 		<td> <%= event.name %> </td>
 		<td> <%= event.city %> </td>
-    <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
-    <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
+    <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
+    <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
     <% if false %>
-      for sqlite, use
-      <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
-      <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+      <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
+      <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
     <% end %>
 		<td> <%= link_to "Show", event_path(event) %> </td>
 	</tr>
