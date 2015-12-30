@@ -13,6 +13,7 @@ class EventsController < ApplicationController
       @events = Event.all.order(@pending).order('start_date ASC').paginate(:page => params[:page])
     else
       @events = Event.where(status: "Approved").order('start_date ASC').paginate(:page => params[:page])
+      @event = Event.new
     end
   end
 

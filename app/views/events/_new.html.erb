@@ -1,5 +1,3 @@
-
- 
 <div class="container-fluid content-box">
 <%= simple_nested_form_for(@event) do |f| %>
   <% if @event.errors.any? %>
@@ -19,27 +17,20 @@
 <h1>New Event</h1>
 	<div class="form-group">
 
-                    <label for="InputName">Event Name:</label>
-                    
-                    <div class="input-group">
-                    	<%= f.text_field :name, :class=>"form-control", :placeholder=>"Enter Name"%>
-                       
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-
+  <label for="InputName">Event Name:</label>  
+  <div class="input-group">
+  	<%= f.text_field :name, :class=>"form-control", :placeholder=>"Enter Name"%>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+  </div>
  				
  	</div>
  	<div class="row">
  		<div class="col-md-6">
-
 			<div class="form-group">
-                    <label for="InputMessage">Description: </label>
-                    <%= f.text_area :description,:class=>"input-group form-control", :style=>"min-width:100%;",rows:"7" %>
+        <label for="InputMessage">Description: </label>
+        <%= f.text_area :description,:class=>"input-group form-control", :style=>"min-width:100%;",rows:"7" %>
  			</div>
-
-
  		</div>
-
 
 		<div class="col-md-6">
 
@@ -57,15 +48,16 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">
-	  					<label for="sel1">Select Province:</label>
-					<%= f.select :province, provinces, :prompt => "Select Province", :class=>"form-control" %>
+            <label for="sel1">Select City:</label><br>
+          <%= f.select :city, cities, :prompt => "Select City*",:class=>"form-control" %>
+	  					
 					</div>
 				</div>
 
 			<div class="col-sm-6">
 				<div class="form-group">
-				  <label for="sel1">Select City:</label><br>
-				  <%= f.select :city, cities, :prompt => "Select City*",:class=>"form-control" %>
+				  <label for="sel1">Select Province:</label>
+          <%= f.select :province, provinces, :prompt => "Select Province", :class=>"form-control" %>
 				</div>
 			</div>
 
