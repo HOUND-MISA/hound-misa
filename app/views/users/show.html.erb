@@ -23,7 +23,7 @@
 <div class="banner ncard"> 
 </div>
 
-<div style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; padding-bottom: 2.5em;">
+<div class="contshow"style="background-color:rgba(50,50,50,0.5); height:340px; top:0px; position: relative; width:100vw; display: table-cell; vertical-align: bottom; ">
 <span class="sub1" style="color:white; margin-left:4.5vw;"><%= @organized_events.count %> <span style="color:#616161;">Events </span></span> 
 <span class="sub1" style="color:white; margin-left:1.5vw;"><%= @attended_events.count %> <span style="color:#616161;">Attended events </span></span> 
 <% if current_user.try(:id) == @user.id %>

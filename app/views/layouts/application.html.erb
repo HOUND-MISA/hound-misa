@@ -8,24 +8,25 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 <%if current_page?(root_url)==false%>
-  <div class="navbar navbar-inverse navbar-fixed-top ncard" style="background-color:#1D1717; height:94px; padding:none;">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+ <nav class="navbar navbar-inverse navbar-fixed-top ncard" style="background-color:#1D1717; height:94px; padding:none;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"style="margin-top:27px;">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-    <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
-    <div class="collapse navbar-collapse" style="background:#1c1818;" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right" style=" padding:none;">
-        <li style="">
-        <%= link_to('HOME', root_path, data: { no_turbolink: true }, :style=>"font-size:19px;margin:20px 0px 0px 40px; outline:0;") %>
+      <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar" style="background-color:#1D1717;">
+      <ul class="nav navbar-nav navbar-right">
+<li style="">
+        <%= link_to('HOME', root_path, data: { no_turbolink: true }, :style=>"font-size:19px;margin:20px 0px 0px 1vw; outline:0;") %>
         </li>
-        <li style=" margin:20px 0px 0px 40px;"><a style="font-size:19px;margin:none; outline:0;" href="/about">ABOUT </a></li>
-        <li style=""><%= link_to "EVENTS", events_path, :style=>"font-size:19px;margin:20px 0px 0px 40px; outline:0;" %></li>
+        <li style=" margin:20px 0px 0px 1vw;"><a style="font-size:19px;margin:none; outline:0;" href="/about">ABOUT </a></li>
+        <li style=""><%= link_to "EVENTS", events_path, :style=>"font-size:19px;margin:20px 0px 0px 1vw; outline:0;" %></li>
         <% if user_signed_in? %>`
-        <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 20px;">
+        <li role="presentation" class="dropdown" style=" margin:20px 0px 0px 1vw;">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-eemxpanded="false" style="font-size:19px;margin:none;">
             <%= current_user %> <span class="caret"></span>
           </a>
@@ -41,8 +42,7 @@
               </center></p>
             </li>
             <% else %>
-            <li>
-                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
+            <li> <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
             </li>
             <%end%>
 
@@ -62,10 +62,8 @@
         
       </ul>
     </div>
-
-
-            
-</div>
+  </div>
+</nav>
 <%else%>
 <%end%>
 </head>

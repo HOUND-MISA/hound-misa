@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head class="pages">
 
-  <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:transparent; height:94px; padding:none; border-color:transparent;">
-    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-top:25px;"aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+  <nav class="navbar navbar-inverse" style="background-color:transparent; height:94px; padding:none; border-color:transparent; border:none;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="margin-top:23px;">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>-->
-
-    <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
-    <div class="collapse navbar-collapse" style="background:transparent;" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right" style=" padding:none;">
-        <% if user_signed_in? %>`
-        <li role="presentation" class="dropdown" style=" margin:20px 60px 0px 20px;">
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" style=""><%=image_tag "elem_logo-white.png", :style => "width: 95%;"%> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar" style=" border:hidden!important; border-width:0!important;">
+      <ul class="nav navbar-nav navbar-right" style="padding-top:20px;">
+                  <% if user_signed_in? %>`
+        <li role="presentation" class="dropdown" style=" margin:0px 60px 0px 20px;">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:19px;margin:none; color:white;">
             <%= current_user %> <span class="caret"></span>
           </a>
           
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color:transparent;">
             
             <% if current_user.try(:admin?) %>
             <li>
               <p class="" href="#login" data-toggle="modal">
               <center>
               
-              <%= link_to "DASHBOARD",admin_dashboard_path, :style=>"font-size:14px; margin-left:12px;" %>
+              <%= link_to "DASHBOARD",admin_dashboard_path, :style=>"font-size:14px; margin-left:12px;color:white;" %>
 
               </center></p>
             </li>
             <% else %>
             <li>
-                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; margin-left:12px;" %></center></p>
+                <p class="" href="#login" data-toggle="modal"><center><%= link_to "PROFILE", hound_user_path(current_user.id), :style=>"font-size:14px; color:white;" %></center></p>
             </li>
             <%end%>
 
 
             <li><hr></li>
             <li>
-              <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; margin-left:12px;" %></center></p>
+              <p class="" href="#login" data-toggle="modal"><center><%= link_to "SIGN OUT", destroy_user_session_path, :style=>"font-size:14px; color:white;" %></center></p>
             </li>
           </ul>
         </li>
@@ -49,8 +50,10 @@
          <li style=" margin:20px 50px 0px 10px;"><a style="font-size:22px;margin:none; color:white;" href="#signup" data-toggle="modal"><button style="height: 40px; width:150px; border-radius: 20px; border: solid 1px; background-color: transparent; margin-top:-10px; outline:0;"><b>SIGN UP</b></button></a></li>
         <% end %>
       </ul>
-    </div>          
+    </div>
   </div>
+</nav>
+
 </head>
 
 <body id="landing">
