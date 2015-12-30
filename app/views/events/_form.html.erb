@@ -12,7 +12,8 @@
   <% end %>
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-10 card2" style=" margin:auto; min-height:470px; border: solid 0px; margin-top:10px; padding-top:5px; padding-left:30px; padding-right:30px;">
+    <div class="col-md-10 card2" style=" margin:auto; min-height:470px; border: solid 0px; margin-top:10px; padding-top:5px; padding-left:30px; padding-right:30px; background-color:white;">
+    <h1>NEW EVENT</h1>
       <div class="form-group">
         <label for="InputName">Event Name:</label>  
         <div class="input-group">
@@ -68,14 +69,10 @@
     <div class="col-sm-6">
     <label>Date:</label>
       <%= f.date_select :start_date %>
+      <label style="margin-left:15px;">Time:</label>
+      <%= f.time_select :start_time, {:ampm => true} %> 
     </div>        
   </div>
-  <div class="row ">
-    <div class="col-sm-6">
-    <label>Time:</label>
-      <%= f.time_select :start_time, {:ampm => true} %>    </div>        
-  </div>
-
 </div>
 <div class="row">
 
@@ -119,6 +116,5 @@
 </div>
 </div>
 <% end %>
-<%= link_to 'Back', events_path %>
 
 
