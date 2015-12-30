@@ -61,44 +61,52 @@
   <div class="container-fluid" style="min-height:802px; margin-top:240px;">
     <div class="row">
       <div class="col-md-8">
+      <% if @favorites.any? %> 
           <div class="row" style="">
-            
 
+              <% if @favorites[0].exists? %> 
               <div class="col-md-6 sampleBox">
                 <div class="glassbox card3" style="cursor: pointer;">
-                  <h3 class="description">Singing</h3>
+                  <h3 class="description"><%=@favorites[0].name%> </h3>
                 </div>
                </div>
+              <% end %> 
 
-
+              <% if @favorites[1].exists? %>
               <div class="col-md-6 sampleBox">
 
                 <div class="glassbox card3" style="cursor: pointer;">
-                  <h3 class="description">Dancing</h3>
+                  <h3 class="description"><%=@favorites[1].name%></h3>
                 </div>
 
                </div>
+               <% end %> 
           </div>
 
           <div class="row" style="">
             
-
+              <% if @favorites[2].exists? %>
               <div class="col-md-6 sampleBox" > 
 
                 <div class="glassbox card3" style="cursor: pointer;">
-                  <h3 class="description">Spoken Word Poetry</h3>
+                  <h3 class="description"><%=@favorites[2].name%></h3>
                 </div>
 
 
               </div>
+              <%end%>
+
+              <% if @favorites[3].exists? %>
               <div class="col-md-6 sampleBox"  > 
 
                 <div class="glassbox card3" style="cursor: pointer;">
-                  <h3 class="description">Painting</h3>
+                  <h3 class="description"><%=@favorites[3].name%></h3>
                 </div>
 
               </div>
+              <%end%>
           </div>
+          <% end %>
           </div>
       <!-- END-->
         <div class="col-md-4" style="">
@@ -263,25 +271,10 @@
 
   </div>
 
-<div>
-  Favorites/Hobbies
-  <% @favorites.each do |tag| %>
-    <div>
-      <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
-      <% if tag.photo.exists? %>
-        <%= image_tag tag.photo.url(:thumb) %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-
-
-
 
 <div>
   Favorites/Hobbies
-  <% @favorites.each do |tag| %>
+  <% @favorites.take(4).each do |tag| %>
     <div>
       <%= link_to tag.name, {:controller => "events", :action => "search", :category => tag.name} %>
       <% if tag.photo.exists? %>
