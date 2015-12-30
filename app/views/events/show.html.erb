@@ -78,6 +78,8 @@
         <span style="line-height:120%;"><%= @event.description %></span>
       </div>
 
+    <%= render 'modal' %>
+    
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <td>Status: <%= @event.status %></td>
@@ -90,7 +92,7 @@
       <% else %>
         <% if @event.user_id == current_user.id %>
           <td>Status: <%= @event.status %></td>
-          <td><%= link_to 'Edit', edit_event_path(@event) %> |</td> 
+          <td><a href="#modal" data-toggle="modal">Edit</a></td>
           <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% if @event.status == "Rejected" %>
             <strong>Note: This event will be deleted after 10 days.</strong>
