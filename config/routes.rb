@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/reject/:id', to: "events#reject", as: :reject_event
   get '/search', to:"events#search", as: :search
   get '/about', to: "pages#about", as: :about
-  get '/enzoandjackie', to: "pages#pie", as: :pie
+  get '/error', to: "pages#pie", as: :pie
   get '/admin-dashboard', to: "pages#dashboard", as: :admin_dashboard
   get '/login_fail', to: "pages#fail", as: :login_fail
   
