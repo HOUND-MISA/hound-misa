@@ -2,6 +2,9 @@
 <p>
   <strong>Name:</strong>
   <%= @tag.name %>
+  <% if @tag.photo.exists? %>
+      <%= image_tag @tag.photo.url(:thumb) %>
+   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
