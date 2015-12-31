@@ -88,7 +88,7 @@
   <% if @ad.nil? %>
     <%= link_to "Set Ad Frequency", new_ad_path %>
   <% else %>
-    <%= @ad.frequency %> percent | <%= link_to "Edit", edit_ad_path(@ad) %> | <%= link_to 'Delete', delete_ad_path(@ad), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= @ad.frequency %> percent | <%= link_to "Edit", edit_ad_path(@ad) %> |<%= link_to 'Delete', ad_path(@ad), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>
 

@@ -18,6 +18,7 @@
 
   <div class="field">
     <%= f.label :photo %><br />
+    <%= image_tag f.object.photo.url(:thumb) %>
     <%= f.file_field :photo %>
    </div>
 
