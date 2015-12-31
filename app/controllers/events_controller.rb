@@ -13,6 +13,8 @@ class EventsController < ApplicationController
     if !current_user.try(:admin?)
       @event = Event.new
     end
+    @ad = Ad.order("RANDOM()").first
+    @open_ad = true
   end
 
   # GET /events/1
