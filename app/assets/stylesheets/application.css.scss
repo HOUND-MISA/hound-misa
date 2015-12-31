@@ -24,7 +24,7 @@ background-color: #1c1818;
 padding:1px 1px 1px 20px;
 font-size: 18px;
 font-family: 'Roboto' !important;
-width:200px;
+width:150px;
 height:45px;
 outline: 0;
 }
@@ -576,7 +576,7 @@ text-align:center;
 	border-bottom-color:#a22922;
 }
 
-.left{
+.left1{
 
 	margin-bottom:50px;
 	border-radius:100%;
@@ -586,7 +586,7 @@ text-align:center;
 	background-size: cover;
 	border:0!important;
 }
-.right{
+.right1{
 
 	margin-bottom:50px;
 	border-radius:100%;
@@ -777,3 +777,6 @@ width: 40px;
 	}
 
 } /* ========================================================== */
+.slnk a{
+ color:rgb(180,180,180)!important;
+}
