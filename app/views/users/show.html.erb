@@ -66,11 +66,13 @@
 
               <% if @favorites[0].exists? %> 
                 <% if @favorites[0].photo.exists? %>
+              <!-- THIS ONE--><%= link_to @favorites[0].name, {:controller => "events", :action => "search", :category => @favorites[0].name} %>
               <div class="col-md-6 sampleBox">
                 <div class="glassbox card3" style="cursor: pointer; background-image: url( <%=  @favorites[0].photo.url(:medium) %>);">
                   <h3 class="description"><%=@favorites[0].name%> </h3>
                 </div>
                </div>
+               <!--Do not forget to add "end" then do for other divs below -->
                <%end%>
               <% end %> 
 
