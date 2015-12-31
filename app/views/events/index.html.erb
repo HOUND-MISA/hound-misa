@@ -62,7 +62,6 @@
   <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
 <% end %>
 
-
 <% if @reopen %>
   <script>
     $(document).ready(function() {
@@ -70,6 +69,32 @@
     });
   </script>
 <% end %>
+
+
+<% if !@ad.nil? %>
+  <div class="modal custom fade" id="advertisement" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><center><%= @ad.name %></h4></center>
+        </div>
+        <div class="modal-body">
+          <%= image_tag @ad.photo.url(:large) %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @open_ad && !@ad.nil? && !current_user.try(:admin?) %>
+  <script>
+    $(document).ready(function() {
+      $('#advertisement').modal("show");
+    });
+  </script>
+<% end %>
+
 
 
 <div style="border-top:2px solid #f2f2f2;">
