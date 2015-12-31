@@ -90,7 +90,9 @@
 <% if @open_ad && !@ad.nil? && !current_user.try(:admin?) %>
   <script>
     $(document).ready(function() {
-      $('#advertisement').modal("show");
+      if Math.random()<.5{
+        $('#advertisement').modal("show");
+      }
     });
   </script>
 <% end %>
