@@ -73,14 +73,14 @@
 
 <% if !@ad.nil? %>
   <div class="modal custom fade" id="advertisement" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog" style="width:40vw; height:70vh!important; margin-top:40px;">
+      <div class="modal-content" style="height:100%">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><center><%= @ad.name %></h4></center>
         </div>
-        <div class="modal-body">
-          <%= image_tag @ad.photo.url(:large) %>
+<div class="modal-body" style="background-image:url(<%=@ad.photo.url(:large)%>); height:100%; width:100%;">
+
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
 <% if @open_ad && !@ad.nil? && !current_user.try(:admin?) %>
   <script>
     $(document).ready(function() {
-      if Math.random()<.5{
+      if (Math.random()<.33){
         $('#advertisement').modal("show");
       }
     });
