@@ -1,8 +1,11 @@
-<div style="height:100vh; background-color:#A02A26;">
+
 <% if !user_signed_in? %>
+
+<div class="container-fluid" style="background-image:url(/assets/elem_profile-header.jpg); background-size:cover; height:100vh!important;">
   <%= render 'pages/modal' %>
 <% end %>
 
+</div>
 <script>
   $(document).ready(function() {
     $('#login').modal("show");
