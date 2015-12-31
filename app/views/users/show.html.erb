@@ -65,45 +65,53 @@
           <div class="row" style="">
 
               <% if @favorites[0].exists? %> 
+                <% if @favorites[0].photo.exists? %>
               <div class="col-md-6 sampleBox">
-                <div class="glassbox card3" style="cursor: pointer;">
+                <div class="glassbox card3" style="cursor: pointer; background-image: url( <%=  @favorites[0].photo.url(:medium) %>);">
                   <h3 class="description"><%=@favorites[0].name%> </h3>
                 </div>
                </div>
+               <%end%>
               <% end %> 
 
               <% if @favorites[1].exists? %>
+               <% if @favorites[1].photo.exists? %>
               <div class="col-md-6 sampleBox">
 
-                <div class="glassbox card3" style="cursor: pointer;">
+                <div class="glassbox card3" style="cursor: pointer; background-image: url( <%=  @favorites[1].photo.url(:medium) %>);">
                   <h3 class="description"><%=@favorites[1].name%></h3>
                 </div>
 
                </div>
+               <%end%>
                <% end %> 
           </div>
 
           <div class="row" style="">
             
               <% if @favorites[2].exists? %>
+              <% if @favorites[2].photo.exists? %>
               <div class="col-md-6 sampleBox" > 
 
-                <div class="glassbox card3" style="cursor: pointer;">
+                <div class="glassbox card3" style="cursor: pointer; background-image: url( <%=  @favorites[2].photo.url(:medium) %>);">
                   <h3 class="description"><%=@favorites[2].name%></h3>
                 </div>
 
 
               </div>
               <%end%>
+              <%end%>
 
               <% if @favorites[3].exists? %>
+              <% if @favorites[3].photo.exists? %>
               <div class="col-md-6 sampleBox"  > 
 
-                <div class="glassbox card3" style="cursor: pointer;">
+                <div class="glassbox card3" style="cursor: pointer; background-image: url( <%=  @favorites[3].photo.url(:medium) %>);">
                   <h3 class="description"><%=@favorites[3].name%></h3>
                 </div>
 
               </div>
+              <%end%>
               <%end%>
           </div>
           <% end %>
