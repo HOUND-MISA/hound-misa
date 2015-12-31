@@ -3,6 +3,35 @@
 <br>
 <div class="panel panel-default">
   <!-- Default panel contents -->
+  <div class="panel-heading"><b>PENDING EVENTS</b></div>
+
+  <!-- Table -->
+  <table class="table">
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Start Date</th>
+    <th>Start Time</th>
+    <th>Actions</th>
+  </tr>
+  <% @pending_events.each do |event| %>
+  <tr>
+    <td> <%= event.name %> </td>
+    <td> <%= event.city %> </td>
+    <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
+    <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+    <% if false %>
+      <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
+      <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
+    <% end %>
+    <td> <%= link_to "Show", event_path(event) %> </td>
+  </tr>
+  <% end %>
+  </table>
+</div>
+<br>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
   <div class="panel-heading">TAGS</div>
 
   <!-- Table -->
@@ -54,42 +83,30 @@
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading"><b>PENDING EVENTS</b></div>
+  <div class="panel-heading">ADVERTISEMENTS</div>
 
   <!-- Table -->
   <table class="table">
-	<tr>
-		<th>Name</th>
-		<th>City</th>
-		<th>Start Date</th>
-		<th>Start Time</th>
-		<th>Actions</th>
-	</tr>
-	<% @pending_events.each do |event| %>
-	<tr>
-		<td> <%= event.name %> </td>
-		<td> <%= event.city %> </td>
-    <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
-    <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
-    <% if false %>
-      <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
-      <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
-    <% end %>
-		<td> <%= link_to "Show", event_path(event) %> </td>
-	</tr>
-	<% end %>
+  <tr>
+    <th>Photo</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @ads.each do |tag| %>
+  <tr>
+    
+    <td> <%=  image_tag ad.photo.url(:thumb) %> </td>
+    <td> <%= ad.name %> </td>
+    <td> <%= link_to "Show", ad_path(ad)  %> </td>
+    <td> <%= link_to "Edit", edit_ad_path(ad) %> </td>
+    <td> <%= link_to "Delete", ad_path(ad), method: :delete %> </td>
+    
+  </tr>
+  <% end %>
   </table>
 </div>
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Manage Advertisements</div>
-
-  <% if @ad.nil? %>
-    <%= link_to "Set Ad Frequency", new_ad_path %>
-  <% else %>
-    <%= @ad.frequency %> percent | <%= link_to "Edit", edit_ad_path(@ad) %> |<%= link_to 'Delete', ad_path(@ad), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</div>
+  <%= button_to "New Advertisement", new_ad_path,:method=>:get %>
 
 </div>

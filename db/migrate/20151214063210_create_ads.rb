@@ -1,7 +1,7 @@
 class CreateAds < ActiveRecord::Migration
   def change
     create_table :ads do |t|
-      t.integer :frequency
+      t.string :name
 
       t.timestamps null: false
     end

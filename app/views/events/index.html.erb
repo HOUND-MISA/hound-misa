@@ -55,10 +55,10 @@
 </div>
 </center>
 
-<%= render 'modal' %>
 
 
 <% if user_signed_in? && !current_user.try(:admin?) %>
+  <%= render 'modal' %>
   <button class="jbtn" href="#modal" data-toggle="modal">Add Event</button>
 <% end %>
 

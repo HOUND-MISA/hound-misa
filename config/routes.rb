@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
   resources :tags
+  resources :ads
   resources :events, except: [:new, :edit]
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "registrations", :sessions => "sessions"}
     devise_scope :user do
@@ -15,9 +16,6 @@ Rails.application.routes.draw do
   get '/enzoandjackie', to: "pages#pie", as: :pie
   get '/admin-dashboard', to: "pages#dashboard", as: :admin_dashboard
   get '/login_fail', to: "pages#fail", as: :login_fail
-
-  #ads
-  resources :ads, except: [:show, :index]
   
   #users
   get '/hound_users', to: "users#index", as: :hound_users
