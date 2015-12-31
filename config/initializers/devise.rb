@@ -274,6 +274,7 @@ Devise.setup do |config|
   #   manager.failure_app = CustomFailure
   # end
 
+  config.scoped_views = true
 
   
 end
