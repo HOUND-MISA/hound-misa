@@ -9,11 +9,15 @@ class AddAttachments < ActiveRecord::Migration
     change_table :tags do |t|
       t.attachment :photo
     end
+    change_table :ads do |t|
+      t.attachment :photo
+    end
   end
 
   def self.down
     remove_attachment :users, :avatar
     remove_attachment :pictures, :photo
     remove_attachment :tags, :photo
+    remove_attachment :ads, :photo
   end
 end

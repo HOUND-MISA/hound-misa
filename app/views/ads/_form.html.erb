@@ -1,7 +1,7 @@
-
+<%= form_for(@ad) do |f| %>
   <% if @ad.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this advertisement from being saved:</h2>
 
       <ul>
       <% @ad.errors.full_messages.each do |message| %>
@@ -10,3 +10,19 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= image_tag f.object.photo.url(:thumb) %>
+    <%= f.file_field :photo %>
+   </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
