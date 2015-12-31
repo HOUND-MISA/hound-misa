@@ -61,9 +61,10 @@
   <div class="container-fluid" style="min-height:802px; margin-top:240px;">
     <div class="row">
       <div class="col-md-8">
-      <% if !@favorites.nil? %>  
+      <% if @favorites.any? %> 
           <div class="row" style="">
-          <% if !@favorites[0].nil? %> 
+
+              <% if @favorites[0].exists? %> 
                 <% if @favorites[0].photo.exists? %>
               <!-- THIS ONE--><%= link_to @favorites[0].name, {:controller => "events", :action => "search", :category => @favorites[0].name} %>
               <div class="col-md-6 sampleBox">
@@ -75,7 +76,7 @@
                <%end%>
               <% end %> 
 
-                <% if !@favorites[1].nil? %>
+              <% if @favorites[1].exists? %>
                <% if @favorites[1].photo.exists? %>
               <div class="col-md-6 sampleBox">
 
@@ -90,7 +91,7 @@
 
           <div class="row" style="">
             
-              <% if !@favorites[2].nil? %>
+              <% if @favorites[2].exists? %>
               <% if @favorites[2].photo.exists? %>
               <div class="col-md-6 sampleBox" > 
 
@@ -103,7 +104,7 @@
               <%end%>
               <%end%>
 
-              <% if !@favorites[3].nil? %>
+              <% if @favorites[3].exists? %>
               <% if @favorites[3].photo.exists? %>
               <div class="col-md-6 sampleBox"  > 
 
