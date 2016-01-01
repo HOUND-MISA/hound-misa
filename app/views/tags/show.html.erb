@@ -1,12 +1,16 @@
 <div class="container-fluid content-box">
-<p>
+<br><br>
+<span style="font-family:'Roboto'; font-size:18px;"><center>
   <strong>Name:</strong>
-  <%= @tag.name %>
+  <%= @tag.name %><br><br>
   <% if @tag.photo.exists? %>
-      <%= image_tag @tag.photo.url(:thumb) %>
+      <%= image_tag @tag.photo.url(:medium) %>
    <% end %>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
+   <br><br>
+   <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>
+   </center>
+</span>
+
+
 </div>

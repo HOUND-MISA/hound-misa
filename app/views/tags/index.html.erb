@@ -1,35 +1,32 @@
 <div class="container-fluid content-box">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">TAGS</div>
 
-  <h1>Listing Tags</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Photo</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tags.each do |tag| %>
-        <tr>
-          <td><%= tag.name %></td>
-          <td>
-            <% if tag.photo.exists? %>
-              <%= image_tag tag.photo.url(:thumb) %>
-            <% end %>
-          </td>
-          <td><%= link_to 'Show', tag %></td>
-          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
+  <!-- Table -->
+  <table class="table">
+  <tr>
+    <th>Photo</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @tags.each do |tag| %>
+  <tr>
+    
+    <td> <%=  image_tag tag.photo.url(:thumb) %> </td>
+    <td> <%= tag.name %> </td>
+    <td> <%= link_to "Show", tag_path(tag)  %> </td>
+    <td> <%= link_to "Edit", edit_tag_path(tag) %> </td>
+    <td> <%= link_to "Delete", tag_path(tag), method: :delete %> </td>
+    
+  </tr>
+  <% end %>
   </table>
-
-  <br>
-
+</div>
   <%= link_to 'New Tag', new_tag_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>
 
+
 </div>
+

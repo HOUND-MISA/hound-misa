@@ -24,7 +24,7 @@
       <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
       <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
     <% end %>
-    <td> <%= link_to "Show", event_path(event) %> </td>
+    <td> <%= link_to "Show", event_path(event), data: { no_turbolink: true } %> </td>
   </tr>
   <% end %>
   </table>

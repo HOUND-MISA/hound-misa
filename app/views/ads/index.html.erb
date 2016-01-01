@@ -1,35 +1,31 @@
 <div class="container-fluid content-box">
 
-  <h1>Listing Advertisements</h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">ADVERTISEMENTS</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Photo</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @ads.each do |ad| %>
-        <tr>
-          <td><%= ad.name %></td>
-          <td>
-            <% if ad.photo.exists? %>
-              <%= image_tag ad.photo.url(:thumb) %>
-            <% end %>
-          </td>
-          <td><%= link_to 'Show', ad %></td>
-          <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-          <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
+  <!-- Table -->
+  <table class="table">
+  <tr>
+    <th>Photo</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @ads.each do |ad| %>
+  <tr>
+    
+    <td> <%=  image_tag ad.photo.url(:thumb) %> </td>
+    <td> <%= ad.name %> </td>
+    <td> <%= link_to "Show", ad_path(ad)  %> </td>
+    <td> <%= link_to "Edit", edit_ad_path(ad) %> </td>
+    <td> <%= link_to "Delete", ad_path(ad), method: :delete %> </td>
+    
+  </tr>
+  <% end %>
   </table>
-
-  <br>
-
+</div>
   <%= link_to 'New Advertisement', new_ad_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>
 
 </div>

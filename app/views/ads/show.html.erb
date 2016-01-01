@@ -1,12 +1,17 @@
-<div class="container-fluid content-box">
-<p>
-  <strong>Name:</strong>
-  <%= @ad.name %>
-  <% if @ad.photo.exists? %>
-      <%= image_tag @ad.photo.url(:thumb) %>
-   <% end %>
-</p>
 
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<div class="container-fluid content-box">
+<br><br>
+<span style="font-family:'Roboto'; font-size:18px;"><center>
+<strong>Name:</strong>
+  <%= @ad.name %><br><br>
+  <% if @ad.photo.exists? %>
+      <%= image_tag @ad.photo.url(:medium) %>
+   <% end %>
+   <br><br>
+   <%= link_to 'Edit', edit_ad_path(@ad) %> |
 <%= link_to 'Back', ads_path %>
+   </center>
+</span>
+
+
 </div>
