@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_owner, only: [:edit]
 
   def index
-    @users = User.where(['email != ?', "admin@hound.ph"])
+    @users = User.where(['email != ?', "admin@hound.ph"]).paginate(:page => params[:page])
   end
 
   def show
