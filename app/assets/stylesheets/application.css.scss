@@ -779,9 +779,7 @@ width: 40px;
 		position:absolute;
 		visibility:hidden;
 	}
-	.nvbindex{
-		width: 95%!important;
-	}
+
 } /* ========================================================== */
 .slnk a{
  color:rgb(180,180,180)!important;
@@ -797,6 +795,15 @@ width: 40px;
 .npass{
 	color:#333!important;
 }
+
 .nvbindex{
-	width: 60%;
+	width: 95%;
 }
+
+@media (max-width: 767px) { 
+	.nvbindex{
+	width: 60%;
+	}
+}
+
+
