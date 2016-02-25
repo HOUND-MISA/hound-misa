@@ -539,37 +539,15 @@ table a:hover {
 	height:20vh;
 }
 
-.vision{
-
-
-}
-.vision h1{
-	margin-top: 80px;
-	text-align:center;
-}
-.vision p{
-	font-size: 16px;
-
-margin-left: 20px!important;
-margin-right: 40px!important;
-text-align:center;
-}
-
-
-.mission{
-	
-
-}
-
 .mission h1{
 	margin-top: 35px;
 	text-align:center;
 }
 .mission p{
-	font-size: 16px;
-	margin-left: 40px!important;
-	margin-right: 20px!important;	
+	font-size: 14px;
 	text-align:center;
+	padding-left: 5vw;
+	padding-right: 5vw;
 }
 
 
@@ -795,7 +773,18 @@ width: 40px;
 	}
 	.advert{
 	width:40vw!important; height:70vh!important; margin-top:40px!important;
-}
+	}
+	.mission h1{
+	margin-top: 35px;
+	text-align:center;
+	}
+	.mission p{
+		font-size: 16px;
+		text-align:center;
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+
 
 
 } /* ========================================================== */
