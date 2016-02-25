@@ -1,16 +1,24 @@
-<h2>Forgot your password?</h2>
+<div class="container-fluid" style="background-image:url(/assets/aboutbg.jpeg); background-size:cover; height:100vh!important;">
+<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"style="margin-top:20vh; background-color: white; padding-bottom:20px;padding-left:20px;padding-right:20px;">
+		<h3>Forgot your password?</h3>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+		  <div class="field">
+		    <%= f.label :email %><br />
+		    <%= f.email_field :email, autofocus: true %>
+		  </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+		  <div class="actions">
+		    <%= f.submit "Password Instructions" , :style=>"height: 32px; width:180px; border-radius: 20px; border: solid 0px; background-color:#a22922; margin-top: 5px; color:white; font-size:15px;"%>
+		  </div>
+		<% end %>
+		<div class="newpass">
+		<%= render "devise/shared/links" %>
+		</div>
+		</div>
+	</div>
+</div>
