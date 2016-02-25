@@ -799,3 +799,8 @@ width: 40px;
 .navbar-brand{
 	width:250px!important;
 }
+@media (max-width:768px){
+ .navbar-brand{
+   width:70vw!important;
+ }
+}
