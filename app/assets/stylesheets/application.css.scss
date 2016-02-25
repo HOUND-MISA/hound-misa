@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap_and_overrides
  *= require_self
  *= require_tree .
  */
@@ -800,4 +799,4 @@ width: 40px;
 
 .navbar-brand{
    width:70vw!important;
- }
+}
