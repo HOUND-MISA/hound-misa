@@ -559,79 +559,13 @@ table a:hover {
 	border-bottom-color:#a22922;
 }
 
-.left1{
-
-	margin-bottom:50px;
-	border-radius:100%;
-	height:200px;
-	width:200px;
-	background-image:url(/assets/fsja.jpg);
-	background-size: cover;
-	border:0!important;
-}
-.right1{
-
-	margin-bottom:50px;
-	border-radius:100%;
-	height:200px;
-	width:200px;
-	background-image:url(/assets/f3.jpg);
-	background-size: cover;
-	border:0!important;
-}
-
-.leftbot{
-	
-	border-radius:100%;
-	height:200px;
-	width:200px;
-	background-image:url(/assets/fsa.png);
-	background-size: cover;
-	border:0!important;
-}
-
-.rightbot{
-	margin-left:0px;
-	margin-right:0px;
-	border-radius:100%;
-	margin-bottom:50px;
-	height:200px;
-	width:200px;
-	background-image:url(/assets/f5.jpg);
-	background-size: cover;
-	border:0!important;
-}
-
-.mid{
-	border-radius:100%;
-	height:200px;
-	width:200px;
-	margin-bottom:50px;
-	background-image:url(/assets/f2e.jpg);
-	background-size: cover;
-	border:0!important;
-
-}
-
-.text{
-	position:absolute;
-	top:190px;
-	left:80px;
-}
-.text h1{
-	font-weight:bold;
-	font-size:15px;
-}
-
 .founder{
 	padding-left:8%!important;
 }
 .founderbot{
 	padding-left:8%!important;
 }
-.founderbot1{
-	padding-left:26%!important;
-}
+
 .about_hr{
 border-color:#a22922;
  border-width: 7px;
@@ -785,6 +719,76 @@ width: 40px;
 		padding-right: 5vw;
 	}
 
+	.left1{
+
+		margin-bottom:50px;
+		border-radius:100%;
+		height:200px;
+		width:200px;
+		background-image:url(/assets/fsja.jpg);
+		background-size: cover;
+		border:0!important;
+	}
+	.right1{
+
+		margin-bottom:50px;
+		border-radius:100%;
+		height:200px;
+		width:200px;
+		background-image:url(/assets/f3.jpg);
+		background-size: cover;
+		border:0!important;
+	}
+
+	.leftbot{
+		border-radius:100%;
+		height:200px;
+		width:200px;
+		background-image:url(/assets/fsa.png);
+		background-size: cover;
+		border:0!important;
+	}
+
+	.rightbot{
+		margin-left:0px;
+		margin-right:0px;
+		border-radius:100%;
+		margin-bottom:50px;
+		height:200px;
+		width:200px;
+		background-image:url(/assets/f5.jpg);
+		background-size: cover;
+		border:0!important;
+	}
+
+	.mid{
+		border-radius:100%;
+		height:200px;
+		width:200px;
+		margin-bottom:50px;
+		background-image:url(/assets/f2e.jpg);
+		background-size: cover;
+		border:0!important;
+
+	}
+	.founderbot1{
+		padding-left:26%!important;
+	}
+
+	.text{
+		position:absolute;
+		top:190px!important;
+		left:90px!important;
+	}
+	.text h1{
+		font-weight:bold;
+		font-size:15px;
+	}
+	.founderbot1 .text{
+	top:190px;
+	left:110px!important;
+	}
+
 
 
 } /* ========================================================== */
@@ -808,4 +812,80 @@ width: 40px;
 }
 .advert{
 	width:80vw; height:70vh!important; margin-top:40px!important;
+}
+
+.left1{
+
+	margin-bottom:50px;
+	border-radius:100%;
+	height:200px;
+	width:200px;
+	background-image:url(/assets/fsja.jpg);
+	background-size: cover;
+	border:0!important;
+}
+.right1{
+
+	margin-bottom:50px;
+	border-radius:100%;
+	height:200px;
+	width:200px;
+	background-image:url(/assets/f3.jpg);
+	background-size: cover;
+	border:0!important;
+}
+
+.leftbot{
+	margin-bottom:50px;
+	margin-bottom:50px;
+	border-radius:100%;
+	height:200px;
+	width:200px;
+	background-image:url(/assets/fsa.png);
+	background-size: cover;
+	border:0!important;
+}
+
+.rightbot{
+	margin-left:0px;
+	margin-right:0px;
+	border-radius:100%;
+	margin-bottom:50px;
+	height:200px;
+	width:200px;
+	background-image:url(/assets/f5.jpg);
+	background-size: cover;
+	border:0!important;
+}
+
+.mid{
+	margin-bottom:50px;
+	border-radius:100%;
+	height:200px;
+	width:200px;
+	margin-bottom:50px;
+	background-image:url(/assets/f2e.jpg);
+	background-size: cover;
+	border:0!important;
+
+}
+.founderbot1{
+	padding-left:8%;
+}
+.text{
+	position:absolute;
+	top:190px;
+	left:40px;
+}
+.text h1{
+	font-weight:bold;
+	font-size:12px;
+}
+.founderbot1 .text{
+	top:190px;
+	left:-30px;
+}
+.rightbot .text{
+	top:190px;
+	left:60px;
 }
