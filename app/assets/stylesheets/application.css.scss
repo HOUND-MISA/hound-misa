@@ -724,7 +724,7 @@ width: 40px;
 	color:white;
 }
 
-@media (min-width: 44em) and (orientation:landscape) { /* ====== */
+@media (min-width: 44em)  { /* ====== */
 
 	.contshow{
 		padding-bottom: 2.5em;
@@ -795,15 +795,4 @@ width: 40px;
 .npass{
 	color:#333!important;
 }
-
-.nvbindex{
-	width: 95%;
-}
-
-@media (max-width: 767px) { 
-	.nvbindex{
-	width: 60%;
-	}
-}
-
 
