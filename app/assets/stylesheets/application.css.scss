@@ -724,7 +724,7 @@ width: 40px;
 	color:white;
 }
 
-@media (min-width: 44em)  { /* ====== */
+@media (min-width: 44em) and (orientation:landscape) { /* ====== */
 
 	.contshow{
 		padding-bottom: 2.5em;
