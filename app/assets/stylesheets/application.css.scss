@@ -559,13 +559,6 @@ table a:hover {
 	border-bottom-color:#a22922;
 }
 
-.founder{
-	padding-left:8%!important;
-}
-.founderbot{
-	padding-left:8%!important;
-}
-
 .about_hr{
 border-color:#a22922;
  border-width: 7px;
@@ -774,11 +767,17 @@ width: 40px;
 	.founderbot1{
 		padding-left:26%!important;
 	}
+	.founder{
+	padding-left:8%!important;
+	}
+	.founderbot{
+		padding-left:8%!important;
+	}
 
 	.text{
 		position:absolute;
 		top:190px!important;
-		left:90px!important;
+		left:130px!important;
 	}
 	.text h1{
 		font-weight:bold;
@@ -786,7 +785,7 @@ width: 40px;
 	}
 	.founderbot1 .text{
 	top:190px;
-	left:110px!important;
+	left:-40px!important;
 	}
 
 
@@ -869,8 +868,14 @@ width: 40px;
 	border:0!important;
 
 }
+.founder{
+	padding-left:12%!important;
+}
+.founderbot{
+	padding-left:12%!important;
+}
 .founderbot1{
-	padding-left:8%;
+	padding-left:12%!important;
 }
 .text{
 	position:absolute;
