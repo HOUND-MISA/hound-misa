@@ -62,7 +62,7 @@
       <h1 class="event-name"><b><%= @event.name %></b></h1>
       <%if @event.website!="" %>
         <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-          <a href="http://<%= @event.website %>"><%= @event.website %></a>
+          <a id="eventweb" href="http://<%= @event.website %>"><%= @event.website %></a>
         </div>
       <%end%>
       <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
@@ -100,9 +100,10 @@
         <% end %>
       <% else %>
         <% if @event.user_id == current_user.id %>
-          <td>Status: <%= @event.status %></td>
-          <td><a href="#modal" data-toggle="modal">Edit</a></td>
-          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><span class="showlink">Status: <%= @event.status %></span></td>
+          <td>|</td>
+          <td><a href="#modal" data-toggle="modal" class="showlink">Edit</a></td> <td>|</td>
+          <td><%= link_to 'Cancel Event', @event, method: :delete, data: { confirm: 'Are you sure?' },:class=>"showlink" %></td>
           <% if @event.status == "Rejected" %>
             <strong>Note: This event will be deleted after 10 days.</strong>
           <% end %>
