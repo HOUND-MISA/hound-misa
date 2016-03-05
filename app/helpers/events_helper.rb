@@ -7,19 +7,34 @@ module EventsHelper
     ["Abra","Agusan del Norte","Agusan del Sur","Aklan","Albay","Antique","Apayao","Aurora","Basilan","Bataan","Batanes","Batangas","Benguet","Biliran","Bohol","Bukidnon","Bulacan","Cagayan","Camarines Norte","Camarines Sur","Camiguin","Capiz","Catanduanes","Cavite","Cebu","Compostela Valley","Cotabato","Davao del Norte","Davao del Sur","Davao Occidental","Davao Oriental","Dinagat Islands","Eastern Samar","Guimaras","Ifugao","Ilocos Norte","Ilocos Sur","Iloilo","Isabela","Kalinga","La Union","Laguna","Lanao del Norte","Lanao del Sur","Leyte","Maguindanao","Marinduque","Masbate","Metro Manila","Misamis Occidental","Misamis Oriental","Mountain Province","Negros Occidental","Negros Oriental","Northern Samar","Nueva Ecija","Nueva Vizcaya","Occidental Mindoro","Oriental Mindoro","Palawan","Pampanga","Pangasinan","Quezon","Quirino","Rizal","Romblon","Samar","Sarangani","Siquijor","Sorsogon","South Cotabato","Southern Leyte","Sultan Kudarat","Sulu","Surigao del Norte","Surigao del Sur","Tarlac","Tawi-Tawi","Zambales","Zamboanga del Norte","Zamboanga del Sur","Zamboanga Sibugay"]
   end
 
-  def start_dates
-    start_dates = []
+  def months
+    [["January",'01'],["February",'02'],["March",'03'],["April",'04'],["May",'05'],["June",'06'],["July",'07'],["August",'08'],["September",'09'],["October",'10'],["November",'11'],["December",'12']]
+  end
+
+  # def start_dates
+  #   start_dates = []
+  #   if current_user.try(:admin?)
+  #     Event.uniq.pluck(:start_date).each do |start_date|
+  #       #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+  #       start_dates.push(start_date.strftime('%Y-%m-%d'))
+  #     end
+  #   else
+  #     Event.where(status: "Approved").uniq.pluck(:start_date).each do |start_date|
+  #       #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
+  #       start_dates.push(start_date.strftime('%Y-%m-%d'))
+  #     end
+  #   end
+  #   return start_dates
+  # end
+
+  #options_for_select(start_dates.sort)
+
+  def current_cities
     if current_user.try(:admin?)
-      Event.uniq.pluck(:start_date).each do |start_date|
-        #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
-        start_dates.push(start_date.strftime('%Y-%m-%d'))
-      end
+      Event.uniq.pluck(:city)
     else
-      Event.where(status: "Approved").uniq.pluck(:start_date).each do |start_date|
-        #start_dates.push(to_char(start_date,'YYYY-MM-DD'))
-        start_dates.push(start_date.strftime('%Y-%m-%d'))
-      end
+      Event.where(status: "Approved").uniq.pluck(:city)
     end
-    return start_dates
   end
 end
+
