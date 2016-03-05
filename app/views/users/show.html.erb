@@ -39,7 +39,7 @@ Attended event<%else%> Attended events<%end%> </span></span>
 
 
 <br>
-<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;"><a class="sub1 pcard1" target="_blank"href="http://<%= @user.website %>">Visit Website</a></span></div> 
+<div style="margin-top:10px;"><span class="sub1" style="color:#616161; margin-left:4.5vw;"><a class="sub1 pcard1" target="_blank"href="<%= url_with_protocol(@user.website) %>">Visit Website</a></span></div> 
 <div style="margin-top:10px;">
 <span class="sub1" style="color:#616161; margin-left:4.5vw;"><!-- old website--></span> </div>
 </div>
