@@ -30,4 +30,29 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+   def month_diff(start_date, end_date)
+    months = []
+    # months.push(start_date.month)
+    diff = (end_date.month) - (start_date.month)
+
+    if (diff < 0)
+      gap = 12 + diff - 1
+      cur = start_date.month
+      counter = 0
+      while ((counter < gap) && (cur != 12)) do
+        months.push(cur)
+        cur = cur+1
+      end
+      months.push(cur)
+      cur = 1
+      months.push(cur)
+      while (cur < (gap-counter)) do
+        cur = cur+1
+        months.push(cur)
+      end
+    end
+    return months
+
+  end
 end
