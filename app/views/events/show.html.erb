@@ -65,14 +65,14 @@
           <a id="eventweb" href="<%= url_with_protocol(@event.website) %>" target="_blank"> <span class="eventheader">Visit Website</span class="eventheader"></a>
         </div>
       <%end%>
-      <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:0px;"><span class="eventheader">
-        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %></span class="eventheader">
+      <div class="rob" style="color:rgb(180,180,180); width:470px; font-size:20px; margin-top:10px;"><span class="eventheader">
+        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %></span>
         <% if false %>
-          <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:0px;"><span class="eventheader"><%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-
-        </span class="eventheader"><% end %>
+          <div class="rob" style="color:rgb(180,180,180); width:470px; font-size:20px; margin-top:10px;"><span class="eventheader"><%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-</span>
+       <% end %>
       </div>
-      <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:0px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
-        <span class="eventheader"><%= @event.address %></span class="eventheader">
+      <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:10px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
+        <span class="eventheader"><%= @event.address %></span>
       </div>
       <div class="rob" style="color:rgb(180,180,180); max-width:70%px; font-weight:100; font-size:20px; margin-top:16px;">
         <span style="line-height:120%;" class="rob"><%= @event.description %></span>
