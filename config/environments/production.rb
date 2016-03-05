@@ -82,6 +82,8 @@ Rails.application.configure do
   config.assets.compile = true
   # config/environments/production.rb
   config.paperclip_defaults = {
+    Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+    Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
     :storage => :s3,
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
