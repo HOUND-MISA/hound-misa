@@ -47,6 +47,7 @@ class EventsController < ApplicationController
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
+        @event.update(status: "Pending")
       else
         @reopen = true
         format.json { render json: @event.errors, status: :unprocessable_entity }
