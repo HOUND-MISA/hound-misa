@@ -129,7 +129,7 @@ Attended event<%else%> Attended events<%end%> </span></span>
             </div>
             <div class="tabs" style="margin-top:20px;">
               <ul class="tab-links">
-                  <li class="active"><a href="#tab1">Organized</a></li>
+                  <li class="active"><a href="#tab1">Submitted</a></li>
                   <li><a href="#tab2">Attended</a></li>
                   <% if (current_user.try(:admin?)) || (current_user.try(:id) == @user.id) %>
                   <li><a href="#tab3">Pending</a></li>
@@ -177,7 +177,7 @@ Attended event<%else%> Attended events<%end%> </span></span>
                        <%if counter_o==6%>
                        <%= link_to "View all organized events", "", :onclick => "$('#organized').click()" %>
                        <%elsif counter_o==0%>
-                       No event organized
+                       No event submitted
                        <%elsif counter_o<6%>
 
                        <%end%>

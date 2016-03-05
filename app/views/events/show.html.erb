@@ -61,21 +61,21 @@
     <div class="col-md-6">
       <h1 class="event-name"><b><%= @event.name %></b></h1>
       <%if @event.website!="" %>
-        <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-          <a id="eventweb" href="http://<%= @event.website %>" target="_blank"> Visit website</a>
+        <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:0px;">
+          <a id="eventweb" href="http://<%= @event.website %>" target="_blank"> <span class="eventheader">Visit Website</span class="eventheader"></a>
         </div>
       <%end%>
-      <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %>
+      <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:0px;"><span class="eventheader">
+        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %></span class="eventheader">
         <% if false %>
-          <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;"><%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-
-        <% end %>
+          <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:0px;"><span class="eventheader"><%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-
+        </span class="eventheader"><% end %>
       </div>
-      <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:16px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
-        <%= @event.address %>
+      <div class="rob" style="color:rgb(180,180,180); width:470px;  margin-top:0px;   font-family: 'Roboto' !important; font-style: normal;font-weight: 300;font-size:20px;">
+        <span class="eventheader"><%= @event.address %></span class="eventheader">
       </div>
       <div class="rob" style="color:rgb(180,180,180); max-width:70%px; font-weight:100; font-size:20px; margin-top:16px;">
-        <span style="line-height:120%;"><%= @event.description %></span>
+        <span style="line-height:120%;" class="rob"><%= @event.description %></span>
           <% if @event_tags.any? %>
     <p style="font-family:'Roboto'; font-size:20px; color:rgb(180,180,180)!important;" class="slnk">
       Tags:
@@ -128,7 +128,7 @@
       <div class="card2" style=" height: 560px; background-color: #A02A26;    background-clip: padding-box;margin-left:10px; padding-top:10px">
       <div class="bubble" style="padding-top:7px; margin-left:25px;">
     <center >
-    <h5 style="margin:0px;">Organizer</h5>
+    <h5 style="margin:0px;">Submitted By</h5>
     </center>
       </div>
         <div class="row pcard" style="height:62px;  min-width:315px; position:inherit; margin:25px;">
@@ -144,7 +144,7 @@
           <%end%>
 
           <%=link_to hound_user_path(@event.user.id) do%>
-          <div class="col-xs-8" style="padding:0px"><h4 class="people"><%=@event.user%></h4></div>
+          <div class="col-xs-8" style="padding:0px"><span class="eventheader" class="people"><%=@event.user%></span class="eventheader"></div>
           <%end%>
       </div>
 
@@ -178,7 +178,7 @@
           <%end%>
           </div>
 
-          <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
+          <div class="col-xs-8" style="padding:0px"><span class="eventheader" class="people"><%= u.user %></span class="eventheader"></div>
       </div>
       <%end%>
     <% end %>
