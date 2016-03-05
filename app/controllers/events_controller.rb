@@ -98,7 +98,7 @@ def search
       #@events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR to_char(start_date,?) = ?) AND (status = ?)","#{@tag}","#{@city}",'YYYY-MM-DD',"#{@date}","Approved"]).order('start_date ASC').paginate(:page => params[:page])
       
       #for sqlite, use @events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ?) OR (? BETWEEN strftime(?,start_date) AND strftime(?,end_date)) AND (status = ?)","#{@tag}","#{@city}","#{@date}",'%m','%m',"Approved"]).order('start_date ASC').paginate(:page => params[:page])
-      @events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?)) OR city = ? OR (? BETWEEN to_char(start_date,?) AND to_char(start_date,?)) AND (status = ?)","#{@tag}","#{@city}","#{@date}",'Month','Month',"Approved"]).order('start_date ASC').paginate(:page => params[:page])
+      @events = Event.where(["(id IN (SELECT event_id FROM event_tags where tag_id IN (SELECT id FROM tags WHERE name = ?))) OR city = ? OR (? BETWEEN to_char(start_date,?) AND to_char(start_date,?)) AND (status = ?)","#{@tag}","#{@city}","#{@date}",'Month','Month',"Approved"]).order('start_date ASC').paginate(:page => params[:page])
     end
 
   end
