@@ -145,7 +145,7 @@
           <%end%>
 
           <%=link_to hound_user_path(@event.user.id) do%>
-          <div class="col-xs-8" style="padding:0px"><span class="eventheader" class="people"><%=@event.user%></span class="eventheader"></div>
+          <div class="col-xs-8" style="padding:0px"><h4 class="people" style="margin-left:-7%!important;"><%=@event.user%></h4></div>
           <%end%>
       </div>
 
@@ -179,7 +179,7 @@
           <%end%>
           </div>
 
-          <div class="col-xs-8" style="padding:0px"><span class="eventheader" class="people"><%= u.user %></span class="eventheader"></div>
+          <div class="col-xs-8" style="padding:0px"><h4 class="people"><%= u.user %></h4></div>
       </div>
       <%end%>
     <% end %>

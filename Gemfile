@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem "paperclip", "~> 4.3"
+gem "paperclip"
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
@@ -37,7 +37,7 @@ gem 'geocoder'
 gem 'nested_form'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.0.6'
-gem 'aws-sdk'
+gem 'aws-sdk','< 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
