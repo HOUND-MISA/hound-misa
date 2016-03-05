@@ -62,7 +62,7 @@
       <h1 class="event-name"><b><%= @event.name %></b></h1>
       <%if @event.website!="" %>
         <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">
-          <a id="eventweb" href="http://<%= @event.website %>"><%= @event.website %></a>
+          <a id="eventweb" href="http://<%= @event.website %>" target="_blank"> Visit website</a>
         </div>
       <%end%>
       <div class="rob" style="color:rgb(180,180,180); width:470px; font-weight:300; font-size:20px; margin-top:16px;">

@@ -77,6 +77,7 @@ position:absolute; top:539px; text-align:center; font-size:14px; width:100%; mar
 font-family: 'Roboto' !important;
 font-style: normal;
 font-size:19px;
+color:#616161!important;
 }
 .displayPicture
 {
@@ -805,8 +806,17 @@ width: 40px;
 .npass{
 	color:#333!important;
 }
+.pcard1{
+	  transition: all 0.2s ease-in-out;
+}
+.pcard1:hover{
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	background-color: transparent!important;
+	text-decoration: none;
+}
 #eventweb{
 	color:#B4B4B4!important;
+	text-decoration: underline;
 }
 .showlink{
 	color:#B4B4B4!important;
