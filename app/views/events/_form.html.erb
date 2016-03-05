@@ -67,12 +67,24 @@
 
   <div class="row ">
     <div class="col-sm-6">
-    <label>Date:</label>
+    <label>Start Date:</label>
       <%= f.date_select :start_date %>
       <label style="margin-left:15px;">Time:</label>
       <%= f.time_select :start_time, {:ampm => true} %> 
     </div>        
   </div>
+
+  <div class="row ">
+    <div class="col-sm-6">
+    </div>
+    <div class="col-sm-6">
+      <label>End Date:</label>
+        <%= f.date_select :end_date %>
+        <label style="margin-left:15px;">Time:</label>
+        <%= f.time_select :end_time, {:ampm => true} %> 
+    </div>       
+  </div>
+
 </div>
 <div class="row">
 

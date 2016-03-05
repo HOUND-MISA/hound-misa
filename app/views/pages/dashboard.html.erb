@@ -12,6 +12,8 @@
     <th>City</th>
     <th>Start Date</th>
     <th>Start Time</th>
+    <th>End Date</th>
+    <th>End Time</th>
     <th>Actions</th>
   </tr>
   <% @pending_events.each do |event| %>
@@ -20,9 +22,13 @@
     <td> <%= event.city %> </td>
     <td> <%= event.start_date.strftime('%B %d, %Y') %> </td>
     <td> <%= event.start_time.strftime('%l:%M %p') %> </td>
+    <td> <%= event.end_date.strftime('%B %d, %Y') %> </td>
+    <td> <%= event.end_time.strftime('%l:%M %p') %> </td>
     <% if false %>
       <td> <%= to_char(event.start_date, 'Month DD, YYYY') %> </td>
       <td> <%= to_char(event.start_time, 'HH12:MM AM') %> </td>
+      <td> <%= to_char(event.end_date, 'Month DD, YYYY') %> </td>
+      <td> <%= to_char(event.end_time, 'HH12:MM AM') %> </td>
     <% end %>
     <td> <%= link_to "Show", event_path(event), data: { no_turbolink: true } %> </td>
   </tr>

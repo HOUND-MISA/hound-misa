@@ -65,8 +65,9 @@
           <a id="eventweb" href="<%= url_with_protocol(@event.website) %>" target="_blank"> <span class="eventheader">Visit Website</span class="eventheader"></a>
         </div>
       <%end%>
+
       <div class="rob" style="color:rgb(180,180,180); width:470px; font-size:20px; margin-top:10px;"><span class="eventheader">
-        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %></span>
+        <%= @event.start_date.strftime('%B %d, %Y') %> <%= @event.start_time.strftime('%l:%M %p') %> to <%= @event.end_date.strftime('%B %d, %Y') %> <%= @event.end_time.strftime('%l:%M %p') %></span>
         <% if false %>
           <div class="rob" style="color:rgb(180,180,180); width:470px; font-size:20px; margin-top:10px;"><span class="eventheader"><%= to_char(@event.start_date, 'Month DD, YYYY') %> <%= to_char(@event.start_time, 'HH12:MM AM') %>-</span>
        <% end %>
